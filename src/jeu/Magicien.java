@@ -2,12 +2,13 @@ package jeu;
 
 public class Magicien {
 	
+	//Attributs
 	private String nom; 
 	private int niveau;
 	private int force;
-	//private String sort;
-	//private String philtre;
 	
+	//METHODES
+	//Constructeurs
 	public Magicien() {
 		this("personnage par default");
 	}
@@ -22,9 +23,8 @@ public class Magicien {
 		this.force = force;
 	}
 	
-	
-	// Getters 
-	 /*public String getNom() {
+	//Getters 
+	 public String getNom() {
 	       return nom;
 	   }
 
@@ -34,10 +34,10 @@ public class Magicien {
 	   
 	 public int getForce() {
 	       return force;
-	   }*/
+	   }
 	 
-	 // Setters
-	 /*public void setNom(String nom) {
+	 //Setters
+	 public void setNom(String nom) {
 	       this.nom = nom;
 	   }
 	   
@@ -47,14 +47,14 @@ public class Magicien {
 	   
 	 public void setForce(int force) {
 	       this.force = force;
-	   }*/
+	   }
 	
 	  //Je défini ma propre méthode toString()
 	   public String toString() {
 		   return 
-				   "Votre Magicien s'apelle " + this.nom +
-				   ", son niveau de vie est de " + this.niveau +
-				   " et il possède une force de : " + this.force;
+			   "Votre Magicien s'apelle " + this.nom +
+			   ", son niveau de vie est de " + this.niveau +
+			   " et il possède une force de : " + this.force;
 		}
 
 	

@@ -125,10 +125,12 @@ public void choice(){
 				System.out.println("Veuillez entrer un chiffre entre 5 et 10");
 			};
 		}while (!isValide2);
-			
-		joueur1 = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
-	
-		//choix armes
+		
+		
+		Arme arme;
+		//stock des données
+		joueur1 = new Guerrier(nom, niveau, force, arme); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+		
 		
 		//résumé
 		//mettre données dans liste
@@ -136,16 +138,32 @@ public void choice(){
 		
 		System.out.println("Récapitulatif de vos personnages : ");
 		  for(int i = 0; i<guerrierListe.size();i++)
-		  System.out.println(guerrierListe.get(i).toString());
+		  System.out.println(guerrierListe.get(i).toString()); // toString() méthode que je défini moi-même pour annulé l'affichage par défaut @1d25g5qf2
 		  
 		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " éléments");  // pour afficher le nombre d'éléments dans la liste
 		
+		
+		//choix arme et bouclier
+		System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est " + arme);
+		/*héritage - pas cette méthode car arme n'est pas une spécification de guerrier
+		Arme epee = new Arme("une épée", 8, 10, "fer");
+		System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est " + epee.getNom() + ", de type " + epee.getType() + ", son niveau de durabilité est de " + epee.getNiveau() + " et possède une force d'attaque de " + epee.getForce() + ".");
+		
+		Bouclier bouclier = new Bouclier("un écu", 5, 5, "bois");
+		System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre bouclier est " + bouclier.getNom() + ", de type " + bouclier.getType() + ", son niveau de durabilité est de " + bouclier.getNiveau() + " et possède une force d'attaque de " + bouclier.getForce() + ".");
+		*/
+				
 		//nouveau personnage
 		nouveau();
 		
 		clavier.close();
 	}
 
+	//choix Arme du Guerrier
+	public void arme() {
+		
+		
+	}
 
 	//choix Magicien
 	public void magicien() {
@@ -200,6 +218,9 @@ public void choice(){
 		  System.out.println(magicienListe.get(i).toString());
 		  
 		System.out.println("La liste de Magicien contient " + magicienListe.size() + " éléments");  // pour afficher le nombre d'éléments dans la liste
+		
+		//choix sort et philtre
+		
 	
 		
 		//nouveau personnage
@@ -210,7 +231,7 @@ public void choice(){
 	
 	public void nouveau() {
 		int newChoix; 
-		System.out.println("Voulez-vous créer un nouveau personnage ? 1 Oui - 2 Non - 3 Récapitulatif des personnages - 4 Quitter le jeu ");	
+		System.out.println("Voulez-vous créer un nouveau personnage ? 1 Oui - 2 Non(retour au menu) - 3 Récapitulatif des personnages - 4 Quitter le jeu ");	
 		Scanner clavier = new Scanner(System.in);
 		newChoix = clavier.nextInt();
 		
