@@ -1,7 +1,8 @@
 package jeu;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+//import java.util.ArrayList;
+//import java.util.Scanner;
 
 public class Menu{
 	// pour créer et récupérer les données d'une liste java
@@ -17,14 +18,13 @@ public class Menu{
 	public static void main(String[] args) {
 		Menu menu = new Menu();
 		menu.menuSelect();
-		//menu.choice();
 }
 
 public void menuSelect(){
 	System.out.println("Warriors Game");
 	System.out.println("Menu");
 	Scanner clavier = new Scanner(System.in);
-	System.out.println("1 - Sélection du personnage");
+	System.out.println("1 - Création du personnage");
 	System.out.println("2 - Démarrer la partie");
 	System.out.println("3 - Quitter le jeu");
 	int choixMenu = clavier.nextInt();
@@ -38,7 +38,7 @@ public void menuSelect(){
 				
 			case 2:
 				//Appel de la fonction start
-				//magicien();
+				start();
 				break;
 				
 			case 3:
@@ -56,7 +56,7 @@ public void choice(){
 		int choix;
 		
 		Scanner clavier = new Scanner(System.in);
-		System.out.println("Choisir son personnage - 1 pour Guerrier - 2 pour Magicien - 3 Quitter le jeu : ");
+		System.out.println("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Quitter le jeu ");
 		choix = clavier.nextInt();
 
 		// faire choix entre 1 ou 2 ou 3
@@ -76,7 +76,7 @@ public void choice(){
 			break;
 			
 		default:
-			System.out.println("Erreur choix personnages");
+			System.out.println("Erreur création personnages");
 			break;
 		}
 		clavier.close();
@@ -86,18 +86,18 @@ public void choice(){
 	// METHODES
 	//choix Guerrier
 	public void guerrier() {
-		//début d'instance...
-		Guerrier joueur1;
+	//début d'instance...
+		Guerrier joueurG;
 		
-		//choix nom
+	//choix nom
 		System.out.println("Nommez votre Guerrier : ");
-		//java.util.Scanner clavier = new java.util.Scanner(System.in);
+	
 		Scanner clavier = new Scanner(System.in);
 		String nom = clavier.next();
 		System.out.println(nom);
 		
 
-		//choix niveau de vie
+	//choix niveau de vie
 		boolean isValide = false; // de base, le choix du niveau de vie est = false
 		int niveau;
 		do {
@@ -112,7 +112,7 @@ public void choice(){
 		}while (! isValide); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correst soit = false, boucle fait a nouveau le choix 
 
 		
-		//choix force d'attaque
+	//choix force d'attaque
 		boolean isValide2 = false;
 		int force;
 		do {
@@ -126,60 +126,46 @@ public void choice(){
 			};
 		}while (!isValide2);
 		
-		//choix arme et bouclier
+	//choix arme et bouclier
 		String arme = "une épée";
 		String bouclier = "un écu";
 		
+	//stock des données
+		joueurG = new Guerrier(nom, niveau, force, arme, bouclier); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		
-		//stock des données
-		joueur1 = new Guerrier(nom, niveau, force, arme, bouclier); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		
-		
-		//résumé
+	//résumé
 		//mettre données dans liste
-		guerrierListe.add(joueur1);	//pour ajouter un objet (joueur1 ici en l'occurrence) dans la liste
+		guerrierListe.add(joueurG);	//pour ajouter un objet (joueur1 ici en l'occurrence) dans la liste
 		
 		System.out.println("Récapitulatif de vos personnages : ");
-		  for(int i = 0; i<guerrierListe.size();i++)
-		  System.out.println(guerrierListe.get(i).toString()); // toString() méthode que je défini moi-même pour annulé l'affichage par défaut @1d25g5qf2
+		for(int i = 0; i<guerrierListe.size();i++) {
+		  System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, là je défini moi-même ma méthode toString() dans Personnage pour annuler cet affichage par défaut (blabla@1d25g5qf2)
+		  //System.out.println("Votre Guerrier possède " + bouclier + " et " + arme + " pour attaquer !");
+		}
 		  
-		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " éléments");  // pour afficher le nombre d'éléments dans la liste
+		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)");  // pour afficher le nombre d'éléments dans la liste
 		
 		
-		//choix arme et bouclier
-		//System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est ");
-		//héritage - pas cette méthode car arme n'est pas une spécification de guerrier
-		//Arme epee = new Arme("une épée", 8, 10, "fer");
-		//System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est " + epee.getNom() + ", de type " + epee.getType() + ", son niveau de durabilité est de " + epee.getNiveau() + " et possède une force d'attaque de " + epee.getForce() + ".");
-		
-		//Bouclier bouclier = new Bouclier("un écu", 5, 5, "bois");
-		//System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre bouclier est " + bouclier.getNom() + ", de type " + bouclier.getType() + ", son niveau de durabilité est de " + bouclier.getNiveau() + " et possède une force d'attaque de " + bouclier.getForce() + ".");
-		
-				
-		//nouveau personnage
+	//nouveau personnage
 		nouveau();
 		
 		clavier.close();
 	}
 
-	//choix Arme du Guerrier
-	public void arme() {
-		
-		
-	}
 
 	//choix Magicien
 	public void magicien() {
-		//début d'instance...
-		Magicien joueur2;
+	//début d'instance...
+		Magicien joueurM;
 	
-		//choix nom
+	//choix nom
 		System.out.println("Nommez votre Magicien : ");
 		Scanner clavier = new Scanner(System.in);
 		String nom = clavier.next();
 		System.out.println(nom);
 		
-		//choix niveau de vie
+	//choix niveau de vie
 		boolean isValide = false; // de base, le choix du niveau de vie est = false
 		int niveau;
 		do {
@@ -193,8 +179,7 @@ public void choice(){
 				};
 		}while (isValide == false); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct soit = false, boucle fait a nouveau le choix 
 
-		
-		//choix force d'attaque
+	//choix force d'attaque
 		boolean isValide2 = false;
 		int force;
 		do {
@@ -208,34 +193,31 @@ public void choice(){
 			};
 		}while (isValide2 == false);
 		
-		//choix armes
+	//choix sort et philtre
 		String philtre = "un philtre de soin";
 		String sort = "un sort de boule de feu";
 		
-		//stock des données
-		joueur2 = new Magicien(nom, niveau, force, philtre, sort); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+	//stock des données
+		joueurM = new Magicien(nom, niveau, force, philtre, sort); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		
-		
-		
-		//résumé		
-		magicienListe.add(joueur2); // ajout à la liste
+	//résumé		
+		magicienListe.add(joueurM); // ajout à la liste
 		
 		System.out.println("Récapitulatif de vos personnages : ");
-		  for(int i = 0; i<magicienListe.size();i++)
-		  System.out.println(magicienListe.get(i).toString());
+		  for(int i = 0; i<magicienListe.size();i++) {
+		  System.out.println(magicienListe.get(i));
+		  }
 		  
-		System.out.println("La liste de Magicien contient " + magicienListe.size() + " éléments");  // pour afficher le nombre d'éléments dans la liste
+		System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)");  // pour afficher le nombre d'éléments dans la liste
 		
-		//choix sort et philtre
-		
-	
-		
-		//nouveau personnage
+	//nouveau personnage
 		nouveau();
 		
 		clavier.close();
 	}
 	
+	
+	//nouveau personnage
 	public void nouveau() {
 		int newChoix; 
 		System.out.println("Voulez-vous créer un nouveau personnage ? 1 Oui - 2 Non(retour au menu) - 3 Récapitulatif des personnages - 4 Quitter le jeu ");	
@@ -265,19 +247,143 @@ public void choice(){
 			clavier.close();
 		}
 	
+	//total des personnages
 	public void totalPersonnages(){
-		System.out.println("La liste de Magicien contient " + magicienListe.size() + " éléments"); 
+		System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)"); 
 			System.out.println("Le récapitulatif de vos Magiciens : ");
-			  for(int i = 0; i<magicienListe.size();i++)
-			  System.out.println(magicienListe.get(i).toString());
+			  for(int i = 0; i<magicienListe.size();i++) {
+			  System.out.println(magicienListe.get(i));
+			  }
 		  
-		
-		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " éléments");
+		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)");
 			System.out.println("Le récapitulatif de vos Guerriers : ");
-			  for(int i = 0; i<guerrierListe.size();i++)
-			  System.out.println(guerrierListe.get(i).toString());
+			  for(int i = 0; i<guerrierListe.size();i++) {
+			  System.out.println(guerrierListe.get(i));
+			  }
 
 		System.out.println("Retour à la création de personnage");
 		choice();
 	}
+	
+	
+	//ACTIONS
+	//démarrer le jeu - Afficher le plateau - lancer les dés - avancer
+	public void start(){
+		//affichage du plateau
+			afficherPlateau();
+			
+			menuJeu();
+			
+	}
+	
+	public void menuJeu() {
+		//menu en jeu
+		int choix;
+		
+		Scanner clavier = new Scanner(System.in);
+		System.out.println("1 Lancer le dés - 2 Retour au menu - 3 Quitter le jeu");
+		choix = clavier.nextInt();
+
+	// faire choix entre 1 ou 2 ou 3
+		switch (choix) {
+		case 1:
+			//Appel de la fonction lancerDes()
+			lancerDes();
+			break;
+			
+		case 2:
+			//Appel de la fonction menuSelect()
+			menuSelect();
+			break;
+			
+		case 3:
+			System.out.println("Vous avez quitté le jeu");
+			break;
+			
+		default:
+			System.out.println("Erreur sélection");
+			break;
+		}
+		clavier.close();
+		
+	}
+	
+	//affichage du plateau
+		public void afficherPlateau() {
+			System.out.println("Affichage du plateau");
+				Plateau plateau = new Plateau(10, 10);
+				plateau.afficher(); // appel de la fonction afficher() de la classe Plateau via l'instance
+				
+		}
+		
+	//lancer les dés : de 1 à 6
+	public void	lancerDes() {
+		
+		Des nbDe = new Des();
+		int resultatDe = nbDe.lancerDe(); 
+		System.out.println("le résultat de votre lancer de dés est : " + resultatDe);
+		
+	//faire avancer le joueur
+		int choix;
+		
+		Scanner clavier = new Scanner(System.in);
+		System.out.println("1 avancer le joueur - 2 Quitter le jeu");
+		choix = clavier.nextInt();
+
+	// faire choix entre 1 ou 2
+		switch (choix) {
+		case 1:
+			//Appel de la fonction avancer()
+			//Plateau.avancer();
+			placer();
+			break;
+			
+		case 2:
+			System.out.println("Vous avez quitté le jeu");
+			break;
+			
+		default:
+			System.out.println("Erreur sélection");
+			break;
+		}
+		clavier.close();
+		
+	}
+	
+	// résultat de l'avancé du joueur sur le plateau
+		public void placer() {
+			Plateau plateau = new Plateau(10, 10);
+			plateau.avancer(1, 1, 'X'); // rendre résultat lancer de dés = lig/col sachant qu'il avance ligne par ligne, sur la même lig => le déplacement se fait col/colo
+			
+			//test : placer des ennemis - attension visible sur le plateau
+			plateau.avancer(8, 6, 'E');
+			
+			plateau.afficher();
+			
+			menuJeu();
+		}
+	
+	
+	
+	
+	//NOTES :
+	//avancer : aller de case en case => résultat dés = avancer de tant de cases
+	
+	//évenements sur case :
+		//objets : un objet divers (arme, bouclier, parchemin de sort, philtre, autres)
+			//-> action - prendre objet : quand objet sur une case, prendre objet
+			//-> action - laisser objet : quand objet sur une case, laisser objet
+		//rencontre : un PNG divers (dialogue)
+		//ennemi : un ennemi apparaît => enclenche l'action combat()
+	
+	//combats : 
+		//attaque : attaquer avec arme/sort => infliger nombre de point du résultat d'un autre dés
+		//dégat : si attaque avec perte de PV, déduire du niveau de vie
+		//victoire : si joueur fait perdre le total de PV de l'ennemi = win
+		//défaite : si joueur perd le total de ses PV = lose
+		//fin de combat : fin de combat -> poursuivre aventure
+		
+	//objectifs :
+		//fin du jeu : arriver au bout des 10x10 cases
+
 }

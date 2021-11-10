@@ -15,4 +15,13 @@ public class Philtre{
 	public String toString() {
 		return philtre;
 	}
+	
+	//getters et setters
+		/*public String getPhiltre() {
+			return philtre;
+		}
+
+		public void setPhiltre(String philtre) {
+			this.philtre = philtre;
+		}*/
 }
