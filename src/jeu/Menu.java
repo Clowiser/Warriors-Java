@@ -126,10 +126,13 @@ public void choice(){
 			};
 		}while (!isValide2);
 		
+		//choix arme et bouclier
+		String arme = "une épée";
+		String bouclier = "un écu";
 		
-		Arme arme;
+		
 		//stock des données
-		joueur1 = new Guerrier(nom, niveau, force, arme); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+		joueur1 = new Guerrier(nom, niveau, force, arme, bouclier); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		
 		
 		//résumé
@@ -144,14 +147,14 @@ public void choice(){
 		
 		
 		//choix arme et bouclier
-		System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est " + arme);
-		/*héritage - pas cette méthode car arme n'est pas une spécification de guerrier
-		Arme epee = new Arme("une épée", 8, 10, "fer");
-		System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est " + epee.getNom() + ", de type " + epee.getType() + ", son niveau de durabilité est de " + epee.getNiveau() + " et possède une force d'attaque de " + epee.getForce() + ".");
+		//System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est ");
+		//héritage - pas cette méthode car arme n'est pas une spécification de guerrier
+		//Arme epee = new Arme("une épée", 8, 10, "fer");
+		//System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre arme est " + epee.getNom() + ", de type " + epee.getType() + ", son niveau de durabilité est de " + epee.getNiveau() + " et possède une force d'attaque de " + epee.getForce() + ".");
 		
-		Bouclier bouclier = new Bouclier("un écu", 5, 5, "bois");
-		System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre bouclier est " + bouclier.getNom() + ", de type " + bouclier.getType() + ", son niveau de durabilité est de " + bouclier.getNiveau() + " et possède une force d'attaque de " + bouclier.getForce() + ".");
-		*/
+		//Bouclier bouclier = new Bouclier("un écu", 5, 5, "bois");
+		//System.out.println("Guerrier " + nom + ", pour vous accompagner dans votre périple, votre bouclier est " + bouclier.getNom() + ", de type " + bouclier.getType() + ", son niveau de durabilité est de " + bouclier.getNiveau() + " et possède une force d'attaque de " + bouclier.getForce() + ".");
+		
 				
 		//nouveau personnage
 		nouveau();
@@ -205,10 +208,14 @@ public void choice(){
 			};
 		}while (isValide2 == false);
 		
-		//stock des données
-		joueur2 = new Magicien(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
-		
 		//choix armes
+		String philtre = "un philtre de soin";
+		String sort = "un sort de boule de feu";
+		
+		//stock des données
+		joueur2 = new Magicien(nom, niveau, force, philtre, sort); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+		
+		
 		
 		//résumé		
 		magicienListe.add(joueur2); // ajout à la liste
@@ -260,13 +267,13 @@ public void choice(){
 	
 	public void totalPersonnages(){
 		System.out.println("La liste de Magicien contient " + magicienListe.size() + " éléments"); 
-			System.out.println("Le récapitulatif de vos personnages : ");
+			System.out.println("Le récapitulatif de vos Magiciens : ");
 			  for(int i = 0; i<magicienListe.size();i++)
 			  System.out.println(magicienListe.get(i).toString());
 		  
 		
 		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " éléments");
-			System.out.println("Le récapitulatif de vos personnages : ");
+			System.out.println("Le récapitulatif de vos Guerriers : ");
 			  for(int i = 0; i<guerrierListe.size();i++)
 			  System.out.println(guerrierListe.get(i).toString());
 

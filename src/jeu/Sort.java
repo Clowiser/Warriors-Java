@@ -1,21 +1,18 @@
 package jeu;
 
-public class Sort {
-	private String nom;
-	private int niveau;
-	private int force;
-	
+public class Sort{
+	private String sort;
+
+	//constructeur
 	public Sort() {
-		this("arme par default");
+		this("sort par défaut");
 	}
 	
-	public Sort(String nom) {
-		this(nom, 5, 5);
+	public Sort(String sort){
+		this.sort = sort;
 	}
 	
-	public Sort(String nom, int niveau, int force){
-		this.nom = nom;
-		this.niveau = niveau;
-		this.force = force;
+	public String toString() {
+		return sort;
 	}
 }

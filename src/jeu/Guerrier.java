@@ -7,22 +7,24 @@ public class Guerrier {
 	private int niveau;
 	private int force;
 	private Arme arme;
+	private Bouclier bouclier;
 	
 	//METHODES
 	//Constructeurs
 	public Guerrier() {
-		this("personnage par default");
+		this("personnage par défaut");
 	}
 	
 	public Guerrier(String nom) {
-		this(nom, 5, 5, arme);
+		this(nom, 5, 5, "par défaut", "par défaut");
 	}
 	
-	public Guerrier(String nom, int niveau, int force, Arme arme){
+	public Guerrier(String nom, int niveau, int force, String arme, String bouclier){
 		this.nom = nom;
 		this.niveau = niveau;
 		this.force = force;
-		this.arme = arme;
+		this.arme = new Arme(arme);
+		this.bouclier = new Bouclier(bouclier);
 	}
 
 
@@ -39,10 +41,13 @@ public class Guerrier {
 	       return force;
 	   }
 	   
-		public Arme getArme() {
+	   public Arme getArme() {
 			return this.arme;
 		}
 	   
+	   public Bouclier getBouclier() {
+			return bouclier;
+		}
 	//Setters => renvoie l'information
 	   public void setNom(String nom) {
 	       this.nom = nom;
@@ -59,13 +64,18 @@ public class Guerrier {
 		public void setArme(Arme arme) {
 			this.arme = arme;
 		}
+		
+		public void setBouclier(Bouclier bouclier) {
+			this.bouclier = bouclier;
+		}
 	   
 	   //Je défini ma propre méthode toString()
 	   public String toString() {
 		   return 
 			   "Votre Guerrier s'apelle " + this.nom +
 			   ", son niveau de vie est de " + this.niveau +
-			   " et il possède une force d'attaque de " + this.force + " et possède " + Guerrier.arme + ".";
+			   " et il dispose d'une force d'attaque de " + this.force + 
+			   " et possède " + this.arme + " et " + this.bouclier + ".";
 		}
 
 	//Instancier un objet => Guerrier Will = new Guerrier();

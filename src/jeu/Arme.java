@@ -1,23 +1,27 @@
 package jeu;
 
 public class Arme{
-	private String nom;
+	private String arme;
 
 	//constructeur
 	public Arme() {
-		this("une épée");
+		this("arme par défaut");
 	}
 	
-	public Arme(String nom){
-		this.nom = nom;
+	public Arme(String arme){
+		this.arme = arme;
+	}
+	
+	public String toString() {
+		return arme;
 	}
 	
 	//getters et setters
-	public String getNom() {
+	/*public String getNom() {
 		return nom;
 	}
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
+	}*/
 }

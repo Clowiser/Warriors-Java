@@ -1,19 +1,27 @@
 package jeu;
 
-public class Bouclier extends Guerrier{
-	private String type;
+public class Bouclier{
+	private String bouclier;
 
 	//constructeur
-	public Bouclier(String nom, int niveau, int force, String type){
-		this.type = type;
+	public Bouclier() {
+		this("bouclier par défaut");
+	}
+	
+	public Bouclier(String bouclier){
+		this.bouclier = bouclier;
+	}
+	
+	public String toString() {
+		return bouclier;
 	}
 	
 	//getters et setters
-	public String getType() {
-		return type;
+	/*public String getNom() {
+		return nom;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}*/
 }
