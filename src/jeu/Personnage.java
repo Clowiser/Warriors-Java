@@ -1,6 +1,7 @@
 package jeu;
 
 //héritage - classe mère
+//classe définit en abstract => elle ne peut pas être instancier
 public class Personnage {
 
 	//Attributs
@@ -10,7 +11,7 @@ public class Personnage {
 	
 	//METHODES
 	//Constructeurs
-	public Personnage() {
+	public Personnage() { //obligatoire : par défaut il y a toujours un constructeur vide
 		this("personnage par défaut");
 	}
 	

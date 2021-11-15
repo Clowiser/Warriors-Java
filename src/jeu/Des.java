@@ -11,9 +11,4 @@ public class Des {
 		valeurDes = (int)(1 + 6*Math.random());
 		return valeurDes;
 		}
-	
-	/*public String toString() {
-		return 
-			"Le résultat de votre lancer de dés est : " + valeurDes;
-	}*/
 }

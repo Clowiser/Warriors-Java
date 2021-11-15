@@ -1,13 +1,13 @@
 package jeu;
 
-//import java.util.*;
-
+//Création du plateau
 public class Plateau {
 	
 	//Attributs
 	private int nbLig;
 	private int nbCol;
-	private char [][] plateau; //représentation du personnage sur le plateau ligne + colonne
+	private char [][] plateau; //représentation du personnage sur le plateau []ligne + []colonne
+
 	
 	//Constructeurs
 	public Plateau(int l, int c) {
@@ -24,11 +24,8 @@ public class Plateau {
 		}
 	}
 	
-	//Getters
-	
-	//Setters
-	
 	//Méthodes
+	//afficher le plateau
 	public void afficher() {
 		System.out.println();
 		for (int i=0; i<nbLig; i++){
@@ -47,21 +44,23 @@ public class Plateau {
 	
 	//Actions
 	//Avancer
-	public void avancer(int l, int c, char o){
+	public void placer(int l, int c, char o){ // char est une lettre
 		
-		l = l-1; // pour que le joueur commence à -1 car le début du plateau ligne commence à 0
-		c = c-1; // pour que le joueur commence à -1 car le début du plateau colonne commence à 0
+		l = l-1;
+		c = c-1; 
 		
 		if(l<0 || c<0 || l>nbLig || c>nbCol) {
-			System.out.print("Erreur de placement");
+			System.out.print(" !! Erreur de placement !!");
 			return;
 		}
-		
 		if(plateau[l][c] == '_') {
 			plateau[l][c] = o;
 		}else {
-			System.out.print("Erreur, cette zone n'est pas vie !");
+			System.out.print("Erreur, cette zone n'est pas vide !");
 		}
+		
+		
+		
 	}
 	
 	//positionner des objets

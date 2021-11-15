@@ -9,7 +9,7 @@ public class Guerrier extends Personnage {
 	
 	//Constructeurs
 	public Guerrier(String nom, int niveau, int force, String arme, String bouclier){
-		super(nom, niveau, force);
+		super(nom, niveau, force); // appel le constructeur du parent
 		this.arme = new Arme(arme);
 		this.bouclier = new Bouclier(bouclier);
 	}
