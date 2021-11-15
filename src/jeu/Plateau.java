@@ -56,12 +56,9 @@ public class Plateau {
 		if(plateau[l][c] == '_') {
 			plateau[l][c] = o;
 		}else {
-			System.out.print("Erreur, cette zone n'est pas vide !");
+			System.out.print("Attention, cette zone a un événement !");
 		}
-		
-		
 		
 	}
 	
-	//positionner des objets
 }

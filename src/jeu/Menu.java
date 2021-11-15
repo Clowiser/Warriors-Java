@@ -314,8 +314,8 @@ public class Menu {
 	// affichage simple du plateau
 	public void afficherPlateau() {
 		System.out.print("Affichage du plateau - lancer les dés pour commencer");
-		//Plateau plateau = new Plateau(10, 10);
-		//plateau.afficher(); // appel de la fonction afficher() de la classe Plateau via l'instance
+		Plateau plateau = new Plateau(10, 10);
+		plateau.afficher(); // appel de la fonction afficher() de la classe Plateau via l'instance
 	}
 
 	// résultat de dés pour faire avancer le personnage => portée globale
@@ -333,7 +333,7 @@ public class Menu {
 			System.out.println("le résultat de votre lancer de dés est : " + resultatDe + " - la position de votre personnage est : " + position);
 		}while(position <= 0);
 		
-		if(position >= 9) {
+		if(position >= 10) {
 			ligne++;
 		}
 		
@@ -371,7 +371,7 @@ public class Menu {
 		
 		plateau.placer(ligne, position, 'X'); // rendre résultat lancer de dés = lig/col sachant qu'il avance ligne par ligne, sur la même lig => le déplacement se fait col/col + X est la représentation du personnage
 		
-		/*// test : placer des ennemis
+		// test : placer des ennemis
 		plateau.placer(8, 6, 'E');
 		plateau.placer(1, 3, 'E');
 		plateau.placer(10, 8, 'E');
@@ -381,7 +381,7 @@ public class Menu {
 		plateau.placer(2, 7, 'O');
 		plateau.placer(5, 10, 'O');
 		plateau.placer(9, 1, 'O');
-		plateau.placer(7, 3, 'O');*/
+		plateau.placer(7, 3, 'O');
 
 		plateau.afficher();
 
