@@ -131,7 +131,7 @@ public class Menu {
 			;
 		} while (!isValide2);
 
-		// choix arme et bouclier
+		// choix arme et bouclier - pas de choix
 		String arme = "une épée";
 		String bouclier = "un écu";
 		char g = 'G';
@@ -198,7 +198,7 @@ public class Menu {
 			;
 		} while (isValide2 == false);
 
-		// choix sort et philtre
+		// choix sort et philtre - pas de choix
 		String philtre = "un philtre de soin";
 		String sort = "un sort de boule de feu";
 
@@ -215,7 +215,7 @@ public class Menu {
 
 		System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
 
-		// nouveau personnage
+		// nouveau personnage -> appel de la fonction nouveau()
 		nouveau();
 
 		clavier.close();
@@ -275,7 +275,6 @@ public class Menu {
 	
 	
 	
-	
 	// ACTIONS
 	// démarrer le jeu - afficher le plateau - lancer les dés - avancer - passer joueur 2
 	public void menuJeu() {
@@ -290,7 +289,7 @@ public class Menu {
 		switch (choix) {
 		case 1:
 			// Appel de la fonction lancerDes()
-			resultatDes();
+			lancerDes();
 			break;
 
 		case 2:
@@ -319,7 +318,8 @@ public class Menu {
 		menuJeu();
 	}
 
-	// affichage simple du plateau
+	
+	// affichage du plateau
 	Plateau plateau = new Plateau(32, 32); // paramètres du plateau -> portée globale
 	
 	public void afficherPlateau() {
@@ -327,6 +327,7 @@ public class Menu {
 		placerElement();
 	}
 
+	
 	// résultat de dés pour faire avancer le personnage -> portée globale
 	Des nbDe = new Des();
 	int scoreDes;
@@ -336,7 +337,7 @@ public class Menu {
 	
 
 	// lancer les dés : de 1 à 6
-	public void resultatDes() {
+	public void lancerDes() {
 
 		do {
 			scoreDes = nbDe.lancerDe();
@@ -344,23 +345,16 @@ public class Menu {
 			System.out.println("le résultat de votre lancer de dés est : " + scoreDes + " - la position de votre personnage est : " + position);
 			avancer();
 		}while(position <= 0); // lance automatiquement 1 fois ce bloc de code
-		
-		/*
-		if(position >= 33) {
-					position = ligne++; // ok incrémentation -> passe bien à la ligne suivant MAIS manque le nombre du position + rappel des index d'un tableau
-		}
-		//si la position (le X) est >= 10 -> passer à la ligne suivante + nouvelle position - 10
-		*/
 		 
 	}
 
-	// résultat de l'avancé du joueur sur le plateau -> placement sur plateau 
-	// c'est un cas d'exemple
+	
+	// résultat de l'avancée du joueur sur le plateau -> placement sur plateau 
 	public void avancer() {
 		
 		int direction;
 		Scanner clavier = new Scanner(System.in);
-		System.out.println("Faites avancer votre personnage de " + scoreDes +  " : 1 bas - 2 droite - 3 haut - 4 gauche");
+		System.out.println("Faites avancer votre personnage de " + scoreDes +  " : 1 bas - 2 droite - 3 haut V - 4 gauche V");
 		direction = clavier.nextInt();
 
 		// faire choix entre 1 ou 2 ou 3 ou 4
@@ -368,35 +362,41 @@ public class Menu {
 		case 1:
 			plateau.deplacerB();
 			plateau.afficher();
+			System.out.println("votre personnage est descendu de " + scoreDes + " et est maintenant en position : " + position);
 			break;
 
 		case 2:
 			plateau.deplacerD();
 			plateau.afficher();
+			System.out.println("votre personnage est allé à droite de " + scoreDes + " et est maintenant en position : " + position);
 			break;
 
 		case 3:
 			plateau.deplacerH();
 			plateau.afficher();
+			System.out.println("votre personnage est monté de " + scoreDes + " et est maintenant en position : " + position);
 			break;
 			
 		case 4:
 			plateau.deplacerG();
 			plateau.afficher();
+			System.out.println("votre personnage est allé à gauche de " + scoreDes + " et est maintenant en position : " + position);
 			break;
 			
 		default:
-			plateau.deplacerG();
+			System.out.println("Erreur sélection");
 			break;
 		}
 		clavier.close();
+		
+		//menuJeu();
 	}
+	
 	
 	public void placerElement() {
 		
 		// placer les personnages
-		//Plateau plateau = new Plateau(32, 32); // se créer à chaque nouveau appel de la fonction avancer()
-		//plateau.placer(ligne, position, 'X'); // rendre résultat lancer de dés = lig/col sachant qu'il avance ligne par ligne, sur la même lig => le déplacement se fait col/col + X est la représentation du personnage
+		//plateau.placer(ligne, position, 'X');
 		plateau.placer(5, 5, 'X');
 
 		
