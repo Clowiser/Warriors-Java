@@ -6,12 +6,14 @@ public class Guerrier extends Personnage {
 	//Attributs
 	private Arme arme;
 	private Bouclier bouclier;
+	private char g;
 	
 	//Constructeurs
-	public Guerrier(String nom, int niveau, int force, String arme, String bouclier){
+	public Guerrier(String nom, int niveau, int force, String arme, String bouclier, char g){
 		super(nom, niveau, force); // appel le constructeur du parent
 		this.arme = new Arme(arme);
 		this.bouclier = new Bouclier(bouclier);
+		this.g = g;
 	}
 
 	//Getters => prend l'information
@@ -23,6 +25,11 @@ public class Guerrier extends Personnage {
 			return bouclier;
 		}
 	   
+		public char getG() {
+			return g;
+		}
+
+	   
 	//Setters => renvoie l'information
 		public void setArme(Arme arme) {
 			this.arme = arme;
@@ -30,6 +37,10 @@ public class Guerrier extends Personnage {
 		
 		public void setBouclier(Bouclier bouclier) {
 			this.bouclier = bouclier;
+		}
+		
+		public void setG(char g) {
+			this.g = g;
 		}
 		
 		public String toString() {
