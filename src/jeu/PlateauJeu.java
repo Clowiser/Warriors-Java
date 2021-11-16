@@ -14,6 +14,10 @@ public class PlateauJeu {
 	 
 	 public void afficherCase() {
 		 System.out.print("|");
+		 for(int i=0; i<64; i++) {
+			 System.out.print(" ");
+		 }
+		 System.out.print("|");
 		 
 	 }
 
