@@ -1,5 +1,7 @@
 package jeu;
 
+//import Personnage;
+
 //héritage - classe fille
 public class Magicien extends Personnage {
 	

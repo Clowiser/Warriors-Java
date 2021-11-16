@@ -1,7 +1,7 @@
 package jeu;
 
 //héritage - classe mère
-//classe définit en abstract => elle ne peut pas être instancier
+//classe définit en abstract => elle ne peut pas être instancié
 public class Personnage {
 
 	//Attributs
