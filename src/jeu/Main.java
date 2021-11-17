@@ -2,10 +2,10 @@ package jeu;
 
 public class Main {
 	
+	//méthode principale Java : est le point d'entrée de tout programme Java
 	public static void main(String[] args) {
-		//méthode principale Java est le point d'entrée de tout programme Java
 		
-		Menu menu = new Menu(); // instance de l'objet menu
+		Menu menu = new Menu(); // instance de l'objet menu -> création de l'objet
 		
 		menu.menuPrincipal(); // appel de la méthode menuPrincipal() de menu
 	}

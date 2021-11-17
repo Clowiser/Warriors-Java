@@ -5,8 +5,16 @@ import java.util.Scanner;
 
 public class ChoixPerso {
 	
+	//attributs
 	Scanner clavier = new Scanner(System.in);
+	//liste personnages pour créer et récupérer les données d'une liste java
+	private ArrayList<Guerrier> guerrierListe;
+	private ArrayList<Magicien> magicienListe;
 
+	//constructeurs
+	
+	
+	//méthodes
 	public void choice() {
 		int choix;
 
@@ -37,11 +45,6 @@ public class ChoixPerso {
 
 	
 	// METHODES
-	//liste personnages pour créer et récupérer les données d'une liste java
-	private ArrayList<Guerrier> guerrierListe;
-	private ArrayList<Magicien> magicienListe;
-	
-
 	public ChoixPerso() {
 		// instance de ces objets
 		guerrierListe = new ArrayList<Guerrier>();
@@ -112,7 +115,6 @@ public class ChoixPerso {
 		// nouveau personnage
 		nouveau();
 
-		clavier.close();
 	}
 
 	// choix Magicien
@@ -177,14 +179,14 @@ public class ChoixPerso {
 		// nouveau personnage -> appel de la fonction nouveau()
 		nouveau();
 
-		clavier.close();
+		
 	}
 
 	// nouveau personnage
 	public void nouveau() {
 		int newChoix;
 		System.out.println(
-				"Voulez-vous créer un nouveau personnage ? 1 Oui - 2 Non(retour au menu) - 3 Récapitulatif des personnages - 4 Quitter le jeu ");
+				"Voulez-vous créer un nouveau personnage ? 1 Oui - 2 Non (retour au menu) - 3 Récapitulatif des personnages - 4 Quitter la création de personnage ");
 		Scanner clavier = new Scanner(System.in);
 		newChoix = clavier.nextInt();
 
@@ -201,14 +203,12 @@ public class ChoixPerso {
 				break;
 			}
 		} else if (newChoix == 2) {
-			//Menu.menuSelect();
 		} else if (newChoix == 3) {
 			totalPersonnages();
 		} else {
-			System.out.println("Vous avez quitté le jeu");
-
+			System.out.println("Vous avez quitté la création de personnage");
 		}
-		clavier.close();
+		
 	}
 
 	// total des personnages

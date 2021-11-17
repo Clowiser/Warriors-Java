@@ -1,10 +1,10 @@
 package jeu;
 
-public class EmptyCase extends Case{
+public class StartCase extends Case{
 
 	@Override
 	public String toString() { //renvoie une chaîne de caractères servant à décrire l'objet concerné.
-		return "EmptyCase";
+		return "StartCase";
 	}
-	   //par défaut il y a toujours un constructeur vide
+	
 }
