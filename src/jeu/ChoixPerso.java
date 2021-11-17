@@ -203,6 +203,7 @@ public class ChoixPerso {
 				break;
 			}
 		} else if (newChoix == 2) {
+			//retour au menu -> sans avoir à indiquer la méthode pour
 		} else if (newChoix == 3) {
 			totalPersonnages();
 		} else {

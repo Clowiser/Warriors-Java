@@ -12,7 +12,8 @@ public class Game {
 	int scoreDes;
 	int positionJoueur;
 	Scanner clavier = new Scanner(System.in);
-	
+	Plateau testAffichage = new Plateau(10, 10);
+		
 	
 	//constructeurs
 	public Game() {
@@ -49,7 +50,13 @@ public class Game {
 			// menu en jeu
 			int choix;
 			
-			System.out.println("1 Lancer le dés - 2 Quitter la partie : retour au menu principal"); 
+			if(test < positionJoueur) {
+			System.out.println("1 - Lancer le dés");
+			}
+			if(test+1 > positionJoueur ) {
+			System.out.println("2 - Quitter la partie : retour au menu principal"); 
+			}
+			
 			// ajouter "Passer au joueur suivant" ou "case événement" quand le J1 a fini son tour (1 lancer de dés)
 			choix = clavier.nextInt();
 			
@@ -67,8 +74,7 @@ public class Game {
 			default:
 				System.out.println("Erreur sélection");
 				break;
-				
-			} 
+			}
 		}
 		
 		
@@ -83,19 +89,21 @@ public class Game {
 			menuJeu();
 		}
 
-		
 		// affichage du plateau
 		public void afficherPlateau() {
 			System.out.println("Affichage du plateau de Dungeons & Dragons - lancer les dés pour commencer l'aventure !");
+			
+			testAffichage.afficherPlat();
+			
 			System.out.println("Infos : la taille du plateau est de " + plateau.size() + " cases.");
 			System.out.println("");
+			System.out.println("Appuyez sur 1 pour faire le premier jet de dés !");
 		}
 
 		
 		// lancer les dés
 		public void lancerDes() {
-			
-
+		
 			if(positionJoueur <= plateau.size()) {
 				scoreDes = nbDe.lancerDe();
 				positionJoueur += scoreDes; // additionne les deux var et stocke le résultat dans var gauche -> positionJoueur + resultatDe = positionJoueur
@@ -106,8 +114,17 @@ public class Game {
 			}
 			
 		}
-
 		
+		//exception mais j'ai pas vraiment compris -> voir avec le formateur
+		public void setPostitionJoueur(Plateau plateau) throws PersonnageHorsPlateauException {
+		    if (positionJoueur >= 10) {
+		        throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de déclencher une erreur
+		    }
+		    this.plateau = plateau;
+		}
+		//throws (avec S ) = permet de relayer le traitement de l'exception à la méthode appelante
+
+int test;		
 		// avancer le joueur : résultat de l'avancée du joueur sur le plateau + placement sur plateau 
 		public void avancer() {
 			
@@ -126,7 +143,8 @@ public class Game {
 				if(positionJoueur >= plateau.size()) {
 					positionJoueur = plateau.size();
 					System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
-					positionJoueur = 0;
+					positionJoueur = test+1;
+					positionJoueur = 0; // remise à 0
 					System.out.println("");
 					//menuQuitter(); // TEST
 				}

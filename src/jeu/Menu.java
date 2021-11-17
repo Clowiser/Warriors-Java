@@ -21,7 +21,7 @@ public class Menu {
 		
 		boolean isRunning = false; 
 		while(!isRunning) { // while (isRunnig = false)
-			System.out.println("1 - Création du personnage - TEST POUR VOIR SI SA BUG au 17/11/21");
+			System.out.println("1 - Création du personnage - TEST au 17/11/21");
 			System.out.println("2 - Démarrer la partie");
 			System.out.println("3 - Quitter le jeu");
 			int choixMenu = clavier.nextInt();
@@ -44,7 +44,7 @@ public class Menu {
 				break;
 		
 			default:
-				System.out.println("Vous n'avez rien sélectionné");
+				System.out.println("Erreur de selection");
 				break;
 			}
 		}
