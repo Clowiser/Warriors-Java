@@ -3,22 +3,57 @@ package jeu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ChoixPerso {
+public class CreationPersonnage {
 	
 	//attributs
 	Scanner clavier = new Scanner(System.in);
+	
 	//liste personnages pour créer et récupérer les données d'une liste java
 	private ArrayList<Guerrier> guerrierListe;
 	private ArrayList<Magicien> magicienListe;
+	Game game = new Game(); // lance une partie - nouvelle + stock info
 
 	//constructeurs
 	
 	
 	//méthodes
-	public void choice() {
+	public void choicePerso() {
 		int choix;
+		//si joueur à créer au minimum 2 personnages : retirer la création de personnage et ajouter démarrer la partie
+		
+		if(guerrierListe.size() == 1 || magicienListe.size() == 1) {
+			System.out.println("1 Démarrer la partie - 2 - Créer un nouveau personnage - 3 Récapitulatif des personnages - 4 Quitter la création de personnage : retour au menu principal");
+			choix = clavier.nextInt();
 
+			// faire choix entre 1 ou 2 ou 3
+			switch (choix) {
+			case 1:
+				game.start();
+				break;
+
+			case 2:
+				nouveau();
+				break;
+				
+			case 3:
+				totalPersonnages();
+				break;
+
+			case 4:
+				System.out.println("Vous avez quitté la création de personnage - retour au menu principal");
+				break;
+
+			default:
+				System.out.println("Erreur mauvaise entrée");
+				break;
+			}
+		
+		}
+
+		if(guerrierListe.size() == 0 || magicienListe.size() == 0) {
+		//si joueur n'a pas encore créer de personnage
 		System.out.println("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Quitter la création de personnage : retour au menu principal ");
+		
 		choix = clavier.nextInt();
 
 		// faire choix entre 1 ou 2 ou 3
@@ -41,11 +76,12 @@ public class ChoixPerso {
 			System.out.println("Erreur création personnages");
 			break;
 		}
+		}
 	}
 
 	
 	// METHODES
-	public ChoixPerso() {
+	public CreationPersonnage() {
 		// instance de ces objets
 		guerrierListe = new ArrayList<Guerrier>();
 		magicienListe = new ArrayList<Magicien>();
@@ -59,7 +95,6 @@ public class ChoixPerso {
 		// choix nom
 		System.out.println("Nommez votre Guerrier : ");
 
-		Scanner clavier = new Scanner(System.in);
 		String nom = clavier.next();
 		System.out.println(nom);
 
@@ -112,9 +147,11 @@ public class ChoixPerso {
 
 		System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
 
-		// nouveau personnage
-		nouveau();
-
+		//si un guerrier a été créé (se retrouve dans la liste) retourne au menu choicePerso() qui affichera le démarrer partie car la condition est remplie
+		if(guerrierListe.size() == 1) {
+			choicePerso();
+		}
+	
 	}
 
 	// choix Magicien
@@ -124,7 +161,7 @@ public class ChoixPerso {
 
 		// choix nom
 		System.out.println("Nommez votre Magicien : ");
-		Scanner clavier = new Scanner(System.in);
+		
 		String nom = clavier.next();
 		System.out.println(nom);
 
@@ -177,7 +214,7 @@ public class ChoixPerso {
 		System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
 
 		// nouveau personnage -> appel de la fonction nouveau()
-		nouveau();
+		//nouveau();
 
 		
 	}
@@ -187,7 +224,6 @@ public class ChoixPerso {
 		int newChoix;
 		System.out.println(
 				"Voulez-vous créer un nouveau personnage ? 1 Oui - 2 Non (retour au menu) - 3 Récapitulatif des personnages - 4 Quitter la création de personnage ");
-		Scanner clavier = new Scanner(System.in);
 		newChoix = clavier.nextInt();
 
 		if (newChoix == 1) {
@@ -203,7 +239,7 @@ public class ChoixPerso {
 				break;
 			}
 		} else if (newChoix == 2) {
-			//retour au menu -> sans avoir à indiquer la méthode pour
+			//retour au menu principal -> sans avoir à indiquer la méthode pour
 		} else if (newChoix == 3) {
 			totalPersonnages();
 		} else {
@@ -227,8 +263,10 @@ public class ChoixPerso {
 		}
 
 		System.out.println("Retour à la création de personnage");
-		choice();
+		System.out.println("");
+		choicePerso();
 	}
+
 
 	//sélectionner le personnage qui va jouer : Guerrier = G ou Magicien = M
 }

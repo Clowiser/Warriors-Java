@@ -1,23 +1,27 @@
 package jeu;
 
 import java.util.*;
-import jeu.Case;
+//import jeu.Case;
 
 
 public class Plateau {
 	
 	//attributs
-	 private ArrayList<Case> jeuPlateau = new ArrayList<>(); // liste des cases
+	 private ArrayList<Case> jeuPlateau = new ArrayList<>(); // instance liste des cases sous forme de tableau
 	 
-	 private int nbLig; // ligne
-	 private int nbCol; // colonne
-	 private char plateau[][]; // représentation du personnage sur le plateau []ligne + []colonne
-	 
+	
 	 //constructeurs
 	 public Plateau() {
 		 initPlateau();
 	 }
-	 	 
+	 
+	//getters
+		//pour récupérer la case passée en paramètre
+		public char getCase() {
+			return 0;
+		}
+	 
+	//méthodes
 	public void initPlateau() { //initation du tableau avec des cases vides et une case Start
 		 
 		 for (int i=0; i<10; i++){ // tableau de 64 cases
@@ -25,14 +29,42 @@ public class Plateau {
 		 }
 		
 		 jeuPlateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
+		 
+		 jeuPlateau.set(4, new Tresor()); //renvoie la classe StartCase() qui est 'Tresor' (à la case 4 )
+		 
+		
 	 }
 	 
+	
 	 public int size() { // taille du tableau
 		 return jeuPlateau.size();
 	 }
 	 
 
-	 //Affichage d'un plateau - juste comme ça
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 //Affichage d'un tableau en 2D pour illustrer avant de trouver la bonne méthode
+	 //Créer en 1D mais afficher en 2D modulo pour couper les lignes
+	 
+	 //attributs pour afficher un tableau en 2D - Exemple
+	 private int nbLig; // ligne
+	 private int nbCol; // colonne
+	 private char plateau[][]; // représentation du personnage sur le plateau []ligne + []colonne
+	 
+	 //Affichage d'un plateau - juste comme ça, besoin d'un visuel => c'est un autre objet
 	public Plateau(int n, int p) {
 			nbLig = n;
 			nbCol = p;

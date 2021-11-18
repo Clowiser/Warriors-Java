@@ -8,6 +8,7 @@ public class Arme{
 		this("arme par défaut");
 	}
 	
+	
 	public Arme(String arme){
 		this.arme = arme;
 	}
@@ -16,13 +17,14 @@ public class Arme{
 		return arme;
 	}
 	
-	
-	//getters et setters
+	//accesseurs
+	//getters
 	public String getArme() {
 		return arme;
 	}
 
-	public void setNom(String arme) {
+	//setters
+	public void setArme(String arme) {
 		this.arme = arme;
 	}
 	

@@ -9,7 +9,7 @@ public class Guerrier extends Personnage {
 	
 	//Constructeurs
 	public Guerrier(String nom, int niveau, int force, String arme, String bouclier){
-		super(nom, niveau, force); // appel le constructeur du parent
+		super(nom, niveau, force); // appel le constructeur du parent avec les attributs
 		this.arme = new Arme(arme);
 		this.bouclier = new Bouclier(bouclier);
 	}
@@ -37,9 +37,9 @@ public class Guerrier extends Personnage {
 		
 		public String toString() {
 			   return 
-		"Votre Guerrier s'apelle " + this.getNom() +
-		", son niveau de vie est de " + this.getNiveau() +
-		" et il dispose d'une force d'attaque de " + this.getForce() +
+		"Votre Guerrier s'apelle " + getNom() +
+		", son niveau de vie est de " + getNiveau() +
+		" et il dispose d'une force d'attaque de " + getForce() +
 		", possède " + bouclier + " et " + arme + " pour attaquer !";
 		}
 	   
