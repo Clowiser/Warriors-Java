@@ -1,8 +1,38 @@
 // NOTES :
 
 /*
- * RAPPEL :
- * Un constructeur est une méthode d'une classe donnée, servant à créer des objets.
+
+ DEROULEMENT :
+ 1 - Java débute par le main qui est le début de tout 
+ 2 - le main apelle le Game, via son instance, avec sa méthode initGame() qui lance le "jeu" -> son menu principal
+ 3 -  
+ 
+ 
+ CLASSE :
+ 
+ Game :
+//game gère le fait de quitter le jeu
+//game gère le démarrage de la partie 
+//game gère la création de personnage
+//et il appelle le menu quand il a une demande à faire à l'utilisateur
+-> doit return un int 
+
+_______________________
+ Boucle while :
+ 
+ boolean isRunning = false; // ici je déclare ma var = false
+ 
+ tant que (!isRunning) { // ici !boolean donc différent de false soit true
+  	case 1:
+  	exécute bloc de code 
+  	[...]
+  	case 3: 
+  	isRunning = true; -> en sélectionnant 3, isRunning devient true et donc arrête la boucle ? 
+ } 
+ 
+ 
+ RAPPEL :
+ -> Un constructeur est une méthode d'une classe donnée, servant à créer des objets.
 
 	- il a le même nom que la classe
 	- un constructeur n'a pas de type de retour (mais on ne met pas de void!)
@@ -12,7 +42,20 @@
 	- si aucun constructeur n'est spécifié dans la définition de la classe, un constructeur sans paramètre est fourni par Java
 	- si vous définissez au moins un constructeur, le constructeur par défaut n'est plus fourni
 
- */
+EXPLICATIONS :
+-> Exception :
+	//throw (sans S) = permet de déclencher une erreur
+	//throws (avec S ) = permet de relayer le traitement de l'exception à la méthode appelante
+
+-> clavier.close(); -> !!! Infos : ne pas mettre car provoque une erreur car referme la saisie clavier alors qu'elle doit continuer pour le menuJeu()
+
+
+
+ A FAIRE :
+ 
+- ajouter "Passer au joueur suivant" ou "case événement" quand le J1 a fini son tour (1 lancer de dés)
+ 
+ REGLES :
 	// avancer : aller de case en case => résultat dés = avancer de tant de cases
 	// faire que le résultat du dés soit = au personnage qui avance sur case ligne 1
 	// puis case ligne 2 quand ligne 1 est atteinte
@@ -37,3 +80,4 @@
 
 	// objectifs :
 	// fin du jeu : arriver au bout des 10x10 cases
+*/
