@@ -12,7 +12,7 @@ public class Game {
 	int scoreDes;
 	int positionJoueur = 0;
 	int positionJoueurFin; // tricherie !!
-		//Plateau testAffichage = new Plateau(10, 10); // juste un affichage lambda 
+		Plateau testAffichage = new Plateau(10, 10); // juste un affichage lambda 
 	Des nbDe;
 	Plateau plateau; 
 	Menu menu; // ! -> c'est le jeu qui appelle le menu, pas l'inverse
@@ -26,7 +26,7 @@ public class Game {
 		this.guerrierListe =  new ArrayList<>();
 		this.magicienListe = new ArrayList<>();
 		this.menu = new Menu();
-		this.nbDe  = new Des();
+		this.nbDe = new Des();
 	}
 	
 		//Méthodes
@@ -50,6 +50,7 @@ public class Game {
 				case 2:
 					// Appel de la fonction start()
 					start();
+					
 					break;
 		
 				case 3:
@@ -109,6 +110,7 @@ public class Game {
 			
 			// affichage du plateau
 			menu.afficherPlateau(plateau);
+			testAffichage.afficherPlat(); // test
 			//menu du jeu -> lancer les dés ou Quitter en fonction de ou se trouve le joueur
 			menuJeu();
 			
@@ -165,51 +167,57 @@ public class Game {
 		
 		//Personnages
 		public void createPerso() {
-			int choix;
+			int choix = 0;
 			
-			//if(guerrierListe.size() == 0 || magicienListe.size() == 0) { //si joueur n'a pas encore créer de personnage
+			/*if(guerrierListe.size() == 1 || magicienListe.size() == 1) {
+				choix = menu.entreeClavier("3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal");
+			}*/
 			
-			choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Récapitulaif Personnages - 4 Quitter la création de personnage : retour au menu principal ");
-
-			// faire choix entre 1 ou 2 ou 3
-			switch (choix) {
-			case 1:
-				// Appel de la méthode : public Guerrier createGuerrier(ArrayList<Guerrier> guerrierListe) - portée Classe nom_de_méthode|createGuerrier|(paramètre)
-				Guerrier joueurG = menu.createGuerrier(); //
-				//Classe nom_de_l'instance = nom_de_l'objet.méthode|createGuerrier|(arguments)
-				// -> je récupère joueurG qui est l'instance de la classe Guerrier est égal à la méthode createGuerrier au paramètre de la guerrierListe + fait bien appel à ma méthode dans le menu
-				// je fais appel à ma méthode dans le menu qui est égal à l'instance de la classe Guerrier
-				
-				// mettre données dans liste
-				guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
-				createPerso();
-				break;
-
-			case 2:
-				// Appel de la fonction Magicien
-				Magicien joueurM = menu.createMagicien();
-				
-				// mettre données dans liste
-				magicienListe.add(joueurM); // ajout à la liste magicienListe
-				createPerso();
-				break;
-
-			case 3:
-				afficherListe();
-				createPerso();
-				break;
-				
-			case 4:
-				System.out.println("Vous avez quitté la création de personnage - retour au menu principal");
-				break;
-
-			default:
-				System.out.println("Erreur création personnages");
-				break;
+			if(guerrierListe.size() == 0 || magicienListe.size() == 0) {
+				choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
 			}
-		}
+			
+				switch (choix) {
+				case 1:
+					Guerrier joueurG = menu.createGuerrier(); //
+					
+					// mettre données dans liste
+					guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
+					createPerso();
+					break;
+	
+				case 2:
+					// Appel de la fonction Magicien
+					Magicien joueurM = menu.createMagicien();
+					
+					// mettre données dans liste
+					magicienListe.add(joueurM); // ajout à la liste magicienListe
+					createPerso();
+					break;
+					
+				case 3:
+					//appel de la méthode start
+					start();
+	
+				case 4:
+					afficherListe();
+					createPerso();
+					break;
+					
+				case 5:
+					System.out.println("Vous avez quitté la création de personnage - retour au menu principal");
+					break;
+	
+				default:
+					System.out.println("Erreur création personnages");
+					break;
+				}
+		
+}
+		
 		
 		public void afficherListe() {
+			
 			//liste des guerriers créés
 			System.out.println("Récapitulatif de vos guerriers : ");
 			for (int i = 0; i < guerrierListe.size(); i++) {

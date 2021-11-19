@@ -19,7 +19,6 @@ public class Menu {
 	//menu principal
 	public void afficherMenuPrincipal() { //construction de la méthode avec paramètre
 		
-		System.out.println("");
 		System.out.println("TEST au 19/11/21 - MENU");
 		System.out.println("Warriors Game");
 		System.out.println("A vous de jouer !");
@@ -35,9 +34,6 @@ public class Menu {
 	// affichage du plateau
 	public void afficherPlateau(Plateau plateau) {
 		System.out.println("Affichage du plateau de Dungeons & Dragons - lancer les dés pour commencer l'aventure !");
-		
-		//testAffichage.afficherPlat(); // test
-		
 		System.out.println("Infos : la taille du plateau est de " + plateau.size() + " cases.");
 		System.out.println("");
 		System.out.println("- Appuyez sur 1 pour faire le premier jet de dés -");
@@ -91,7 +87,8 @@ public class Menu {
 		joueurG = new Guerrier(nom, niveau, force, arme, bouclier); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		
 		System.out.println("Votre Guerrier s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " possède " + bouclier + " et " + arme + " pour attaquer !");	
-	
+		System.out.println("");
+		
 		return joueurG;
 	
 	}

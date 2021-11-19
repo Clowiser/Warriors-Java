@@ -5,7 +5,7 @@
  DEROULEMENT :
  1 - Java débute par le main qui est le début de tout 
  2 - le main apelle le Game, via son instance, avec sa méthode initGame() qui lance le "jeu" -> son menu principal
- 3 -  
+ 3 - la initGame() contient l'apell de la méthode afficherMenuPrincipal();
  
  
  CLASSE :
@@ -49,6 +49,10 @@ EXPLICATIONS :
 
 -> clavier.close(); -> !!! Infos : ne pas mettre car provoque une erreur car referme la saisie clavier alors qu'elle doit continuer pour le menuJeu()
 
+// Appel de la méthode : public Guerrier createGuerrier(ArrayList<Guerrier> guerrierListe) - portée Classe nom_de_méthode|createGuerrier|(paramètre)
+//Classe nom_de_l'instance = nom_de_l'objet.méthode|createGuerrier|(arguments)
+		// -> je récupère joueurG qui est l'instance de la classe Guerrier est égal à la méthode createGuerrier au paramètre de la guerrierListe + fait bien appel à ma méthode dans le menu
+		// je fais appel à ma méthode dans le menu qui est égal à l'instance de la classe Guerrier
 
 
  A FAIRE :
