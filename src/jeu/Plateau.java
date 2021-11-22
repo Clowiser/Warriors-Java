@@ -52,10 +52,11 @@ public class Plateau {
 		 return jeuPlateau.size();
 	 }
 	 
+	 
+	 
 	 public Case test(int idCase) {
 		return this.jeuPlateau.get(idCase);
-		
-		 
+	
 	 }
 	 
 

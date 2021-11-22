@@ -135,8 +135,10 @@ public class Game {
 			System.out.println("");
 			
 			
-			Case testCase = plateau.test(8);
-			System.out.println(testCase);
+			Case Case1 = plateau.test(0);
+			System.out.println(Case1);
+			Case Case2 = plateau.test(1);
+			System.out.println(Case2);
 			
 			
 			plateau.afficherCases();
