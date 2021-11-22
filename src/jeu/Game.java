@@ -140,10 +140,8 @@ public class Game {
 			menu.afficherPlateau(plateau);
 			System.out.println("");
 			
-			
 			interaction();
 			//testAffichage.afficherPlat(); // test
-			
 			
 			menuJeu();
 			
@@ -183,7 +181,6 @@ public class Game {
 				
 					if(positionJoueur > plateau.size()) {
 					positionJoueur = plateau.size();
-					
 					System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
 					positionJoueur = positionJoueurFin; // 1 - la positon joueur est égale à sa position de fin (voir autre manière de récupérer)
 					
@@ -201,6 +198,8 @@ public class Game {
 		
 		public void interaction() {
 			
+			//Case Personnage = plateau.idCase(positionJoueur); met une case en plus /!\
+
 			Case Case1 = plateau.idCase(0);
 			Case Case2 = plateau.idCase(1);
 			Case Case3 = plateau.idCase(2);
@@ -212,19 +211,26 @@ public class Game {
 			Case Case9 = plateau.idCase(8);
 			Case Case10 = plateau.idCase(9);
 			
-			System.out.println(" | " + Case1 + " | " + Case2  + " | " + Case3  + " | " + Case4  + " | " + Case5  + " | " + Case6  + " | " + Case7  + " | " + Case8  + " | " + Case9  + " | " + Case10 + " | ");
+			
+			//" | " + Personnage +
+			//System.out.println(Personnage);
+			System.out.println("| " + Case1 + " | " + Case2  + " | " + Case3  + " | " + Case4  + " | " + Case5  + " | " + Case6  + " | " + Case7  + " | " + Case8  + " | " + Case9  + " | " );
 			
 			//plateau.afficherCases();
 			System.out.println("");
 			
 			if(positionJoueur == 0) {
-				System.out.println("Vous êtes sur la case Départ");	
+				System.out.println("Vous êtes sur la case Départ");
+				System.out.println("");
 			}else if(positionJoueur == 3 || positionJoueur == 7) {
 				System.out.println("Vous êtes sur une case vide");	
+				System.out.println("");
 			}else if(positionJoueur == 1 || positionJoueur == 4 || positionJoueur == 6 || positionJoueur == 8) {
 				System.out.println("Vous êtes sur une case trésor");
+				System.out.println("");
 			}else if(positionJoueur == 2 || positionJoueur == 5 || positionJoueur == 9) {
 				System.out.println("Vous êtes sur une case Ennemi");
+				System.out.println("");
 			}
 		}
 		
