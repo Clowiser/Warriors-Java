@@ -16,10 +16,12 @@ public class Menu {
 	}
 	
 	
+	//méthodes
 	//menu principal
 	public void afficherMenuPrincipal() { //construction de la méthode avec paramètre
 		
-		System.out.println("TEST au 19/11/21 - MENU");
+		System.out.println("");
+		System.out.println("TEST au 22/11/21 - MENU");
 		System.out.println("Warriors Game");
 		System.out.println("A vous de jouer !");
 		System.out.println("");
@@ -62,7 +64,7 @@ public class Menu {
 			} else {
 				System.out.println("Veuillez entrer un chiffre entre 5 et 10");
 			}
-			;
+			
 		} while (!isValide); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct soit = false, boucle fait a nouveau le choix
 
 		// choix force d'attaque
@@ -143,6 +145,10 @@ public class Menu {
 		// stock des données
 		joueurM = new Magicien(nom, niveau, force, philtre, sort); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 
+		System.out.println("Votre Magicien s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " possède " + philtre + " et " + sort + " pour attaquer !");	
+		System.out.println("");
+		
+		
 		return joueurM;
 	}
 					

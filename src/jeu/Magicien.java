@@ -34,13 +34,13 @@ public class Magicien extends Personnage {
 			this.sort = sort;
 		}
 	 
+	 //méthodes
 	 public String toString() {
 		   return 
-	"Votre Magicien s'apelle " + this.getNom() +
-	", son niveau de vie est de " + this.getNiveau() +
-	" et il dispose d'une force d'attaque de " + this.getForce() +
+	"Votre Magicien s'apelle " + getNom() +
+	", son niveau de vie est de " + getNiveau() +
+	" et il dispose d'une force d'attaque de " + getForce() +
 	", possède " + philtre + " et " + sort + " pour attaquer !";
 	}
 	
-	//Magicien Marylin = new Magicien();
 }

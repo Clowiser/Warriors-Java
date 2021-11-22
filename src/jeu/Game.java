@@ -12,7 +12,7 @@ public class Game {
 	int scoreDes;
 	int positionJoueur = 0;
 	int positionJoueurFin; // tricherie !!
-		Plateau testAffichage = new Plateau(10, 10); // juste un affichage lambda 
+		//Plateau testAffichage = new Plateau(10, 10); // juste un affichage lambda 
 	Des nbDe;
 	Plateau plateau; 
 	Menu menu; // ! -> c'est le jeu qui appelle le menu, pas l'inverse
@@ -20,7 +20,7 @@ public class Game {
 	ArrayList<Magicien> magicienListe;
 	
 	
-	//constructeurs
+	//constructeurs -> fonction appelée lors de l'instanction d'objet
 	public Game() {
 		this.plateau = new Plateau();
 		this.guerrierListe =  new ArrayList<>();
@@ -30,7 +30,6 @@ public class Game {
 	}
 	
 		//Méthodes
-	
 		//menu principal du jeu (affichage des directives dans le menu)
 		public void initGame() {
 			boolean isRunning = false; 
@@ -69,7 +68,7 @@ public class Game {
 			
 		// Menu du jeu : lancer les dés - avancer - passer joueur suivant
 		public void menuJeu() {
-			// menu en jeu
+			
 			if(positionJoueurFin < positionJoueur) {
 			System.out.println("1 - Lancer le dés");
 			}
@@ -96,22 +95,56 @@ public class Game {
 			case 2:
 				System.out.println("Vous avez quitté la partie - retour au menu principal");
 				System.out.println("");
+				initGame();
 				break;
 	
 			default:
 				System.out.println("Erreur sélection");
 				break;
+			
 			}
 		}
 			
 		
 		//démarrage de la partie
-		public void start() {
+		public void recupPersoCreer() {
+			guerrierListe.get(0); // récupère les informations du premier guerrier - index 0 - (via instance) créé par l'utilisateur 
+			System.out.println(guerrierListe.get(0)); // affichage
+			
+			//guerrierListe.get(0).getNom(); // récupère le nom du guerrierListe avec index 0 -> récupérer la valeur d'un élément dans ArrayList en Java
+			
+			
+			/*magicienListe.get(0); // récupère les informations du premier magicien - index 0
+			System.out.println(magicienListe.get(0));
+			*/
+		}
+		
+		public void choisirPersoPourJouer() {
+			
+			
+			
+			
+		}
+		
+		public void start(){
+		
+			recupPersoCreer();
 			
 			// affichage du plateau
 			menu.afficherPlateau(plateau);
-			testAffichage.afficherPlat(); // test
-			//menu du jeu -> lancer les dés ou Quitter en fonction de ou se trouve le joueur
+			System.out.println("");
+			
+			
+			Case testCase = plateau.test(8);
+			System.out.println(testCase);
+			
+			
+			plateau.afficherCases();
+			System.out.println("");
+			
+			
+			//testAffichage.afficherPlat(); // test
+			
 			menuJeu();
 			
 			return;
@@ -201,6 +234,7 @@ public class Game {
 	
 				case 4:
 					afficherListe();
+					System.out.println("");
 					createPerso();
 					break;
 					
@@ -214,6 +248,7 @@ public class Game {
 				}
 		
 }
+
 		
 		
 		public void afficherListe() {

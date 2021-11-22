@@ -1,5 +1,6 @@
 package jeu;
 
+//héritage - classe fille de Case
 public class Tresor extends Case {
 	
 	//attributs
@@ -10,7 +11,7 @@ public class Tresor extends Case {
 		this.nom = nom;
 	}
 	
-	//get -> retourne le nom du trésoir
+	//get -> retourne le nom du trésor
 	public String getNom() {
 		return nom;
 	}*/

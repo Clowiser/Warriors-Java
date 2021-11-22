@@ -1,5 +1,6 @@
 package jeu;
 
+//héritage - classe fille de Case
 public class StartCase extends Case{
 
 	@Override

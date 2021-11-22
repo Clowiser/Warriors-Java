@@ -35,13 +35,13 @@ public class Guerrier extends Personnage {
 			this.bouclier = bouclier;
 		}
 		
-		/*public String toString() {
+		public String toString() {
 			   return 
 		"Votre Guerrier s'apelle " + getNom() +
 		", son niveau de vie est de " + getNiveau() +
 		" et il dispose d'une force d'attaque de " + getForce() +
 		", possède " + bouclier + " et " + arme + " pour attaquer !";
-		}*/
+		}
 	   
 	//Instancier un objet, soit créer un objet => Guerrier Will = new Guerrier();
 }

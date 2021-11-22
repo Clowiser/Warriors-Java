@@ -42,6 +42,12 @@ _______________________
 	- si aucun constructeur n'est spécifié dans la définition de la classe, un constructeur sans paramètre est fourni par Java
 	- si vous définissez au moins un constructeur, le constructeur par défaut n'est plus fourni
 
+Un constructeur est, en programmation orientée objet, une fonction particulière appelée lors de l'instanciation. Elle permet d'allouer la mémoire nécessaire à l'objet et d'initialiser ses attributs.
+
+
+-> "this" fait référence à l'objet
+
+
 EXPLICATIONS :
 -> Exception :
 	//throw (sans S) = permet de déclencher une erreur
