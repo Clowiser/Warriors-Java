@@ -3,16 +3,16 @@ package jeu;
 //héritage - classe fille de Case
 public class Tresor extends Case {
 	
-	//attributs
-	//private String nom;
+	/*//attributs
+	private char nom;
 	
-	/*//constructeurs -> construction d'un trésor en lui donnant un nom.
-	public Tresor () {
+	//constructeurs -> construction d'un trésor en lui donnant un nom.
+	public Tresor (char nom) {
 		this.nom = nom;
 	}
 	
 	//get -> retourne le nom du trésor
-	public String getNom() {
+	public char getNom() {
 		return nom;
 	}*/
 	

@@ -25,10 +25,10 @@ public class Plateau {
 	public void initPlateau() { //initation du tableau avec des cases vides et une case Start
 		 
 		 for (int i=0; i<10; i++){ // tableau de 64 cases + instance du plateau de jeu en dur.
-			 jeuPlateau.add(new EmptyCase()); // ajoute case vide (de 1 à fin du plateau)
+			 jeuPlateau.add(new EmptyCase()); // ajoute case vide (de 0 à fin du plateau)
 		 }
 		
-		 //jeuPlateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
+		 jeuPlateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
 		 
 		 //trésor
 		 jeuPlateau.set(1, new Tresor());
@@ -54,7 +54,7 @@ public class Plateau {
 	 
 	 
 	 
-	 public Case test(int idCase) {
+	 public Case idCase(int idCase) {
 		return this.jeuPlateau.get(idCase);
 	
 	 }
@@ -117,4 +117,5 @@ public class Plateau {
 			
 		}
 	 
+	
 }

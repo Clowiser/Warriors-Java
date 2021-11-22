@@ -12,7 +12,7 @@ public class Game {
 	int scoreDes;
 	int positionJoueur = 0;
 	int positionJoueurFin; // tricherie !!
-		//Plateau testAffichage = new Plateau(10, 10); // juste un affichage lambda 
+		//Plateau testAffichage = new Plateau(1, 10); // juste un affichage lambda 
 	Des nbDe;
 	Plateau plateau; 
 	Menu menu; // ! -> c'est le jeu qui appelle le menu, pas l'inverse
@@ -69,12 +69,15 @@ public class Game {
 		// Menu du jeu : lancer les dés - avancer - passer joueur suivant
 		public void menuJeu() {
 			
-			if(positionJoueurFin < positionJoueur) {
+			/*if(positionJoueurFin < positionJoueur) {
 			System.out.println("1 - Lancer le dés");
 			}
 			if(positionJoueurFin+1 > positionJoueur ) {
+				clearPerso();
 			System.out.println("2 - Quitter la partie : retour au menu principal"); 
-			}
+			}*/
+			
+			System.out.println(" 1 - Lancer le dés - 2 - Quitter la partie : retour au menu principal - 3 clearPerso"); 
 			
 			int choix = menu.entreeClavier("");
 			
@@ -97,18 +100,21 @@ public class Game {
 				System.out.println("");
 				initGame();
 				break;
+				
+			case 3:
+				clearPerso();
 	
 			default:
-				System.out.println("Erreur sélection");
+				System.out.println("Erreur sélection TEST");
 				break;
 			
 			}
 		}
 			
-		
+		//char JoueurG = 'G';
 		//démarrage de la partie
 		public void recupPersoCreer() {
-			guerrierListe.get(0); // récupère les informations du premier guerrier - index 0 - (via instance) créé par l'utilisateur 
+			guerrierListe.get(0); // récupère les informations du premier guerrier - index 0 - (via instance) créé par l'utilisateur  = 1 personne pour le moment
 			System.out.println(guerrierListe.get(0)); // affichage
 			
 			//guerrierListe.get(0).getNom(); // récupère le nom du guerrierListe avec index 0 -> récupérer la valeur d'un élément dans ArrayList en Java
@@ -135,17 +141,9 @@ public class Game {
 			System.out.println("");
 			
 			
-			Case Case1 = plateau.test(0);
-			System.out.println(Case1);
-			Case Case2 = plateau.test(1);
-			System.out.println(Case2);
-			
-			
-			plateau.afficherCases();
-			System.out.println("");
-			
-			
+			interaction();
 			//testAffichage.afficherPlat(); // test
+			
 			
 			menuJeu();
 			
@@ -181,11 +179,14 @@ public class Game {
 				//plateau.afficher();
 				System.out.println("Votre personnage a avancé de " + scoreDes + " cases et est maintenant en position : " + positionJoueur);
 				System.out.println("");
+				interaction();
 				
 					if(positionJoueur > plateau.size()) {
 					positionJoueur = plateau.size();
+					
 					System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
 					positionJoueur = positionJoueurFin; // 1 - la positon joueur est égale à sa position de fin (voir autre manière de récupérer)
+					
 					System.out.println("");
 					throw new PersonnageHorsPlateauException(); // exception
 				}
@@ -197,7 +198,62 @@ public class Game {
 			}
 
 		}
-				
+		
+		public void interaction() {
+			
+			Case Case1 = plateau.idCase(0);
+			Case Case2 = plateau.idCase(1);
+			Case Case3 = plateau.idCase(2);
+			Case Case4 = plateau.idCase(3);
+			Case Case5 = plateau.idCase(4);
+			Case Case6 = plateau.idCase(5);
+			Case Case7 = plateau.idCase(6);
+			Case Case8 = plateau.idCase(7);
+			Case Case9 = plateau.idCase(8);
+			Case Case10 = plateau.idCase(9);
+			
+			System.out.println(" | " + Case1 + " | " + Case2  + " | " + Case3  + " | " + Case4  + " | " + Case5  + " | " + Case6  + " | " + Case7  + " | " + Case8  + " | " + Case9  + " | " + Case10 + " | ");
+			
+			//plateau.afficherCases();
+			System.out.println("");
+			
+			if(positionJoueur == 0) {
+				System.out.println("Vous êtes sur la case Départ");	
+			}else if(positionJoueur == 3 || positionJoueur == 7) {
+				System.out.println("Vous êtes sur une case vide");	
+			}else if(positionJoueur == 1 || positionJoueur == 4 || positionJoueur == 6 || positionJoueur == 8) {
+				System.out.println("Vous êtes sur une case trésor");
+			}else if(positionJoueur == 2 || positionJoueur == 5 || positionJoueur == 9) {
+				System.out.println("Vous êtes sur une case Ennemi");
+			}
+		}
+		
+		//garder le personnage ou reprendre un nouveau perso
+		public void clearPerso() {
+			System.out.println("Voulez vous recommencer la partie avec votre personnage ? 1 oui - 2 non retour au menu principal ");
+			
+			int choix = menu.entreeClavier("");
+			
+			// faire choix entre 1 ou 2
+			switch (choix) {
+			case 1:
+				// Appel de la fonction lancerDes()
+				start();
+				break;
+	
+			case 2:
+				guerrierListe.remove(0);
+				System.out.println("Votre personnage a été supprimé - retour au menu principal");
+				initGame(); 
+				break;
+	
+			default:
+				System.out.println("Erreur sélection");
+				break;
+			
+			}
+			
+		}
 		
 		
 		//Personnages
