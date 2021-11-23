@@ -8,7 +8,6 @@ public class Arme{
 		this("arme par défaut");
 	}
 	
-	
 	public Arme(String arme){
 		this.arme = arme;
 	}

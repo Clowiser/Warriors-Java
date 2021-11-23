@@ -2,7 +2,7 @@ package jeu;
 
 //héritage - classe mère
 //classe définit en abstract => elle ne peut pas être instancié
-public class Personnage {
+public abstract class Personnage {
 
 	//Attributs
 	private String nom; 

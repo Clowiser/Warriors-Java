@@ -3,7 +3,6 @@ package jeu;
 import java.util.*;
 //import jeu.Case;
 
-
 public class Plateau {
 	
 	//attributs
@@ -12,34 +11,48 @@ public class Plateau {
 	
 	 //constructeurs
 	 public Plateau() {
-		 initPlateau();
+		 initPlateau(); // appel du menu principal pour la création du game
 	 }
 	 
 	//getters
 		//pour récupérer la case passée en paramètre
-		public char getCase() {
-			return 0;
+		public char getCase() { // prendre la case...
+			return 0; // ...retourne 0 - le programme s'est exécuté sans erreur.
 		}
 	 
 	//méthodes
 	public void initPlateau() { //initation du tableau avec des cases vides et une case Start
 		 
-		 for (int i=0; i<10; i++){ // tableau de 64 cases + instance du plateau de jeu en dur.
-			 jeuPlateau.add(new EmptyCase()); // ajoute case vide (de 0 à fin du plateau)
+		 for (int i=0; i<20; i++){ // tableau de 64 cases + instance du plateau de jeu en dur.
+			 jeuPlateau.add(new EmptyCase()); // ajoute case vide (de index 1 à fin du plateau)
 		 }
 		
 		 jeuPlateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
 		 
 		 //trésor
-		 jeuPlateau.set(1, new Tresor());
+		 jeuPlateau.set(1, new Tresor()); // ici on définie que Trésor est index 1
 		 jeuPlateau.set(4, new Tresor());
 		 jeuPlateau.set(8, new Tresor()); 
 		 jeuPlateau.set(6, new Tresor()); 
+		 jeuPlateau.set(12, new Tresor()); 
+		 jeuPlateau.set(15, new Tresor()); 
 		 
 		 //ennemis
 		 jeuPlateau.set(2, new Ennemi());
-		 jeuPlateau.set(9, new Ennemi());
-		 jeuPlateau.set(5, new Ennemi());
+		 //jeuPlateau.set(9, new Ennemi());
+		 
+		 //gobelin
+		 jeuPlateau.set(5, new Gobelin());
+		 jeuPlateau.set(13, new Gobelin());
+		 jeuPlateau.set(18, new Gobelin());
+		 
+		 //dragon
+		 jeuPlateau.set(9, new Dragon());
+		 jeuPlateau.set(19, new Dragon());
+		 
+		 //sorcière
+		 jeuPlateau.set(10, new Sorciere());
+		 jeuPlateau.set(16, new Sorciere());
 		 
 		//System.out.println(jeuPlateau);
 	 }
@@ -48,15 +61,12 @@ public class Plateau {
 		System.out.println(jeuPlateau);
 	}
 	
-	 public int size() { // taille du tableau
+	 public int size() { // = taille du tableau -> ce qu'il contient
 		 return jeuPlateau.size();
 	 }
 	 
-	 
-	 
-	 public Case idCase(int idCase) {
-		return this.jeuPlateau.get(idCase);
-	
+	 public Case idCasePlateau(int idCase) { //méthode avec la classe Case nommée prenant en paramètre int idCase donc l'index
+		return this.jeuPlateau.get(idCase); // retourne l'objet référence du jeuPlateau en prenant idCase
 	 }
 	 
 
@@ -115,6 +125,11 @@ public class Plateau {
 			
 			System.out.println(); // saut de ligne à la fin du tableau
 			
+		}
+
+		public Case idCase(int i) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	 
 	

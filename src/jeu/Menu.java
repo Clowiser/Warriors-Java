@@ -18,10 +18,10 @@ public class Menu {
 	
 	//méthodes
 	//menu principal
-	public void afficherMenuPrincipal() { //construction de la méthode avec paramètre
+	public void afficherMenuPrincipal() {
 		
 		System.out.println("");
-		System.out.println("TEST au 22/11/21 - MENU");
+		System.out.println("TEST au 23/11/21 - MENU");
 		System.out.println("Warriors Game");
 		System.out.println("A vous de jouer !");
 		System.out.println("");
@@ -35,10 +35,11 @@ public class Menu {
 	
 	// affichage du plateau
 	public void afficherPlateau(Plateau plateau) {
+		System.out.println("");
 		System.out.println("Affichage du plateau de Dungeons & Dragons - lancer les dés pour commencer l'aventure !");
 		System.out.println("Infos : la taille du plateau est de " + plateau.size() + " cases.");
 		System.out.println("");
-		System.out.println("- Appuyez sur 1 pour faire le premier jet de dés -");
+		//System.out.println("- Appuyez sur 1 pour faire le premier jet de dés -");
 	}
 	
 	
@@ -120,8 +121,7 @@ public class Menu {
 				System.out.println("Veuillez entrer un chiffre entre 5 et 10");
 			}
 			;
-		} while (isValide == false); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct
-										// soit = false, boucle fait a nouveau le choix
+		} while (isValide == false); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct, soit = false, boucle fait a nouveau le choix
 
 		// choix force d'attaque
 		boolean isValide2 = false;
