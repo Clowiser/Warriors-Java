@@ -8,7 +8,7 @@ public class Dragon extends Ennemi {
 	
 	public String toString() {
 		return
-				"Dragon";
+			"Dragon";
 	}
 
 }

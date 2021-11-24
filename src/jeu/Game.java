@@ -11,10 +11,11 @@ public class Game {
 	// attributs
 	int scoreDes;
 	int positionJoueur = 0;
-	int positionJoueurFin; // tricherie !!
+	//int positionJoueurFin; // tricherie !!
 		//Plateau testAffichage = new Plateau(1, 10); // juste un affichage lambda 
 	Des nbDe;
 	Plateau plateau; 
+	ArrayList<Case> listeCases;
 	Menu menu; // ! -> c'est le game qui appelle le menu, pas l'inverse => quand on lance un jeu, c'est le jeu qu'on lance dans lequel il nous affiche un menu qui sert d'interaction
 	ArrayList<Guerrier> guerrierListe;
 	ArrayList<Magicien> magicienListe;
@@ -107,14 +108,11 @@ public class Game {
 		public void createPerso() {
 			int choix = 0;
 			
-			if(guerrierListe.size() == 0 || magicienListe.size() == 0) {
-				choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
-			}
+			choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
 			
 				switch (choix) {
 				case 1:
 					Guerrier joueurG = menu.createGuerrier();
-					
 					// mettre données dans liste
 					guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
 					createPerso();
@@ -123,7 +121,6 @@ public class Game {
 				case 2:
 					// Appel de la fonction createMagicien() de l'instance menu de la classe Magicien
 					Magicien joueurM = menu.createMagicien();
-					
 					magicienListe.add(joueurM); // ajout à la liste magicienListe
 					createPerso();
 					break;
@@ -159,22 +156,27 @@ public class Game {
 				createPerso();
 			}
 			
-			if(guerrierListe.size() == 1 || magicienListe.size() == 1) {
-			System.out.println("Récapitulatif de vos guerriers : ");
-		
-			for (int i = 0; i < guerrierListe.size(); i++) {
-				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, là je défini moi-même ma méthode toString() dans Personnage pour annuler cet affichage par défaut (blabla@1d25g5qf2)
-			}
-			
+			if(guerrierListe.size() >= 1 || magicienListe.size() >= 1) {
+			System.out.println("- Récapitulatif de vos guerriers : ");
+			System.out.println("");
 			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
+			System.out.println("");
+				for (int i = 0; i < guerrierListe.size(); i++) {
+					System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, là je défini moi-même ma méthode toString() dans Personnage pour annuler cet affichage par défaut (blabla@1d25g5qf2)
+				}
+			System.out.println("");
+			
 			
 			//liste des magiciens créés
-			System.out.println("Récapitulatif de vos magiciens : ");
-			for (int i = 0; i < magicienListe.size(); i++) {
-				System.out.println(magicienListe.get(i));
-			}
-
+			System.out.println("- Récapitulatif de vos magiciens : ");
+			System.out.println("");
 			System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
+			System.out.println("");
+				for (int i = 0; i < magicienListe.size(); i++) {
+					System.out.println(magicienListe.get(i));
+				}
+			System.out.println("");
+			
 			}
 			
 	}
@@ -218,12 +220,15 @@ public class Game {
 			}
 			
 			// affichage du plateau
+			//this.listeCases = plateau.getListeCase();
+			
 			menu.afficherPlateau(plateau);
 			System.out.println("");
-			
 			interaction();
-			//testAffichage.afficherPlat(); // test
 			
+			System.out.println("Test" + this.plateau.getListeCase().get(5).toString());
+			Case c = this.plateau.getListeCase().get(5);
+			System.out.println();
 			menuJeu();
 			
 			return;
@@ -231,6 +236,7 @@ public class Game {
 		
 		
 		//lancer les dés
+		
 		public void lancerDes() throws PersonnageHorsPlateauException {
 			
 			// avancer le joueur : résultat de l'avancée du joueur sur le plateau + placement sur plateau
@@ -245,7 +251,13 @@ public class Game {
 			
 		}
 		
+		/**
+		 * test de commentaire pour JavaDoc
+		 * @throws PersonnageHorsPlateauException
+		 */
+		
 		//avancer
+		//Case testCase;
 		public void avancer() throws PersonnageHorsPlateauException  { 
 			////throws (avec S ) = permet de relayer le traitement de l'exception à la méthode appelante
 			
@@ -259,6 +271,10 @@ public class Game {
 				//plateau.afficher();
 				System.out.println("Votre personnage a avancé de " + scoreDes + " cases et est maintenant en position : " + positionJoueur);
 				System.out.println("");
+				
+				/*testCase = this.plateau.idCasePlateau(positionJoueur);// signifie ou est le joueur sur le plateau avec id de la case
+				System.out.println(testCase); // affiche le résultat*/
+				
 				interaction();
 				
 					if(positionJoueur > plateau.size()) {
@@ -311,15 +327,15 @@ public class Game {
 			if(positionJoueur == 0) {
 				System.out.println("Vous êtes sur la case Départ");
 				System.out.println("");
-			}else if(positionJoueur == 3 || positionJoueur == 7) {
+			}else if(positionJoueur == 3 || positionJoueur == 7 || positionJoueur == 11 || positionJoueur == 14) {
 				System.out.println("Vous êtes sur une case Vide");	
 				System.out.println("");
-			}else if(positionJoueur == 1 || positionJoueur == 4 || positionJoueur == 6 || positionJoueur == 8) {
+			}else if(positionJoueur == 1 || positionJoueur == 4 || positionJoueur == 6 || positionJoueur == 8 || positionJoueur == 12 || positionJoueur == 15) {
 				System.out.println("Vous êtes sur une case Trésor - 8 Ouvrir - 9 Laisser");
 				System.out.println("");
-			}else if(positionJoueur == 2 || positionJoueur == 5 || positionJoueur == 9 || positionJoueur == 10 || positionJoueur == 13 || positionJoueur == 18) {
-				System.out.println("Vous êtes sur une case Ennemi ! Combat ! - 8 Combattre - 9 Fuir");
-				menucombat();
+			}else if(positionJoueur == 2 || positionJoueur == 5 || positionJoueur == 9 || positionJoueur == 10 || positionJoueur == 13 || positionJoueur == 16 || positionJoueur == 18 || positionJoueur == 19) {
+				System.out.println("Vous êtes sur une case Ennemi ! Combat !");
+				interactionCombat();
 				System.out.println("");
 			}
 		}
@@ -338,7 +354,7 @@ public class Game {
 	
 			case 2:
 				guerrierListe.remove(0); //suppression guerrier à l'index 0
-				magicienListe.remove(0);
+				//magicienListe.remove(0);
 				System.out.println("Votre personnage a été supprimé - retour au menu principal");
 				initGame(); 
 				break;
@@ -357,26 +373,8 @@ public class Game {
 		//ennemi attaque
 		//si fuite -> reculer de 1 à 6
 		
-		public void menucombat() {
-			int choix = menu.entreeClavier("");
-			
-			switch (choix) {
-			case 8:
-				interactionCombat();
-				break;
-
-			case 9:
-				//revenir au jeu + lancés de dés ramdom qui fait RECULER
-				break;
-
-			default:
-				System.out.println("Erreur sélection");
-				break;
-			}
-		}
-		
-		//test
-		Gobelin gobelinTest;
+		//test qu'avec le Guerrier
+		//Gobelin gobelinTest;
 		public void interactionCombat() {
 			//prendre niveau de vie + niveau de force du personnage -> Guerrier/magicien
 			//prendre niveau de vie + niveau de force de l'ennemi -> Gobelins/sorcières/dragons
@@ -386,60 +384,81 @@ public class Game {
 			guerrierListe.get(0).getNiveau(); // récupe vie
 			guerrierListe.get(0).getForce(); // récupe force
 			
-			//ennemi
-			gobelinTest = new Gobelin();
-			gobelinTest.getForce();
-			gobelinTest.getNiveau();
+			//ennemi - récupérer niveau/force
+			//NON car deux instances : gobelinTest = new Gobelin(); // instance d'un objet Gobelin // Q ? j'ai un Gobelin, enfant de Ennemi, lui-même enfant de Case, dois-je créer un gobelin pour le combat?
+			//Ennemi ennemi = new Ennemi();
 			
-			System.out.println("Votre Ennemi dispose de " + gobelinTest.getForce() + " de force d'attaque et de " + gobelinTest.getNiveau() + " points de vie.");
-			
-			System.out.println("Votre Personnage dispose de " + guerrierListe.get(0).getForce() + " de force d'attaque et de " + guerrierListe.get(0).getNiveau() + " points de vie.");
+			System.out.println(listeCases.get(5).toString());
 			
 			System.out.println("");
+			//System.out.println("Votre Ennemi dispose de " + getForce() + " de force d'attaque et de " + getNiveau() + " points de vie.");
+			System.out.println("");
+			System.out.println("Votre Personnage dispose de " + guerrierListe.get(0).getForce() + " de force d'attaque et de " + guerrierListe.get(0).getNiveau() + " points de vie.");
+			System.out.println("");
 			
+			System.out.println("Voulez-vous continuer ou fuir ? - 8 Rester - 9 Fuir");
 			
-			System.out.println("A votre tour, Aventurier !");
-			attaqueJoueur();
+			int choix = menu.entreeClavier("");
 			
-			if(totalAtkJoueur > 0) {
-			System.out.println("Au tour de l'ennemi !");
-			attaqueEnnemi();
-			}else if (totalAtkJoueur <= 0) {
-				System.out.println("L'ennemi  est mort !");
+			switch (choix) {
+			case 8:
+				System.out.println("Vous avez choisi de rester ! A votre tour, Aventurier !");
+				System.out.println("");
+				//attaqueJoueur();
+				break;
+
+			case 9:
+				System.out.println("Vous avez fui !");
+				//revenir au jeu + lancés de dés ramdom qui fait RECULER
+				break;
+
+			default:
+				System.out.println("Erreur sélection");
+				break;
 			}
 			
 		}
 		
-		//Joueur attaque toujours en premier
+		/*int vieEnnemi = gobelinTest.getNiveau();
+		int forcePersonnage = guerrierListe.get(0).getForce();
+		
+		int forceEnnemi = gobelinTest.getForce();
+		int viePersonnage = guerrierListe.get(0).getNiveau();
+		*/
+		
+		/*//Joueur attaque toujours en premier
 		int totalAtkJoueur;
 		public void attaqueJoueur() {
+			System.out.println("Vous attaquez avec votre " + guerrierListe.get(0).getArme() + " ! A l'assaut !");
+			if(guerrierListe.get(0).getForce() > gobelinTest.getNiveau()) {
+				//vieEnnemi = 0;
+				System.out.println("Ennemi est mort - Fin du combat");
+			}
 			
-			totalAtkJoueur = guerrierListe.get(0).getForce() - gobelinTest.getNiveau();
+			if(guerrierListe.get(0).getForce() < gobelinTest.getNiveau()) {
+				totalAtkJoueur = gobelinTest.getNiveau() - guerrierListe.get(0).getForce();
+				System.out.println("Il reste " + totalAtkJoueur + " à l'ennemi");
+			}
 			
-			System.out.println("Il reste " + totalAtkJoueur + " à l'ennemi");
-			
-			//System.out.println("Voulez-vous continuer ou fuir ? - 8 Rester - 9 Fuir");
-			
-			// if joueurRest => System.out.println("Vous avez choisi de rester !");
-			
-		
-			
+			if(totalAtkJoueur > 0) {
+			System.out.println("Au tour de l'ennemi !");
+			attaqueEnnemi();
+			}
 		}
 		
 		int totalAtkEnnemi;
 		public void attaqueEnnemi() {
 			
-			if(totalAtkJoueur > 0) {
-			
-			totalAtkEnnemi = gobelinTest.getForce() - guerrierListe.get(0).getNiveau();
-			
-			System.out.println("Il vous reste " + totalAtkEnnemi);
-			
+			if(gobelinTest.getForce() > guerrierListe.get(0).getNiveau()) {
+				//viePersonnage = 0;
+				System.out.println("Votre personnage est mort - Fin de partie");
 			}
 			
-		}
+			if (guerrierListe.get(0).getNiveau() > gobelinTest.getForce()) {
+			totalAtkEnnemi = guerrierListe.get(0).getNiveau() -  gobelinTest.getForce();
+			System.out.println("Il vous reste " + totalAtkEnnemi);
+			}
+			
+		}*/
 		
-		
-		
-	
 }

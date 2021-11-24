@@ -21,8 +21,8 @@ public class Menu {
 	public void afficherMenuPrincipal() {
 		
 		System.out.println("");
-		System.out.println("TEST au 23/11/21 - MENU");
-		System.out.println("Warriors Game");
+		System.out.println("TEST au 24/11/21 - MENU");
+		System.out.println("La Compagnie des Bras Cassés");
 		System.out.println("A vous de jouer !");
 		System.out.println("");
 		
@@ -147,7 +147,6 @@ public class Menu {
 
 		System.out.println("Votre Magicien s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " possède " + philtre + " et " + sort + " pour attaquer !");	
 		System.out.println("");
-		
 		
 		return joueurM;
 	}

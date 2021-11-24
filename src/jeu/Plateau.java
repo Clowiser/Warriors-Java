@@ -7,7 +7,6 @@ public class Plateau {
 	
 	//attributs
 	 private ArrayList<Case> jeuPlateau = new ArrayList<>(); // instance liste des cases sous forme de tableau
-	 
 	
 	 //constructeurs
 	 public Plateau() {
@@ -16,9 +15,9 @@ public class Plateau {
 	 
 	//getters
 		//pour récupérer la case passée en paramètre
-		public char getCase() { // prendre la case...
+		/*public char getCase() { // prendre la case...
 			return 0; // ...retourne 0 - le programme s'est exécuté sans erreur.
-		}
+		}*/
 	 
 	//méthodes
 	public void initPlateau() { //initation du tableau avec des cases vides et une case Start
@@ -28,6 +27,7 @@ public class Plateau {
 		 }
 		
 		 jeuPlateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
+		 //La méthode set(int index, Element E) met à jour l'élément de l'index spécifié avec l'élément E donné -> public E set(int index, Element E)
 		 
 		 //trésor
 		 jeuPlateau.set(1, new Tresor()); // ici on définie que Trésor est index 1
@@ -38,21 +38,21 @@ public class Plateau {
 		 jeuPlateau.set(15, new Tresor()); 
 		 
 		 //ennemis
-		 jeuPlateau.set(2, new Ennemi());
-		 //jeuPlateau.set(9, new Ennemi());
-		 
+		 //ex : jeuPlateau.set(2, new Ennemi());
 		 //gobelin
-		 jeuPlateau.set(5, new Gobelin());
-		 jeuPlateau.set(13, new Gobelin());
-		 jeuPlateau.set(18, new Gobelin());
+		 jeuPlateau.set(5, new Gobelin(6, 1));
+		 jeuPlateau.set(13, new Gobelin(9, 5));
+		 jeuPlateau.set(18, new Gobelin(5, 2));
 		 
 		 //dragon
+		 jeuPlateau.set(2, new Dragon());
 		 jeuPlateau.set(9, new Dragon());
 		 jeuPlateau.set(19, new Dragon());
 		 
 		 //sorcière
 		 jeuPlateau.set(10, new Sorciere());
 		 jeuPlateau.set(16, new Sorciere());
+		
 		 
 		//System.out.println(jeuPlateau);
 	 }
@@ -65,11 +65,22 @@ public class Plateau {
 		 return jeuPlateau.size();
 	 }
 	 
+	 public ArrayList<Case> getListeCase(){
+		 return jeuPlateau;
+	 }
+	 
+	 //Lie ma position avec la case correspondante
 	 public Case idCasePlateau(int idCase) { //méthode avec la classe Case nommée prenant en paramètre int idCase donc l'index
 		return this.jeuPlateau.get(idCase); // retourne l'objet référence du jeuPlateau en prenant idCase
 	 }
 	 
-
+	//public Ennemi getEnnemi() {
+		//return 
+	 //}
+	 
+	 public void test() {
+		
+	 }
 
 	 
 	 

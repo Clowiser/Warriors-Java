@@ -18,7 +18,7 @@ public class Ennemi extends Case {
 		}
 
 		//Getters => prend l'information
-		   public int getNiveau() {
+		   protected int getNiveau() {
 		       return niveau;
 		   }
 		   
