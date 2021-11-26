@@ -1,5 +1,11 @@
 package jeu;
 
+/**
+ * 
+ * @author Jessica
+ *
+ */
+
 public class Main {
 	
 	//méthode principale Java : est le point d'entrée de tout programme Java

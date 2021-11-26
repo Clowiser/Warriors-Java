@@ -56,6 +56,8 @@ Un constructeur est, en programmation orientée objet, une fonction particulière 
 
 -> Setters - méthode pour définir la valeur d'un champ - Le setter est une méthode à part entière.
 
+-> Instancier un objet, soit créer un objet => Guerrier Will = new Guerrier();
+
 
 EXPLICATIONS :
 -> Exception :
@@ -73,7 +75,11 @@ EXPLICATIONS :
 -> instanceof : 
 	est un mot-clé utilisé pour vérifier si une variable de référence contient ou non un type donné de référence d'objet
 	il est connu comme un opérateur de comparaison où l' instance est comparée au type renvoyant un booléen vrai ou faux, car en Java, nous n'avons pas de types de retour booléens 0 et 1
-	
+
+-> cast : forcer le compilateur à considérer une variable comme étant d’un type qui n’est pas le type déclaré ou le type réel de la variable.
+ Le transtypage (ou cast) est la conversion d'une expression d'un certain type en une expression d'un autre type.
+ 
+ 
  A FAIRE :
  
 - ajouter "Passer au joueur suivant" ou "case événement" quand le J1 a fini son tour (1 lancer de dés)

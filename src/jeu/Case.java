@@ -9,29 +9,6 @@ public abstract class Case {
 	//constructeurs
 	
 	//méthodes
-	//méthode dans Case mais ?
-	//Personnage personnage;
 	abstract public void interaction(Personnage personnage);
-	
-	
-	
-	/*{
-		
-		if(personnage instanceof Guerrier) {
-			String guerrier = "guerrier";
-			System.out.println("Guerrier, test !");
-			return guerrier;
-		}else {
-			String magicien ="magicien";
-			System.out.println("Magicien, test !");
-			return magicien;
-		}
-	
-	}*/
 
-	
-	 /*public int getForce() {
-	       return 0;
-	   }
-	*/
 }

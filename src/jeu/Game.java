@@ -5,6 +5,12 @@ import java.util.ArrayList;
 //import jeu.EmptyCase;
 //import jeu.CreationPersonnage;
 
+
+/** 
+ * Description de la classe Game :
+ * C'est dans cette classe que se lance l'ensemble du jeu
+ */
+
 public class Game {
 
 	// attributs
@@ -35,8 +41,7 @@ public class Game {
 	public void initGame() {
 		boolean isRunning = false;
 
-		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = opposé de la
-								// déclaration (si isRunning = false alors !isRunning = true)
+		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = opposé de la déclaration (si isRunning = false alors !isRunning = true)
 
 			menu.afficherMenuPrincipal(); // appel de la méthode afficherMenuPrincipal()
 
@@ -106,21 +111,19 @@ public class Game {
 	public void createPerso() {
 		int choix = 0;
 
-		choix = menu.entreeClavier(
-				"Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
+		choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
 
 		switch (choix) {
 		case 1:
+			// Appel de la fonction createGuerrier() de l'instance menu de la classe Guerrier
 			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la méthode createGuerrier()
-			// mettre données dans liste
 			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
 			createPerso();
 			break;
 
 		case 2:
-			// Appel de la fonction createMagicien() de l'instance menu de la classe Magicien
 			Magicien joueurM = menu.createMagicien();
-			magicienListe.add(joueurM); // ajout à la liste magicienListe
+			magicienListe.add(joueurM);
 			createPerso();
 			break;
 
@@ -155,25 +158,23 @@ public class Game {
 			createPerso();
 		}
 
-		// PROBLEME : affiche cette partie quand le perso n'est pas clear quand je
-		// quitte le jeu
+		// PROBLEME : affiche cette partie quand le perso n'est pas clear quand je quitte le jeu
 		if (guerrierListe.size() >= 1 || magicienListe.size() >= 1) {
+			
+			// liste des guerriers créés
 			System.out.println("- Récapitulatif de vos guerriers : ");
 			System.out.println("");
 			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
 			System.out.println("");
 			for (int i = 0; i < guerrierListe.size(); i++) {
-				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, là je défini moi-même ma
-															// méthode toString() dans Personnage pour annuler cet
-															// affichage par défaut (blabla@1d25g5qf2)
+				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, là je défini moi-même ma méthode toString() dans Personnage pour annuler cet affichage par défaut (blabla@1d25g5qf2)
 			}
 			System.out.println("");
 
 			// liste des magiciens créés
 			System.out.println("- Récapitulatif de vos magiciens : ");
 			System.out.println("");
-			System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste
-																											
+			System.out.println("La liste de Magicien contient " + magicienListe.size() + " élément(s)"); // pour afficher le nombre d'éléments dans la liste																						
 			System.out.println("");
 			for (int i = 0; i < magicienListe.size(); i++) {
 				System.out.println(magicienListe.get(i));
@@ -183,34 +184,19 @@ public class Game {
 		}
 
 	}
-
-	// DEMARRAGE DE LA PARTIE
-	// récupérer le personnage créé
-	public void recupPersoCreer() {
-
-		if (guerrierListe.size() == 1) {
-			guerrierListe.get(0); // récupère les informations du premier guerrier - index 0 - (via instance) créé
-									// par l'utilisateur = 1 personne pour le moment
-			System.out.println("");
-			System.out.println("Vous jouez avec votre Guerrier " + guerrierListe.get(0).getNom()); // affichage le nom
-																								// du guerrierListe
-			// System.out.println(guerrierListe.get(0)); // affichage
-			// guerrierListe.get(0).getNom(); // récupère le nom du guerrierListe avec index
-			// 0 -> récupérer la valeur d'un élément dans ArrayList en Java
-		}
-
-		if (magicienListe.size() == 1) {
-			magicienListe.get(0); // récupère les informations du premier magicien - index 0
-			System.out.println("");
-			System.out.println("Vous jouez avec votre Magicien " + magicienListe.get(0).getNom()); // affichage le nom
-																									// du magicienListe
-			// System.out.println(magicienListe.get(0));
-		}
-
+	// récupérer le personnage créé - Guerrier ou magicien
+	public void recupGuerrier() {
+		
 	}
 
+		
+
+	
+	
+	// DEMARRAGE DE LA PARTIE
 	// démarrer
 	public void start() {
+		Personnage selectPerso;
 
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
 			System.out.println("Veuillez créer votre personnage pour commencer l'Aventure !");
@@ -218,14 +204,19 @@ public class Game {
 			createPerso();
 		}
 
+		//selectPerso = getPersonnage(guerrierListe,magicienListe);
+		
 		if (guerrierListe.size() == 1 || magicienListe.size() == 1) {
-			recupPersoCreer();
+			//recupPersoCreer();
 		}
 
 		menu.afficherPlateau(plateau);
 		System.out.println("");
+		
+		plateau.afficherCases();
 		//parcoursPlateau();
 		System.out.println();
+		
 		menuJeu();
 		return;
 	}
@@ -233,12 +224,10 @@ public class Game {
 	// lancer les dés
 	public void lancerDes() throws PersonnageHorsPlateauException {
 
-		// avancer le joueur : résultat de l'avancée du joueur sur le plateau +
-		// placement sur plateau
+		// avancer le joueur : résultat de l'avancée du joueur sur le plateau + placement sur plateau
 		if (positionJoueur <= plateau.size()) {
 			scoreDes = nbDe.lancerDe();
-			positionJoueur += scoreDes; // additionne les deux var et stocke le résultat dans var gauche ->
-										// positionJoueur + resultatDe = positionJoueur
+			positionJoueur += scoreDes; // additionne les deux var et stocke le résultat dans var gauche -> positionJoueur + resultatDe = positionJoueur
 			System.out.println("Le résultat de votre lancer de dés est : " + scoreDes + ".");
 			System.out.println("");
 			avancer();
@@ -253,7 +242,7 @@ public class Game {
 	 * @throws PersonnageHorsPlateauException
 	 */
 
-	
+	Personnage SelectPersonnage;
 	// avancer
 	public void avancer() throws PersonnageHorsPlateauException {
 		// throws (avec S ) = permet de relayer le traitement de l'exception à la méthode appelante
@@ -266,9 +255,10 @@ public class Game {
 		switch (direction) {
 		case 1:
 			// plateau.afficher();
-			System.out.println("Votre personnage a avancé de " + scoreDes + " cases et est maintenant en position : "
-					+ positionJoueur);
+			System.out.println("Votre personnage a avancé de " + scoreDes + " cases et est maintenant en position : " + positionJoueur);
 			System.out.println("");
+			
+			//INTERACTION DU JOUEUR SUR PLATEAU
 			
 			//parcoursPlateau();
 
@@ -279,8 +269,10 @@ public class Game {
 				System.out.println("");
 				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de déclencher une erreur
 			}
-			plateau.getUneCase(positionJoueur); // par la position Joueur, je "récupère" ce que la case contient
-			System.out.println(plateau.getUneCase(positionJoueur));
+			plateau.getTypeCase(positionJoueur); // par la position Joueur, je "récupère" ce que la case contient = le type
+			//System.out.println(plateau.getTypeCase(positionJoueur));
+			
+			plateau.interaction(positionJoueur, SelectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupère" le type de case pour intérargir
 			
 			break;
 
@@ -291,31 +283,6 @@ public class Game {
 
 	}
 
-	// interaction
-	/*public void parcoursPlateau() {
-
-		if (positionJoueur == 0) {
-			System.out.println("Vous êtes sur la case Départ");
-			System.out.println("");
-		} else if (positionJoueur == 3 || positionJoueur == 7 || positionJoueur == 11 || positionJoueur == 14) {
-			System.out.println("Vous êtes sur une case Vide");
-			System.out.println("");
-		} else if (positionJoueur == 1 || positionJoueur == 4) {
-			System.out.println("Vous êtes sur une case Trésor - 8 Ouvrir - 9 Laisser");
-			System.out.println("");
-		} else if (positionJoueur == 6 || positionJoueur == 8) {
-		System.out.println("Vous trouver un sort ! Magicien, seul vous pouvez le ramasser !");
-		System.out.println("");
-		} else if (positionJoueur == 12 || positionJoueur == 15) {
-		System.out.println("Vous trouver une arme ! Guerrier, seul vous pouvez la ramasser !");
-		System.out.println("");
-		} else if (positionJoueur == 2 || positionJoueur == 5 || positionJoueur == 9 || positionJoueur == 10
-				|| positionJoueur == 13 || positionJoueur == 16 || positionJoueur == 18 || positionJoueur == 19) {
-			System.out.println("Vous êtes sur une case Ennemi ! Combat !");
-			//interactionCombat();
-			System.out.println("");
-		}
-	}*/
 
 	// garder le même personnage ou recréer un nouveau personnage
 	public void clearPerso() {

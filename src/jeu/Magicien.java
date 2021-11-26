@@ -10,10 +10,10 @@ public class Magicien extends Personnage {
 	private Sort sort;
 	
 	//Constructeurs
-	public Magicien(String nom, int niveau, int force, String philtre, String sort){
+	public Magicien(String nom, int niveau, int force){
 		super(nom, niveau, force);
-		this.philtre = new Philtre(philtre);
-		this.sort = new Sort(sort);
+		this.philtre = new SoinPotion();
+		this.sort = new FireBall();
 	}
 	
 	//Getters - méthode pour obtenir la valeur d'un champ - les getters ont le modificateur d'accès public, ce qui signifie qu'ils sont disponibles depuis n'importe où dans le programme.

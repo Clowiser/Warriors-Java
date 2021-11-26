@@ -15,7 +15,6 @@ public class Menu {
 		return clavier.nextInt();
 	}
 	
-	
 	//méthodes
 	//menu principal
 	public void afficherMenuPrincipal() {
@@ -36,9 +35,9 @@ public class Menu {
 	public void afficherPlateau(Plateau plateau) {
 		System.out.println("");
 		System.out.println("Affichage du plateau de Dungeons & Dragons - lancer les dés pour commencer l'aventure !");
+		System.out.println("");
 		System.out.println("Infos : la taille du plateau est de " + plateau.size() + " cases.");
 	}
-	
 	
 	//guerrier
 	public Guerrier createGuerrier() {
@@ -80,13 +79,12 @@ public class Menu {
 		} while (!isValide2);
 
 		// choix arme et bouclier - pas de choix
-		String arme = "une épée";
-		String bouclier = "un écu";
+		
 	
 		// instance + stock des données
-		joueurG = new Guerrier(nom, niveau, force, arme, bouclier); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		
-		System.out.println("Votre Guerrier s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " possède " + bouclier + " et " + arme + " pour attaquer !");	
+		System.out.println("Votre Guerrier s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " ! ");	
 		System.out.println("");
 		
 		return joueurG;
@@ -137,16 +135,14 @@ public class Menu {
 
 		// choix sort et philtre - pas de choix
 		
-		String philtre = "un philtre de soin";
-		String sort = "un sort de boule de feu";
-
 		// stock des données
-		joueurM = new Magicien(nom, niveau, force, philtre, sort); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+		joueurM = new Magicien(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 
-		System.out.println("Votre Magicien s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " possède " + philtre + " et " + sort + " pour attaquer !");	
+		System.out.println("Votre Magicien s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + "! ");	
 		System.out.println("");
 		
 		return joueurM;
 	}
-					
+
+			
 }
