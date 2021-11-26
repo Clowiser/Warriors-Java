@@ -58,6 +58,11 @@ Un constructeur est, en programmation orientée objet, une fonction particulière 
 
 -> Instancier un objet, soit créer un objet => Guerrier Will = new Guerrier();
 
+-> retrun :
+- le mot clé return sert à quitter une méthode et à retourner (d'ou le nom) à la méthode appelante.
+		lorsque la méthode est du type void, return suffit pour quitter la méthode.
+- si la méthode à un type, return permet de retourner un résultat, du type de la méthode
+
 
 EXPLICATIONS :
 -> Exception :
@@ -109,4 +114,40 @@ EXPLICATIONS :
 
 	// objectifs :
 	// fin du jeu : arriver au bout des 10x10 cases
+	
+
+
+
+
+ AUTRES :
+ // Menu création personnages
+	public void createPerso() {
+		int choix = 0;
+
+		choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
+
+		switch (choix) {
+		case 1:
+			// Appel de la fonction createGuerrier() de l'instance menu de la classe Guerrier
+			//Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la méthode createGuerrier()
+			//guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
+			//PROBLEME : de cette manière, je ne pouvais pas récupérer totalement mon Guerrier, dont le toString()
+			menu.selectGuerrier(guerrierListe);
+			createPerso();
+			break;
+
+		case 2:
+			//Magicien joueurM = menu.createMagicien();
+			//magicienListe.add(joueurM);
+			menu.selectMagicien(magicienListe);
+			createPerso();
+			break;
+
+
+
+
+
 */
+
+
+

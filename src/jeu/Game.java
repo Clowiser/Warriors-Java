@@ -45,7 +45,7 @@ public class Game {
 
 			menu.afficherMenuPrincipal(); // appel de la méthode afficherMenuPrincipal()
 
-			int choixMenu = menu.entreeClavier(""); // appel de la fonction qui permet le scanner clavier
+			int choixMenu = menu.getIntResult(""); // appel de la fonction qui permet le scanner clavier
 
 			switch (choixMenu) {
 			case 1:
@@ -75,7 +75,7 @@ public class Game {
 
 		System.out.println("1 - Lancer le dés - 2 - Quitter la partie : retour au menu principal - 3 clearPerso");
 
-		int choix = menu.entreeClavier("");
+		int choix = menu.getIntResult("");
 
 		// faire choix entre 1 ou 2 ou 3
 		switch (choix) {
@@ -111,19 +111,16 @@ public class Game {
 	public void createPerso() {
 		int choix = 0;
 
-		choix = menu.entreeClavier("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
+		choix = menu.getIntResult("Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
 
-		switch (choix) {
+		 switch (choix) {
 		case 1:
-			// Appel de la fonction createGuerrier() de l'instance menu de la classe Guerrier
-			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la méthode createGuerrier()
-			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
+			menu.selectGuerrier(guerrierListe);
 			createPerso();
 			break;
 
 		case 2:
-			Magicien joueurM = menu.createMagicien();
-			magicienListe.add(joueurM);
+			menu.selectMagicien(magicienListe);
 			createPerso();
 			break;
 
@@ -139,6 +136,7 @@ public class Game {
 		case 5:
 			System.out.println("Vous avez quitté la création de personnage - retour au menu principal");
 			menu.afficherMenuPrincipal();
+			
 			break;
 
 		default:
@@ -184,18 +182,12 @@ public class Game {
 		}
 
 	}
-	// récupérer le personnage créé - Guerrier ou magicien
-	public void recupGuerrier() {
-		
-	}
-
-		
-
-	
 	
 	// DEMARRAGE DE LA PARTIE
 	// démarrer
+
 	public void start() {
+		//c'est ici que je dois faire la sélection du personnage avant de lancer la partie
 		Personnage selectPerso;
 
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
@@ -204,7 +196,6 @@ public class Game {
 			createPerso();
 		}
 
-		//selectPerso = getPersonnage(guerrierListe,magicienListe);
 		
 		if (guerrierListe.size() == 1 || magicienListe.size() == 1) {
 			//recupPersoCreer();
@@ -249,7 +240,7 @@ public class Game {
 		
 		int direction;
 
-		direction = menu.entreeClavier("1 - Faites avancer votre personnage de " + scoreDes + " cases."); // direction = menu.nomfonction();
+		direction = menu.getIntResult("1 - Faites avancer votre personnage de " + scoreDes + " cases."); // direction = menu.nomfonction();
 
 		// faire choix
 		switch (direction) {
@@ -270,7 +261,7 @@ public class Game {
 				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de déclencher une erreur
 			}
 			plateau.getTypeCase(positionJoueur); // par la position Joueur, je "récupère" ce que la case contient = le type
-			//System.out.println(plateau.getTypeCase(positionJoueur));
+			System.out.println(plateau.getTypeCase(positionJoueur));
 			
 			plateau.interaction(positionJoueur, SelectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupère" le type de case pour intérargir
 			
@@ -289,7 +280,7 @@ public class Game {
 		System.out.println(
 				"Voulez vous recommencer la partie avec votre personnage ? 1 oui - 2 non retour au menu principal ");
 
-		int choix = menu.entreeClavier("");
+		int choix = menu.getIntResult("");
 
 		switch (choix) {
 		case 1:

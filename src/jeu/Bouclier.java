@@ -12,16 +12,16 @@ public class Bouclier {
 		this.bouclier = bouclier;
 	}
 
-	public String toString() {
-		return bouclier;
-	}
-
 	public String getBouclier() {
 		return bouclier;
 	}
 
 	public void setBouclier(String bouclier) {
 		this.bouclier = bouclier;
+	}
+	
+	public String toString() {
+		return getBouclier();
 	}
 
 }

@@ -1,7 +1,9 @@
 package jeu;
 
 import java.util.*;
-//import jeu.Case;
+import jeu.Case;
+import jeu.Masse;
+
 
 public class Plateau {
 
@@ -56,7 +58,7 @@ public class Plateau {
 		jeuPlateau.set(6, new Masse());
 		// arme
 		jeuPlateau.set(12, new Masse());
-		jeuPlateau.set(15, new Arme());
+		jeuPlateau.set(15, new Masse());
 
 		// ennemis
 
