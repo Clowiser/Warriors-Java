@@ -2,6 +2,12 @@
 
 /*
 
+	//this.plateau.getListeCase().add(4, element);
+	//this.plateau.getListeCase().remove();
+	//System.out.println("Test" + this.plateau.getListeCase().get(13).toString());
+	//Case c = this.plateau.getListeCase().get(5);
+
+
  DEROULEMENT :
  1 - Java débute par le main qui est le début de tout 
  2 - le main apelle le Game, via son instance, avec sa méthode initGame() qui lance le "jeu" -> son menu principal
@@ -44,8 +50,11 @@ _______________________
 
 Un constructeur est, en programmation orientée objet, une fonction particulière appelée lors de l'instanciation. Elle permet d'allouer la mémoire nécessaire à l'objet et d'initialiser ses attributs.
 
-
 -> "this" fait référence à l'objet
+
+-> Getters - méthode pour obtenir la valeur d'un champ - les getters ont le modificateur d'accès public, ce qui signifie qu'ils sont disponibles depuis n'importe où dans le programme.
+
+-> Setters - méthode pour définir la valeur d'un champ - Le setter est une méthode à part entière.
 
 
 EXPLICATIONS :
@@ -61,6 +70,10 @@ EXPLICATIONS :
 		// je fais appel à ma méthode dans le menu qui est égal à l'instance de la classe Guerrier
 
 
+-> instanceof : 
+	est un mot-clé utilisé pour vérifier si une variable de référence contient ou non un type donné de référence d'objet
+	il est connu comme un opérateur de comparaison où l' instance est comparée au type renvoyant un booléen vrai ou faux, car en Java, nous n'avons pas de types de retour booléens 0 et 1
+	
  A FAIRE :
  
 - ajouter "Passer au joueur suivant" ou "case événement" quand le J1 a fini son tour (1 lancer de dés)

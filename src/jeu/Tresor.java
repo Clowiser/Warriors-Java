@@ -21,4 +21,10 @@ public class Tresor extends Case {
 		return "Tresor";
 	}
 
+	@Override
+	public void interaction(Personnage personnage) {
+		System.out.println("Vous êtes sur une case Trésor");
+		return;
+	}
+
 }

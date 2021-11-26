@@ -13,17 +13,26 @@ public class Plateau {
 		 initPlateau(); // appel du menu principal pour la création du game
 	 }
 	 
-	//getters
-		//pour récupérer la case passée en paramètre
-		/*public char getCase() { // prendre la case...
-			return 0; // ...retourne 0 - le programme s'est exécuté sans erreur.
-		}*/
+	//accesseurs
+	 public ArrayList<Case> getListeCase(){ 
+		 return jeuPlateau; // retourne l'entièreté de la liste de case
+	 }
+	 
+	//Lie la positionJoueur avec la case correspondante
+	 public Case getUneCase(int index){ // prendre une case avec en paramètre son index -> fait en sorte que la méthode accepte des chiffres extérieurs
+		 return jeuPlateau.get(index); // retourne une case => index
+	 }
+	 /* cette méthode est la même que dessus, cela me renvoie l'index de la case avec ce qu'elle correspond
+	 public Case idCasePlateau(int idCase) { //méthode avec la classe Case nommée prenant en paramètre int idCase donc l'index
+		return this.jeuPlateau.get(idCase); // retourne l'objet référence du jeuPlateau en prenant idCase
+	 }
+	 */
 	 
 	//méthodes
 	public void initPlateau() { //initation du tableau avec des cases vides et une case Start
 		 
 		 for (int i=0; i<20; i++){ // tableau de 64 cases + instance du plateau de jeu en dur.
-			 jeuPlateau.add(new EmptyCase()); // ajoute case vide (de index 1 à fin du plateau)
+			 jeuPlateau.add(new EmptyCase()); // ajoute case vide (de index 0 à fin du plateau tant que celle-ci n'est pas modifié)
 		 }
 		
 		 jeuPlateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
@@ -32,17 +41,21 @@ public class Plateau {
 		 //trésor
 		 jeuPlateau.set(1, new Tresor()); // ici on définie que Trésor est index 1
 		 jeuPlateau.set(4, new Tresor());
-		 jeuPlateau.set(8, new Tresor()); 
-		 jeuPlateau.set(6, new Tresor()); 
-		 jeuPlateau.set(12, new Tresor()); 
-		 jeuPlateau.set(15, new Tresor()); 
+		 
+		 //sort
+		 jeuPlateau.set(8, new Sort()); 
+		 jeuPlateau.set(6, new Sort()); 
+		 
+		 //arme
+		 jeuPlateau.set(12, new Arme()); 
+		 jeuPlateau.set(15, new Arme()); 
 		 
 		 //ennemis
-		 //ex : jeuPlateau.set(2, new Ennemi());
+
 		 //gobelin
-		 jeuPlateau.set(5, new Gobelin(6, 1));
-		 jeuPlateau.set(13, new Gobelin(9, 5));
-		 jeuPlateau.set(18, new Gobelin(5, 2));
+		 jeuPlateau.set(5, new Gobelin());
+		 jeuPlateau.set(13, new Gobelin());
+		 jeuPlateau.set(18, new Gobelin());
 		 
 		 //dragon
 		 jeuPlateau.set(2, new Dragon());
@@ -53,8 +66,6 @@ public class Plateau {
 		 jeuPlateau.set(10, new Sorciere());
 		 jeuPlateau.set(16, new Sorciere());
 		
-		 
-		//System.out.println(jeuPlateau);
 	 }
 	 
 	public void afficherCases() {
@@ -64,84 +75,5 @@ public class Plateau {
 	 public int size() { // = taille du tableau -> ce qu'il contient
 		 return jeuPlateau.size();
 	 }
-	 
-	 public ArrayList<Case> getListeCase(){
-		 return jeuPlateau;
-	 }
-	 
-	 //Lie ma position avec la case correspondante
-	 public Case idCasePlateau(int idCase) { //méthode avec la classe Case nommée prenant en paramètre int idCase donc l'index
-		return this.jeuPlateau.get(idCase); // retourne l'objet référence du jeuPlateau en prenant idCase
-	 }
-	 
-	//public Ennemi getEnnemi() {
-		//return 
-	 //}
-	 
-	 public void test() {
-		
-	 }
-
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 //Affichage d'un tableau en 2D pour illustrer avant de trouver la bonne méthode
-	 //Créer en 1D mais afficher en 2D modulo pour couper les lignes
-	 
-	 //attributs pour afficher un tableau en 2D - Exemple
-	 private int nbLig; // ligne
-	 private int nbCol; // colonne
-	 private char plateau[][]; // représentation du personnage sur le plateau []ligne + []colonne
-	 
-	 //Affichage d'un plateau - juste comme ça, besoin d'un visuel => c'est un autre objet
-	public Plateau(int n, int p) {
-			nbLig = n;
-			nbCol = p;
-			plateau = new char[nbLig][nbCol]; // = a un nouveau tableau de caractère
-			
-			for (int i=0; i<nbLig; i++){ // double boucle for car tableau à 2D
-				for(int j=0; j<nbCol; j++){
-					
-					plateau[i][j] = '_'; // on remplit le plateau de _ -> pour les emplacements ( _ = vide ; X = personnage ; E = ennemi ; O = objet ) 
-				}
-			}
-			
-		}
-		
-		//Méthodes
-		//afficher le plateau
-		public void afficherPlat() {
-			
-			System.out.println();
-			for (int i=0; i<nbLig; i++){
-				for(int j=0; j<nbCol; j++){
-					
-					System.out.print(" | " + plateau[i][j]); // affiche la plateau avec une | + emplacements et se répète de la longueur du tableau
-					
-				}
-				
-				System.out.println(" | "); // affiche la dernière | de chaque ligne
-			}
-			
-			System.out.println(); // saut de ligne à la fin du tableau
-			
-		}
-
-		public Case idCase(int i) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	 
 	
 }

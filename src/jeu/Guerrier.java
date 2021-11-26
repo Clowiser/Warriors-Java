@@ -1,6 +1,6 @@
 package jeu;
 
-//héritage - classe fille
+//héritage - classe fille de Personnage
 public class Guerrier extends Personnage {
 
 	//Attributs
@@ -30,18 +30,17 @@ public class Guerrier extends Personnage {
 			this.arme = arme;
 		}
 
-		
 		public void setBouclier(Bouclier bouclier) {
 			this.bouclier = bouclier;
 		}
 		
-		public String toString() {
+		/*public String toString() {
 			   return 
 		"Votre Guerrier s'apelle " + getNom() +
 		", son niveau de vie est de " + getNiveau() +
 		" et il dispose d'une force d'attaque de " + getForce() +
 		", possède " + bouclier + " et " + arme + " pour attaquer !";
-		}
+		}*/
 	   
 	//Instancier un objet, soit créer un objet => Guerrier Will = new Guerrier();
 }

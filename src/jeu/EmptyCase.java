@@ -8,4 +8,10 @@ public class EmptyCase extends Case{
 		return "EmptyCase";
 	}
 	   //par défaut il y a toujours un constructeur vide
+
+	@Override
+	public void interaction(Personnage personnage) {
+		System.out.println("Vous êtes sur une case vide");
+		return;
+	}
 }

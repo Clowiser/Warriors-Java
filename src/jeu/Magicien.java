@@ -16,8 +16,8 @@ public class Magicien extends Personnage {
 		this.sort = new Sort(sort);
 	}
 	
-	//Getters 
-	  public Philtre getPhiltre() {
+	//Getters - méthode pour obtenir la valeur d'un champ - les getters ont le modificateur d'accès public, ce qui signifie qu'ils sont disponibles depuis n'importe où dans le programme.
+	  public Philtre getPhiltre() { 
 			return this.philtre;
 		}
 	  
@@ -25,7 +25,7 @@ public class Magicien extends Personnage {
 			return sort;
 		}
 	 
-	 //Setters
+	 //Setters - méthode pour définir (ou redéfinir si une valeur à été initialisé) la valeur d'un champ
 	 public void setPhiltre(Philtre philtre) {
 			this.philtre = philtre;
 		}
@@ -35,12 +35,12 @@ public class Magicien extends Personnage {
 		}
 	 
 	 //méthodes
-	 public String toString() {
+	 /*public String toString() {
 		   return 
 	"Votre Magicien s'apelle " + getNom() +
 	", son niveau de vie est de " + getNiveau() +
 	" et il dispose d'une force d'attaque de " + getForce() +
 	", possède " + philtre + " et " + sort + " pour attaquer !";
-	}
+	}*/
 	
 }

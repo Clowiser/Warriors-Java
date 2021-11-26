@@ -19,13 +19,14 @@ public abstract class Personnage {
 		this(nom, 5, 5);
 	}
 	
-	public Personnage(String nom, int niveau, int force){
-		this.nom = nom;
+	//constructeurs commun aux personnages + sont en protected pour que les classes enfants utilise ce constructeur parent.
+	protected Personnage(String nom, int niveau, int force){
+		this.nom = nom; //this fait référence à l'objet concerné (Guerrier si Guerrier/Magicien si Magicien)
 		this.niveau = niveau;
 		this.force = force;
 	}
 
-	//Getters => prend l'information
+	//Getters => prend/récupère l'information
 	   public String getNom() {
 	       return nom;
 	   }
@@ -52,11 +53,11 @@ public abstract class Personnage {
 	   }
 	   
 	 //Je défini ma propre méthode toString() - ici, cela prendra uniquement les valeurs similaire de Guerrier et Magicien
-	   /*public String toString() {
+	  public String toString() {
 		   return 
 			   "Votre Personnage s'apelle " + this.nom +
 			   ", son niveau de vie est de " + this.niveau +
 			   " et il dispose d'une force d'attaque de " + this.force;
-		}*/
+		}
 	   
 }

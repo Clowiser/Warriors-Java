@@ -21,7 +21,7 @@ public class Menu {
 	public void afficherMenuPrincipal() {
 		
 		System.out.println("");
-		System.out.println("TEST au 24/11/21 - MENU");
+		System.out.println("TEST au 25/11/21 - MENU");
 		System.out.println("La Compagnie des Bras Cassés");
 		System.out.println("A vous de jouer !");
 		System.out.println("");
@@ -32,14 +32,11 @@ public class Menu {
 		
 	}
 	
-	
 	// affichage du plateau
 	public void afficherPlateau(Plateau plateau) {
 		System.out.println("");
 		System.out.println("Affichage du plateau de Dungeons & Dragons - lancer les dés pour commencer l'aventure !");
 		System.out.println("Infos : la taille du plateau est de " + plateau.size() + " cases.");
-		System.out.println("");
-		//System.out.println("- Appuyez sur 1 pour faire le premier jet de dés -");
 	}
 	
 	
@@ -139,6 +136,7 @@ public class Menu {
 		} while (isValide2 == false);
 
 		// choix sort et philtre - pas de choix
+		
 		String philtre = "un philtre de soin";
 		String sort = "un sort de boule de feu";
 

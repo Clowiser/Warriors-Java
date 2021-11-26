@@ -9,7 +9,13 @@ public class Sorciere extends Ennemi {
 	
 	public String toString() {
 		return
-				"Sorcière";
+			"Sorcière";
+	}
+
+	@Override
+	public void interaction(Personnage personnage) {
+		System.out.println("Vous êtes sur une case Sorcière");
+		return;
 	}
 	
 }

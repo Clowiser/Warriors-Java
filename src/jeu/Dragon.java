@@ -11,4 +11,10 @@ public class Dragon extends Ennemi {
 			"Dragon";
 	}
 
+	@Override
+	public void interaction(Personnage personnage) {
+		System.out.println("Vous êtes sur une case Dragon");
+		return;
+	}
+
 }

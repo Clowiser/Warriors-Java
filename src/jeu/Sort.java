@@ -1,11 +1,15 @@
 package jeu;
 
-public class Sort{
+public class Sort extends Case{
 	private String sort;
 
 	//constructeur
+	//public Sort() {
+		//this("sort par défaut");
+	//}
+	
 	public Sort() {
-		this("sort par défaut");
+		this("une Boule de Feu");
 	}
 	
 	public Sort(String sort){
@@ -14,5 +18,11 @@ public class Sort{
 	
 	public String toString() {
 		return sort;
+	}
+
+	@Override
+	public void interaction(Personnage personnage) {
+		System.out.println("Vous êtes sur une case Sort");
+		return;
 	}
 }
