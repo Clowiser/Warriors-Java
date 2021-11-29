@@ -46,6 +46,7 @@ public class Arme extends Case {
 			// récupérer le nombre de point d'attaque de l'arme pour ajouter à la force du Guerrier
 			// joueurGuerrier.forceGuerArme(this); // foncstion de trop dans le code, c'est égal à la méthode d'en dessous.
 			joueurGuerrier.setForce(joueurGuerrier.getForce() + this.attaque);
+			//je vais modifier la valeur de la force du guerrier donc setForce avec la formule (je prend la force du guerrier + l'attaque de l'arme dans la classe dnas laquelle je suis)
 		} else {
 			System.out.println("Vous n'êtes pas Guerrier, passez votre chemin !");
 		}

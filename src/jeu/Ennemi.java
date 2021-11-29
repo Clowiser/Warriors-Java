@@ -38,9 +38,8 @@ public abstract class Ennemi extends Case {
 
 
 	// METHODES
-	@Override
-	public String toString() { // renvoie une chaîne de caractères servant à décrire l'objet concerné.
-		return "Ennemi";
+	public void interaction(Personnage personnage) {
+	
 	}
 
 }

@@ -9,6 +9,6 @@ public class Masse extends Arme {
 	}
 
 	public String toString() { // ce qui va être retourner sur la case Masse
-		return "L'arme que vous trouvé est une " + this.getArme() + " et a une force d'attaque de " + this.getAttaque();
+		return "L'arme que vous trouvez est une " + this.getArme() + " et a une force d'attaque de " + this.getAttaque();
 	}
 }

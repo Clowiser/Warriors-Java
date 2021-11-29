@@ -79,12 +79,8 @@ public class Menu {
 			;
 		} while (!isValide2);
 
-		// choix arme et bouclier - pas de choix
-
 		// instance + stock des données
-		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les
-													// informations entrées par l'utilisateur !!!!
-
+		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 		return joueurG;
 
 	}
@@ -131,12 +127,8 @@ public class Menu {
 			;
 		} while (isValide2 == false);
 
-		// choix sort et philtre - pas de choix
-
 		// stock des données
-		joueurM = new Magicien(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les
-													// informations entrées par l'utilisateur !!!!
-
+		joueurM = new Magicien(nom, niveau, force); // instance et stockage des valeurs
 		return joueurM;
 	}
 

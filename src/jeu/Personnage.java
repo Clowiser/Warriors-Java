@@ -8,6 +8,8 @@ public abstract class Personnage {
 	private String nom;
 	private int niveau;
 	private int force;
+	//private boolean fuite;
+	//private boolean combat;
 
 	// Constructeurs
 	protected Personnage() { // obligatoire : par défaut il y a toujours un constructeur vide
@@ -50,11 +52,5 @@ public abstract class Personnage {
 	public void setForce(int force) {
 		this.force = force;
 	}
-
-	// METHODES
-	// Je défini ma propre méthode toString() - ici, cela prendra uniquement les valeurs similaire de Guerrier et Magicien
-	/*public String toString() {
-		return "Votre Personnage s'apelle " + this.nom + ", son niveau de vie est de " + this.niveau + " et il dispose d'une force d'attaque de " + this.force;
-	}*/
 
 }

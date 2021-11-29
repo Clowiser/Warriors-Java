@@ -7,7 +7,7 @@ public class FireBall extends Sort {
 	}
 	
 	public String toString() { // ce qui va être retourner sur la case Masse
-		return "Le sort que vous trouvé est une " + this.getSort() + " et a une force d'attaque de " + this.getAttaque();
+		return "Le sort que vous trouvez est une " + this.getSort() + " et a une force d'attaque de " + this.getAttaque();
 	}
 
 }

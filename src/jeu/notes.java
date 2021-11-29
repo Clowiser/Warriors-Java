@@ -1,3 +1,5 @@
+//import java.util.Collections;
+
 // NOTES :
 
 /*
@@ -109,4 +111,14 @@ EXPLICATIONS :
 
 	// objectifs :
 	// fin du jeu : arriver au bout des 10x10 cases
-*/
+	 
+	  //Méthode permettant de mélanger le plateau pour en avoir un différent à chaque partie lancée.
+   public void swap(){
+        for (int i=0;i<100;i++) {
+            int firstIndex = (int) ((Math.random() * 20) + 1);
+            int secondIndex = (int) ((Math.random() * 20) + 1);
+            Collections.swap(jeuPlateau, firstIndex, secondIndex);
+        }
+    } 
+	  
+	 */

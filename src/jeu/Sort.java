@@ -18,15 +18,6 @@ public class Sort extends Case {
 		return sort;
 	}
 	
-	//Getters
-	public String getSort() {
-		return sort;
-	}
-
-	public int getAttaque() {
-		return attaque;
-	}
-	
 	//Setters
 	public void setSort(String sort) {
 		this.sort = sort;
@@ -36,13 +27,25 @@ public class Sort extends Case {
 		this.attaque = attaque;
 	}
 	
+	//Getters
+	public String getSort() {
+		return sort;
+	}
+
+	public int getAttaque() {
+		return attaque;
+	}
+	
 	@Override
 	public void interaction(Personnage personnage) {
-		System.out.println("Vous êtes sur une case Sort");
-		/*
-		 * if { String magicien ="magicien"; System.out.println("Magicien, test !");
-		 * return magicien; }
-		 */
+		if (personnage instanceof Magicien) {
+			Magicien joueurMagicien = (Magicien) personnage; // cast -> Magicien
+			System.out.println("Vous êtes un Magicien, prenez " + getSort() + " pour récupérer " + this.getAttaque()
+					+ " d'attaque ! ");
+			joueurMagicien.setForce(joueurMagicien.getForce() + this.attaque);
+		} else {
+			System.out.println("Vous n'êtes pas Magicien, passez votre chemin !");
+		}
 		return;
 	}
 }
