@@ -25,7 +25,7 @@ public class Game {
 	Personnage selectPersonnage;
 	Combat combat;
 
-	// constructeurs -> fonction appel√©e lors de l'instanction d'objet
+	// constructeurs -> fonction appelÈe lors de l'instanction d'objet
 	public Game() {
 		this.plateau = new Plateau();
 		this.guerrierListe = new ArrayList<>();
@@ -35,17 +35,17 @@ public class Game {
 		this.combat = new Combat();
 	}
 
-	// M√©thodes
+	// MÈthodes
 	// MENUS
 	// menu principal du jeu (affichage des directives dans le menu)
 	public void initGame() {
 		boolean isRunning = false;
 
-		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = oppos√© de la d√©claration (si isRunning = false alors !isRunning = true)
+		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = opposÈ de la dÈclaration (si isRunning = false alors !isRunning = true)
 
-			menu.afficherMenuPrincipal(); // appel de la m√©thode afficherMenuPrincipal()
+			menu.afficherMenuPrincipal(); // appel de la mÈthode afficherMenuPrincipal()
 
-			int choixMenu = menu.getIntResult(""); // appel de la fonction qui permet le scanner clavier
+			int choixMenu = menu.entreeClavier(""); // appel de la fonction qui permet le scanner clavier
 
 			switch (choixMenu) {
 			case 1:
@@ -57,7 +57,7 @@ public class Game {
 				break;
 
 			case 3:
-				System.out.println("Vous avez quitt√© le jeu Warrios Game. A bient√¥t pour de nouvelles aventures !");
+				System.out.println("Vous avez quittÈ le jeu Warrios Game. A bient√¥t pour de nouvelles aventures !");
 				isRunning = true;
 				break;
 
@@ -69,12 +69,12 @@ public class Game {
 
 	}
 
-	// Menu du jeu : lancer les d√©s - avancer - passer joueur suivant
+	// Menu du jeu : lancer les dÈs - avancer - passer joueur suivant
 	public void menuJeu() {
 
-		System.out.println("1 - Lancer le d√©s - 2 - Quitter la partie : retour au menu principal - 3 clearPerso");
+		System.out.println("1 - Lancer le dÈs - 2 - Quitter la partie : retour au menu principal - 3 clearPerso");
 
-		int choix = menu.getIntResult("");
+		int choix = menu.entreeClavier("");
 
 		// faire choix entre 1 ou 2 ou 3
 		switch (choix) {
@@ -86,12 +86,12 @@ public class Game {
 				System.out.println("");
 				menuJeu();
 				// e.printStackTrace(); // affiche l'erreur en "rouge" - erreur exception
-				// essaie lancerDes() + attrape l'erreur cr√©√© en classe, pour afficher le message not√© dans la classe (via getMessage()) soit en exception directement
+				// essaie lancerDes() + attrape l'erreur crÈÈ en classe, pour afficher le message notÈ dans la classe (via getMessage()) soit en exception directement
 			}
 			break;
 
 		case 2:
-			System.out.println("Vous avez quitt√© la partie - retour au menu principal");
+			System.out.println("Vous avez quittÈ la partie - retour au menu principal");
 			System.out.println("");
 			initGame();
 			break;
@@ -100,30 +100,30 @@ public class Game {
 			clearPerso();
 
 		default:
-			System.out.println("Erreur s√©lection - menuJeu()");
+			System.out.println("Erreur sÈlection - menuJeu()");
 			break;
 
 		}
 	}
 
-	// Menu cr√©ation personnages
+	// Menu crÈation personnages
 	public void createPerso() {
 		int choix = 0;
 
 
 		choix = menu.entreeClavier(
-				"Cr√©er son personnage : 1 pour Guerrier - 2 pour Magicien - 3 D√©marrer la partie - 4 R√©capitulatif des personnages - 5 Quitter la cr√©ation de personnage : retour au menu principal ");
+				"CrÈer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 DÈmarrer la partie - 4 RÈcapitulatif des personnages - 5 Quitter la crÈation de personnage : retour au menu principal ");
 
 
 		 switch (choix) {
 		case 1:
 			// Appel de la fonction createGuerrier() de l'instance menu de la classe Guerrier
-			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est r√©cup√©rer dans le menu via la m√©thode createGuerrier()
+			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est rÈcupÈrer dans le menu via la mÈthode createGuerrier()
 			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
 			selectPersonnage = joueurG;
 			/*
-			 * l'utilisateur ex√©cute la cr√©ation de persos (Guerrier/magicien) puis ce
-			 * dernier s'ajoute dans la liste, puis je r√©cup√®re le personnage cr√©√© pour
+			 * l'utilisateur exÈcute la crÈation de persos (Guerrier/magicien) puis ce
+			 * dernier s'ajoute dans la liste, puis je rÈcup√®re le personnage crÈÈ pour
 			 * jouer
 			 */
 			break;
@@ -143,19 +143,19 @@ public class Game {
 			break;
 
 		case 5:
-			System.out.println("Vous avez quitt√© la cr√©ation de personnage - retour au menu principal");
+			System.out.println("Vous avez quittÈ la crÈation de personnage - retour au menu principal");
 			menu.afficherMenuPrincipal();
 			
 			break;
 
 		default:
-			System.out.println("Erreur cr√©ation personnages");
+			System.out.println("Erreur crÈation personnages");
 			break;
 		}
 
 	}
 	
-	// garder le m√™me personnage ou recr√©er un nouveau personnage
+	// garder le m√™me personnage ou recrÈer un nouveau personnage
 	public void clearPerso() {
 		System.out.println(
 				"Voulez vous recommencer la partie avec votre personnage actuel ? 1 oui - 2 non retour au menu principal ");
@@ -174,24 +174,24 @@ public class Game {
 			if (magicienListe.size() >= 1) {
 				magicienListe.remove(0);
 			}
-			System.out.println("Votre personnage a √©t√© supprim√© - retour au menu principal");
+			System.out.println("Votre personnage a ÈtÈ supprimÈ - retour au menu principal");
 			initGame();
 			break;
 
 		default:
-			System.out.println("Erreur s√©lection");
+			System.out.println("Erreur sÈlection");
 			break;
 
 		}
 
 	}
 
-	// afficher la liste des personnages cr√©√©s
+	// afficher la liste des personnages crÈÈs
 	public void afficherListe() {
 
-		// liste des guerriers cr√©√©s
+		// liste des guerriers crÈÈs
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
-			System.out.println("Aucun personnage - Veuillez cr√©er votre personnage pour commencer l'Aventure !");
+			System.out.println("Aucun personnage - Veuillez crÈer votre personnage pour commencer l'Aventure !");
 			System.out.println("");
 			createPerso();
 		}
@@ -200,22 +200,22 @@ public class Game {
 		// quitte le jeu
 		if (guerrierListe.size() >= 1 || magicienListe.size() >= 1) {
 
-			// liste des guerriers cr√©√©s
-			System.out.println("- R√©capitulatif de vos guerriers : ");
+			// liste des guerriers crÈÈs
+			System.out.println("- RÈcapitulatif de vos guerriers : ");
 			System.out.println("");
-			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " √©l√©ment(s)");
+			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " ÈlÈment(s)");
 			System.out.println("");
 			for (int i = 0; i < guerrierListe.size(); i++) {
-				System.out.println(guerrierListe.get(i)); // toString() est pr√©sent par d√©faut, l√† je d√©fini moi-m√™me ma
-															// m√©thode toString() dans Personnage pour annuler cet
-															// affichage par d√©faut (blabla@1d25g5qf2)
+				System.out.println(guerrierListe.get(i)); // toString() est prÈsent par dÈfaut, l√† je dÈfini moi-m√™me ma
+															// mÈthode toString() dans Personnage pour annuler cet
+															// affichage par dÈfaut (blabla@1d25g5qf2)
 			}
 			System.out.println("");
 
-			// liste des magiciens cr√©√©s
-			System.out.println("- R√©capitulatif de vos magiciens : ");
+			// liste des magiciens crÈÈs
+			System.out.println("- RÈcapitulatif de vos magiciens : ");
 			System.out.println("");
-			System.out.println("La liste de Magicien contient " + magicienListe.size() + " √©l√©ment(s)");
+			System.out.println("La liste de Magicien contient " + magicienListe.size() + " ÈlÈment(s)");
 			System.out.println("");
 			for (int i = 0; i < magicienListe.size(); i++) {
 				System.out.println(magicienListe.get(i));
@@ -226,11 +226,11 @@ public class Game {
 
 	}
 	// DEMARRAGE DE LA PARTIE
-	// d√©marrer
+	// dÈmarrer
 
 	public void start() {
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
-			System.out.println("Veuillez cr√©er votre personnage pour commencer l'Aventure !");
+			System.out.println("Veuillez crÈer votre personnage pour commencer l'Aventure !");
 			System.out.println("");
 			createPerso();
 		}
@@ -243,16 +243,16 @@ public class Game {
 		return;
 	}
 
-	// lancer les d√©s
+	// lancer les dÈs
 	public void lancerDes() throws PersonnageHorsPlateauException {
 
-		// avancer le joueur : r√©sultat de l'avanc√©e du joueur sur le plateau +
+		// avancer le joueur : rÈsultat de l'avancÈe du joueur sur le plateau +
 		// placement sur plateau
 		if (positionJoueur <= plateau.size()) {
 			scoreDes = nbDe.lancerDe();
-			positionJoueur += scoreDes; // additionne les deux var et stocke le r√©sultat dans var gauche ->
+			positionJoueur += scoreDes; // additionne les deux var et stocke le rÈsultat dans var gauche ->
 										// positionJoueur + resultatDe = positionJoueur
-			System.out.println("Le r√©sultat de votre lancer de d√©s est : " + scoreDes + ".");
+			System.out.println("Le rÈsultat de votre lancer de dÈs est : " + scoreDes + ".");
 			System.out.println("");
 			avancer();
 			menuJeu();
@@ -269,17 +269,17 @@ public class Game {
 	// avancer
 	public void avancer() throws PersonnageHorsPlateauException {
 		// throws (avec S ) = permet de relayer le traitement de l'exception √† la
-		// m√©thode appelante
+		// mÈthode appelante
 
 		int direction;
 
-		direction = menu.getIntResult("1 - Faites avancer votre personnage de " + scoreDes + " cases."); // direction = menu.nomfonction();
+		direction = menu.entreeClavier("1 - Faites avancer votre personnage de " + scoreDes + " cases."); // direction = menu.nomfonction();
 
 		// faire choix
 		switch (direction) {
 		case 1:
 			// plateau.afficher();
-			System.out.println("Votre personnage a avanc√© de " + scoreDes + " cases et est maintenant en position : "
+			System.out.println("Votre personnage a avancÈ de " + scoreDes + " cases et est maintenant en position : "
 					+ positionJoueur);
 			System.out.println("");
 			
@@ -290,13 +290,13 @@ public class Game {
 				System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
 				positionJoueur = 0; // remise √† 0 de la position du joueur
 				System.out.println("");
-				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de d√©clencher une erreur
+				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de dÈclencher une erreur
 			}
-			plateau.getTypeCase(positionJoueur); // par la position Joueur, je "r√©cup√®re" ce que la case contient = le type
+			plateau.getTypeCase(positionJoueur); // par la position Joueur, je "rÈcup√®re" ce que la case contient = le type
         
 			// System.out.println(plateau.getTypeCase(positionJoueur));
 
-			plateau.interaction(positionJoueur, selectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "r√©cup√®re" le type de case pour int√©rargir
+			plateau.interaction(positionJoueur, selectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "rÈcup√®re" le type de case pour intÈrargir
 
 
 		}

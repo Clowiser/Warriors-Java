@@ -6,7 +6,7 @@ public class Bouclier extends Case{
 
 	// constructeur
 	public Bouclier() {
-		this("bouclier par dÃ©faut", 5);
+		this("bouclier par défaut", 5);
 	}
 
 	public Bouclier(String bouclier, int defense) {
@@ -50,8 +50,8 @@ public class Bouclier extends Case{
 		
 	}
 	
-	public String toString() {
-		return getBouclier();
-	}
+	//public String toString() {
+		//return getBouclier();
+	//}
 
 }

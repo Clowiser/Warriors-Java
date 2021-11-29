@@ -8,10 +8,14 @@ public class Guerrier extends Personnage {
 	private Bouclier bouclier;
 
 	// Constructeurs communs à tous les guerriers
-	public Guerrier() {
-		super("Pyrobarbare", 5, 5); // appel le constructeur du parent avec les attributs
+	public Guerrier(String nom, int niveau, int force) {
+		super(nom, niveau, force); // appel le constructeur du parent avec les attributs
 		this.arme = new Masse(); // référence à arme de la classe Arme instance Masse
 		this.bouclier = new Fer();
+	}
+	
+	public Guerrier() {
+		super("Pyrobarbare", 5, 5);
 	}
 
 	// Getters => prend l'information

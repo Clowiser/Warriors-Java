@@ -39,14 +39,14 @@ public abstract class Arme extends Case {
 	public void interaction(Personnage personnage) {
 		if (personnage instanceof Guerrier) {
 			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelé joueurGuerrier =
-			System.out.println("Vous êtes un Guerrier, prenez " + getArme() + " pour récupérer " + this.getAttaque()
+			System.out.println("Vous �tes un Guerrier, prenez " + getArme() + " pour r�cup�rer " + this.getAttaque()
 					+ " d'attaque ! ");
 			// récupérer le nombre de point d'attaque de l'arme pour ajouter à la force du Guerrier
-			// joueurGuerrier.forceGuerArme(this); // foncstion de trop dans le code, c'est égal à la méthode d'en dessous.
+			// joueurGuerrier.forceGuerArme(this); // fonction de trop dans le code, c'est égal à la méthode d'en dessous.
 			joueurGuerrier.setForce(joueurGuerrier.getForce() + this.attaque);
 			//je vais modifier la valeur de la force du guerrier donc setForce avec la formule (je prend la force du guerrier + l'attaque de l'arme dans la classe dnas laquelle je suis)
 		} else {
-			System.out.println("Vous n'êtes pas Guerrier, passez votre chemin !");
+			System.out.println("Vous n'�tes pas Guerrier, passez votre chemin !");
 		}
 
 		
