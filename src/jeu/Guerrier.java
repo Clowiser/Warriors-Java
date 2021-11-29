@@ -43,10 +43,9 @@ public class Guerrier extends Personnage {
 	}
 
 	
-	/*public String toString() {
+	public String toString() {
 		return "Votre Guerrier s'apelle " + getNom() + ", son niveau de vie est de " + getNiveau()
-				+ " et il dispose d'une force d'attaque de " + getForce() + ", possède " + bouclier + " et " + arme
-				+ " pour attaquer !";
-	}*/
+				+ " et il dispose d'une force d'attaque de " + getForce();
+	}
 
 }
