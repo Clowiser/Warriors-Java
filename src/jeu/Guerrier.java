@@ -38,11 +38,11 @@ public class Guerrier extends Personnage {
 	}
 
 	// force du guerrier + force de l'arme selon arme de la classe Arme
-	public void forceGuerArme(Arme arme) {
-		setForce(this.getForce() + arme.getAttaque());
-	}
+	/*
+	 * public void forceGuerArme(Arme arme) { setForce(this.getForce() +
+	 * arme.getAttaque()); }
+	 */
 
-	
 	public String toString() {
 		return "Votre Guerrier s'apelle " + getNom() + ", son niveau de vie est de " + getNiveau()
 				+ " et il dispose d'une force d'attaque de " + getForce();

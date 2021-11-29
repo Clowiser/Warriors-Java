@@ -2,35 +2,35 @@ package jeu;
 
 import java.util.*;
 //import toute la bibliothèque java.util dont :
-	//import java.util.ArrayList;
-	//import java.util.Scanner;
+//import java.util.ArrayList;
+//import java.util.Scanner;
 
 public class Menu {
-	
-	//attributs
+
+	// attributs
 	Scanner clavier = new Scanner(System.in); // lance la saisie clavier
-	
+
 	public int entreeClavier(String s) {
 		System.out.println(s);
 		return clavier.nextInt();
 	}
-	
-	//méthodes
-	//menu principal
+
+	// méthodes
+	// menu principal
 	public void afficherMenuPrincipal() {
-		
+
 		System.out.println("");
-		System.out.println("TEST au 25/11/21 - MENU");
+		System.out.println("TEST au 29/11/21 - MENU");
 		System.out.println("La Compagnie des Bras Cassés");
 		System.out.println("A vous de jouer !");
 		System.out.println("");
-		
+
 		System.out.println("1 - Créez votre personnage");
-		System.out.println("2 - Démarrer la partie"); 
+		System.out.println("2 - Démarrer la partie");
 		System.out.println("3 - Quitter le jeu");
-		
+
 	}
-	
+
 	// affichage du plateau
 	public void afficherPlateau(Plateau plateau) {
 		System.out.println("");
@@ -38,8 +38,8 @@ public class Menu {
 		System.out.println("");
 		System.out.println("Infos : la taille du plateau est de " + plateau.size() + " cases.");
 	}
-	
-	//guerrier
+
+	// guerrier
 	public Guerrier createGuerrier() {
 		// début d'instance...
 		Guerrier joueurG;
@@ -61,14 +61,15 @@ public class Menu {
 			} else {
 				System.out.println("Veuillez entrer un chiffre entre 5 et 10");
 			}
-			
-		} while (!isValide); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct soit = false, boucle fait a nouveau le choix
+
+		} while (!isValide); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct
+								// soit = false, boucle fait a nouveau le choix
 
 		// choix force d'attaque
 		boolean isValide2 = false;
 		int force;
 		do {
-			force =  entreeClavier("Choisissez la force d'attaque de votre Guerrier - entre 5 et 10 :");
+			force = entreeClavier("Choisissez la force d'attaque de votre Guerrier - entre 5 et 10 :");
 			if (force >= 5 && force <= 10) {
 				System.out.println(force);
 				isValide2 = true;
@@ -79,19 +80,15 @@ public class Menu {
 		} while (!isValide2);
 
 		// choix arme et bouclier - pas de choix
-		
-	
+
 		// instance + stock des données
-		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
-		
-		System.out.println("Votre Guerrier s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + " ! ");	
-		System.out.println("");
-		
+		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les
+													// informations entrées par l'utilisateur !!!!
+
 		return joueurG;
-	
+
 	}
 
-	
 	// choix Magicien
 	public Magicien createMagicien() {
 		// début d'instance...
@@ -99,7 +96,7 @@ public class Menu {
 
 		// choix nom
 		System.out.println("Nommez votre Magicien : ");
-		
+
 		String nom = clavier.next();
 		System.out.println(nom);
 
@@ -116,7 +113,8 @@ public class Menu {
 				System.out.println("Veuillez entrer un chiffre entre 5 et 10");
 			}
 			;
-		} while (isValide == false); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas correct, soit = false, boucle fait a nouveau le choix
+		} while (isValide == false); // la comparaison !!! == // Tant que le choix de l'utilisateur n'est pas
+										// correct, soit = false, boucle fait a nouveau le choix
 
 		// choix force d'attaque
 		boolean isValide2 = false;
@@ -134,15 +132,12 @@ public class Menu {
 		} while (isValide2 == false);
 
 		// choix sort et philtre - pas de choix
-		
-		// stock des données
-		joueurM = new Magicien(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
 
-		System.out.println("Votre Magicien s'apelle " + nom + ", son niveau de vie est de " + niveau + " et il dispose d'une force d'attaque de " + force + "! ");	
-		System.out.println("");
-		
+		// stock des données
+		joueurM = new Magicien(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les
+													// informations entrées par l'utilisateur !!!!
+
 		return joueurM;
 	}
 
-			
 }

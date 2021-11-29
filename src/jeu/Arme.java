@@ -32,7 +32,7 @@ public class Arme extends Case {
 	public void setAttaque(int attaque) {
 		this.attaque = attaque;
 	}
-	
+
 	public String toString() {
 		return arme;
 	}
@@ -40,13 +40,15 @@ public class Arme extends Case {
 	@Override
 	public void interaction(Personnage personnage) {
 		if (personnage instanceof Guerrier) {
-			Guerrier joueurGuerrier = (Guerrier)personnage; //cast -> Guerrier appelé joueurGuerrier = 
-			  System.out.println("Vous êtes un Guerrier, prenez " + ((this instanceof Masse)) + " pour récupérer " + this.getAttaque() + "! ");
-			  //récupérer le nombre de point d'attaque de l'arme pour ajouter à la force du Guerrier
-			  joueurGuerrier.forceGuerArme(this);
-		}else{
-            System.out.println("Vous n'êtes pas Guerrier, passez votre chemin !");
-        }
+			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelé joueurGuerrier =
+			System.out.println("Vous êtes un Guerrier, prenez " + getArme() + " pour récupérer " + this.getAttaque()
+					+ " d'attaque ! ");
+			// récupérer le nombre de point d'attaque de l'arme pour ajouter à la force du Guerrier
+			// joueurGuerrier.forceGuerArme(this); // foncstion de trop dans le code, c'est égal à la méthode d'en dessous.
+			joueurGuerrier.setForce(joueurGuerrier.getForce() + this.attaque);
+		} else {
+			System.out.println("Vous n'êtes pas Guerrier, passez votre chemin !");
+		}
 	}
 	// c'est dans l'interaction du personnage (de la classe Personnage) que si le
 	// personnage est un Guerrier, s'il tombe sur la case de l'arme, il peut
