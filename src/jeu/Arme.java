@@ -30,7 +30,7 @@ public abstract class Arme extends Case {
 	public void setAttaque(int attaque) {
 		this.attaque = attaque;
 	}
-	
+
 	public String toString() {
 		return arme;
 	}
@@ -38,28 +38,23 @@ public abstract class Arme extends Case {
 	@Override
 	public void interaction(Personnage personnage) {
 		if (personnage instanceof Guerrier) {
-			Guerrier joueurGuerrier = (Guerrier)personnage; //cast -> Guerrier appelÈ joueurGuerrier = 
-			  System.out.println("Vous Ítes un Guerrier, prenez " + ((this instanceof Masse)? " cette massue" : " cette ÈpÈe"));
-			  Scanner scanner = new Scanner(System.in);
-			  int weapon = scanner.nextInt();
-			  switch(weapon) {
-			  case 1:
-				  joueurGuerrier.forceGuerArme(this);
-				  System.out.println("Votre attaque est maintenant de " + joueurGuerrier.getForce());
-				  break;
-			  case 2:
-				  break;
-			  }
-			  //rÈcupÈrer le nombre de point d'attaque de l'arme pour ajouter ‡ la force du Guerrier
-			
-		}else{
-            System.out.println("Vous n'Ítes pas Guerrier, passez votre chemin !");
-        }
+			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appel√© joueurGuerrier =
+			System.out.println("Vous √™tes un Guerrier, prenez " + getArme() + " pour r√©cup√©rer " + this.getAttaque()
+					+ " d'attaque ! ");
+			// r√©cup√©rer le nombre de point d'attaque de l'arme pour ajouter √† la force du Guerrier
+			// joueurGuerrier.forceGuerArme(this); // foncstion de trop dans le code, c'est √©gal √† la m√©thode d'en dessous.
+			joueurGuerrier.setForce(joueurGuerrier.getForce() + this.attaque);
+			//je vais modifier la valeur de la force du guerrier donc setForce avec la formule (je prend la force du guerrier + l'attaque de l'arme dans la classe dnas laquelle je suis)
+		} else {
+			System.out.println("Vous n'√™tes pas Guerrier, passez votre chemin !");
+		}
+
+		
 	}
 	
-	//+ " pour rÈcupÈrer " + this.getAttaque() + "! ")
+	//+ " pour r√©cup√©rer " + this.getAttaque() + "! ")
 	// c'est dans l'interaction du personnage (de la classe Personnage) que si le
 	// personnage est un Guerrier, s'il tombe sur la case de l'arme, il peut
-	// intÈrargir avec elle.
+	// int√©rargir avec elle.
 
 }
