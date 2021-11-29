@@ -5,10 +5,6 @@ public class Sort extends Case {
 	private int attaque;
 
 	// constructeur
-	public Sort() {
-		this("sort par défaut", 5);
-	}
-
 	public Sort(String sort, int attaque) {
 		this.sort = sort;
 		this.attaque = attaque;

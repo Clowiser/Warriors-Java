@@ -6,7 +6,7 @@ public class FireBall extends Sort {
 		super("Boule de feu", 3);
 	}
 	
-	public String toString() { // ce qui va être retourner sur la case Masse
+	public String toString() { // ce qui va ï¿½tre retourner sur la case Masse
 		return "Le sort que vous trouvez est une " + this.getSort() + " et a une force d'attaque de " + this.getAttaque();
 	}
 

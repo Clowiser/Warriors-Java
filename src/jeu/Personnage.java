@@ -12,13 +12,7 @@ public abstract class Personnage {
 	//private boolean combat;
 
 	// Constructeurs
-	protected Personnage() { // obligatoire : par défaut il y a toujours un constructeur vide
-		this("personnage par défaut");
-	}
 
-	protected Personnage(String nom) {
-		this(nom, 5, 5);
-	}
 
 	// constructeurs commun aux personnages + sont en protected pour que les classes enfants utilisent ce constructeur parent.
 	protected Personnage(String nom, int niveau, int force) {

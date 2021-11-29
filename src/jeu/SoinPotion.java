@@ -6,7 +6,7 @@ public class SoinPotion extends Philtre {
 		super("Potion de soin", 3);
 	}
 	
-	public String toString() { // ce qui va être retourner sur la case Masse
+	public String toString() { // ce qui va ï¿½tre retourner sur la case Masse
 		return "Le philtre que vous trouvez est une " + this.getPhiltre() + " et a une force d'attaque de " + this.getPointVie();
 	}
 

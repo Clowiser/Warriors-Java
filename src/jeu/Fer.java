@@ -6,10 +6,10 @@ public class Fer extends Bouclier {
 	public Fer(){
 		super("Fer", 5); // appel le constructeur du parent avec les attributs
 	}
-
-	public String toString() { // ce qui va être retourner sur la case Masse
+  
+	public String toString() { // ce qui va ï¿½tre retourner sur la case Masse
 		   return 
-			   "Le bouclier que vous trouvez est de type " + this.getBouclier() + " et a une défense de " + this.getDefense();
+			   "Le bouclier que vous trouvez est de type " + this.getBouclier() + " et a une dï¿½fense de " + this.getDefense();
 		}
 
 }
