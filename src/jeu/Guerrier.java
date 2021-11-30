@@ -1,17 +1,19 @@
 package jeu;
 
-//hÃ©ritage - classe fille de Personnage
+//héritage - classe fille de Personnage
 public class Guerrier extends Personnage {
 
 	// Attributs
 	private Masse arme;
 	private Bouclier bouclier;
+	private int armure;
 
-	// Constructeurs communs Ã  tous les guerriers
+	// Constructeurs communs à tous les guerriers
 	public Guerrier(String nom, int niveau, int force) {
 		super(nom, niveau, force); // appel le constructeur du parent avec les attributs
-		this.arme = new Masse(); // rÃ©fÃ©rence Ã  arme de la classe Arme instance Masse
+		this.arme = new Masse(); // référence à  arme de la classe Arme instance Masse
 		this.bouclier = new Fer();
+		this.armure = 5;
 	}
 	
 	public Guerrier() {
@@ -26,14 +28,22 @@ public class Guerrier extends Personnage {
 	public Bouclier getBouclier() {
 		return this.bouclier;
 	}
+	
+	public int getArmure() {
+		return armure;
+	}
 
-	// Setters => renvoie et rÃ©utiliser l'information
+	// Setters => renvoie et réutiliser l'information
 	public void setArme(Masse arme) {
 		this.arme = arme;
 	}
 
 	public void setBouclier(Fer bouclier) {
 		this.bouclier = bouclier;
+	}
+	
+	public void setArmure(int armure) {
+		this.armure = armure;
 	}
 
 	// force du guerrier + force de l'arme selon arme de la classe Arme
@@ -44,7 +54,7 @@ public class Guerrier extends Personnage {
 
 	public String toString() {
 		return "Votre Guerrier s'apelle " + getNom() + ", son niveau de vie est de " + getVie()
-				+ " et il dispose d'une force d'attaque de " + getForce();
+				+ " et il dispose d'une force d'attaque de " + getForce() + " ainsi que d'une défense de " + getArmure() + " vous donnant une protection !";
 
 	}
 

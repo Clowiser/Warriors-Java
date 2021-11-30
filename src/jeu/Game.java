@@ -106,10 +106,8 @@ public class Game {
 	public void createPerso() {
 		int choix = 0;
 
-
 		choix = menu.entreeClavier(
 				"Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
-
 
 		 switch (choix) {
 		case 1:
@@ -151,7 +149,7 @@ public class Game {
 
 	}
 	
-	// garder le mÃªme personnage ou recréer un nouveau personnage
+	// garder le même personnage ou recréer un nouveau personnage
 	public void clearPerso() {
 		System.out.println(
 				"Voulez vous recommencer la partie avec votre personnage actuel ? 1 oui - 2 non retour au menu principal ");
@@ -202,7 +200,7 @@ public class Game {
 			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)");
 			System.out.println("");
 			for (int i = 0; i < guerrierListe.size(); i++) {
-				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, lÃ  je défini moi-mÃªme ma
+				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, lÃ  je défini moi-même ma
 															// méthode toString() dans Personnage pour annuler cet
 															// affichage par défaut (blabla@1d25g5qf2)
 			}
@@ -313,7 +311,7 @@ public class Game {
 
 		case 9:
 			System.out.println("Vous prenez la fuite !"); 
-			fuite(position);
+			//fuite(position);
 			break;
 
 		default:
@@ -322,11 +320,11 @@ public class Game {
 		}
 	}
 	
-	public void fuite(int random) {
+	/*public void fuite(int random) {
         int nouvellePositionJoueur = position - random;
         position = nouvellePositionJoueur;
         System.out.println("Vous reculez de  " + random + " case(s).");
         System.out.println("");
-    }
+    }*/
 
 }

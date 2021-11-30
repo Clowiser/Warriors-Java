@@ -86,6 +86,9 @@ EXPLICATIONS :
 -> cast : forcer le compilateur à considérer une variable comme étant d’un type qui n’est pas le type déclaré ou le type réel de la variable.
  Le transtypage (ou cast) est la conversion d'une expression d'un certain type en une expression d'un autre type.
  
+ -> Class abstraite : 
+ Permet de relier plusieurs points communs entre une super classe
+ 
  
  A FAIRE :
  
@@ -117,6 +120,8 @@ EXPLICATIONS :
 	// objectifs :
 	// fin du jeu : arriver au bout des 10x10 cases
 
+
+M�thodes :
 	 
 	  //Méthode permettant de mélanger le plateau pour en avoir un différent à chaque partie lancée.
    public void swap(){
@@ -126,14 +131,5 @@ EXPLICATIONS :
             Collections.swap(jeuPlateau, firstIndex, secondIndex);
         }
     } 
-    
-     //if ((this.getForce() > 0) && (this.getNiveau() > 0)) {
-	            //System.out.println(this.getNom() + ": Si tu le prends comme �a " + personnage.getNom() + ", je t'attaque avec " + this.getForce() + " point(s) de force!");
-	            //personnage.setNiveau(personnage.getNiveau() - this.getForce());
-	        //}
-	        //if (this.getNiveau() <=0 ){
-	           //plateau.setCase(personnage.getPosition(), new EmptyCase());
-	            //System.out.println("Case num�ro " + personnage.getPosition() +"/64 --> " + board.getCase(personnage.getPosition()));
-	        //}
 	  
 	 */

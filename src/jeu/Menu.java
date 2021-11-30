@@ -20,7 +20,7 @@ public class Menu {
 	public void afficherMenuPrincipal() {
 
 		System.out.println("");
-		System.out.println("TEST au 29/11/21 - MENU");
+		System.out.println("TEST au 30/11/21 - MENU");
 		System.out.println("La Compagnie des Bras Cassés");
 		System.out.println("A vous de jouer !");
 		System.out.println("");

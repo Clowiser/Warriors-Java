@@ -1,7 +1,5 @@
 package jeu;
 
-import java.util.Scanner;
-
 public abstract class Arme extends Case {
 	private String arme;
 	private int attaque;
@@ -35,14 +33,16 @@ public abstract class Arme extends Case {
 		return arme;
 	}
 
-	@Override
+	@Override 
+	//Le mot-clé @override est utilisé pour définir une méthode qui est héritée de la classe parente.
 	public void interaction(Personnage personnage) {
+		System.out.println("Vous trouvez une arme puissance : la " + getArme() + " ! ");
 		if (personnage instanceof Guerrier) {
-			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelÃ© joueurGuerrier =
+			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelé joueurGuerrier =
 			System.out.println("Vous êtes un Guerrier, prenez " + getArme() + " pour récupérer " + this.getAttaque()
 					+ " d'attaque ! ");
-			// rÃ©cupÃ©rer le nombre de point d'attaque de l'arme pour ajouter Ã  la force du Guerrier
-			// joueurGuerrier.forceGuerArme(this); // fonction de trop dans le code, c'est Ã©gal Ã  la mÃ©thode d'en dessous.
+			// récupérer le nombre de point d'attaque de l'arme pour ajouter à  la force du Guerrier
+			// joueurGuerrier.forceGuerArme(this); // fonction de trop dans le code, c'est égal à la méthode d'en dessous.
 			joueurGuerrier.setForce(joueurGuerrier.getForce() + this.attaque);
 			//je vais modifier la valeur de la force du guerrier donc setForce avec la formule (je prend la force du guerrier + l'attaque de l'arme dans la classe dnas laquelle je suis)
 		} else {
@@ -52,9 +52,9 @@ public abstract class Arme extends Case {
 		
 	}
 	
-	//+ " pour rÃ©cupÃ©rer " + this.getAttaque() + "! ")
+	//+ " pour récupérer " + this.getAttaque() + "! ")
 	// c'est dans l'interaction du personnage (de la classe Personnage) que si le
 	// personnage est un Guerrier, s'il tombe sur la case de l'arme, il peut
-	// intÃ©rargir avec elle.
+	// intérargir avec elle.
 
 }

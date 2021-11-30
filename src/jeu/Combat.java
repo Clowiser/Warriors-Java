@@ -1,4 +1,9 @@
-package jeu;
+/*
+-> Ensemble mis dans interaction Ennemi
+-> fuite?
+-> mort?
+-> ennemi vaincu?
+ package jeu;
 
 // COMBATS
 // Tour par tour
@@ -14,9 +19,9 @@ public class Combat {
 	
 	// test qu'avec le Guerrier
 		public void combat(Ennemi ennemi, Personnage personnage) { //je prend mn ennemi et mon personnage en paramètre pour l'interaction
-			/* Il est possible de passer des arguments (appelés aussi paramètres) à une méthode, c'est-à-dire lui fournir une valeur ou le nom d'une 
-			*variable afin que la méthode puisse effectuer des opérations sur ces arguments ou bien grâce à ces arguments.
-			*/
+			// Il est possible de passer des arguments (appelés aussi paramètres) à une méthode, c'est-à-dire lui fournir une valeur ou le nom d'une 
+			//variable afin que la méthode puisse effectuer des opérations sur ces arguments ou bien grâce à ces arguments.
+			//
 			// prendre niveau de vie + niveau de force du personnage -> Guerrier/magicien
 			// prendre niveau de vie + niveau de force de l'ennemi -> Gobelins/sorcières/dragons
 			//  Q ? j'ai un Gobelin, enfant de Ennemi, lui-même enfant de Case, dois-je créer un gobelin pour le combat? = NON car créer deux instances !
@@ -26,12 +31,9 @@ public class Combat {
 			System.out.println("Votre Personnage dispose de " + personnage.getForce() + " de force d'attaque et de " + personnage.getVie() + " points de vie.");
 			System.out.println("");
 			
-			 attaqueJoueur(ennemi, personnage);
-			//resterFuir();	
+			 attaqueJoueur(ennemi, personnage);	
 
 		} 
-		
-		
 		
 		// Joueur attaque toujours en premier
 		  
@@ -66,5 +68,6 @@ public class Combat {
 			}
 
 		}
-		
+	
 }
+*/

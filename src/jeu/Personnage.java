@@ -10,9 +10,6 @@ public abstract class Personnage {
 	private int force;
 	private int positionJoueur;
 
-	// Constructeurs
-
-
 	// constructeurs commun aux personnages + sont en protected pour que les classes enfants utilisent ce constructeur parent.
 	protected Personnage(String nom, int niveau, int force) {
 		this.nom = nom; // this fait référence à l'objet concerné (Guerrier si Guerrier/Magicien si Magicien)
@@ -33,6 +30,10 @@ public abstract class Personnage {
 	public int getForce() {
 		return force;
 	}
+	
+	public int getPositionJoueur() {
+		return positionJoueur;
+	}
 
 	// Setters => renvoie l'information
 	public void setNom(String nom) {
@@ -47,13 +48,8 @@ public abstract class Personnage {
 		this.force = force;
 	}
 
-	public int getPositionJoueur() {
-		return positionJoueur;
-	}
-
 	public int setPositionJoueur(int positionJoueur) {
 		return this.positionJoueur = positionJoueur;
 	}
 
-	
 }

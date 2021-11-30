@@ -19,7 +19,6 @@ public abstract class Ennemi extends Case {
 		this.nom = nom;
 		this.vie = niveau;
 		this.force = force;
-		
 	}
 
 	// Getters => prend l'information
@@ -36,9 +35,9 @@ public abstract class Ennemi extends Case {
 	}
 
 	// Setters => renvoie l'information
-	public void setNiveau(int niveau) {
-		this.vie = niveau;
-		if (niveau <= 0) {
+	public void setVie(int vie) {
+		this.vie = vie;
+		if (vie <= 0) {
 			this.vie = 0;
 			System.out.println("Ennemi est mort !");
 		}
@@ -54,16 +53,18 @@ public abstract class Ennemi extends Case {
 
 	// METHODES
 	public void interaction(Personnage personnage) {
-		System.out.println(personnage.getNom() + " VS " + this.getNom());
-		System.out.println(this.getNom() + " dispose de " + this.getForce() + " de force d'attaque et de "
+		System.out.println(personnage.getNom() + " VS " + this.getNom() + " : ");
+		System.out.println("");
+		System.out.println(" - " + this.getNom() + " dispose de " + this.getForce() + " de force d'attaque et de "
 				+ this.getVie() + " points de vie.");
 		System.out.println("");
-		System.out.println(personnage.getNom() + " dispose de " + personnage.getForce() + " de force d'attaque et de "
+		System.out.println(" - " + personnage.getNom() + " dispose de " + personnage.getForce() + " de force d'attaque et de "
 				+ personnage.getVie() + " points de vie.");
 		System.out.println("");
 		System.out.println("Vous attaquez avec une puissance de " + personnage.getForce() + " sur votre ennemi !");
-		this.setNiveau(this.getVie() - personnage.getForce());
-		System.out.println(this);
+		this.setVie(this.getVie() - personnage.getForce());
+		// si vie = 0 -> affiche message ou ennemi est mort
+		
 		if ((this.getForce() > 0) && (this.getVie() > 0)) {
 			System.out.println(this.getNom() + " est toujours en vie, il contre-attaque " + personnage.getNom()
 					+ " avec " + this.getForce() + " de force d'attaque !");

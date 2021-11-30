@@ -7,9 +7,4 @@ public class Sorciere extends Ennemi {
 		super("Sorcière", 9, 2);
 	}
 
-/*	public String toString() {
-		return
-			"Sorcière";
-	}
-	*/
 }

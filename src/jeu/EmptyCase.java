@@ -11,7 +11,7 @@ public class EmptyCase extends Case{
 
 	@Override
 	public void interaction(Personnage personnage) {
-		System.out.println("Vous êtes sur une case vide");
+		System.out.println("Vous êtes sur une case vide !");
 		return;
 	}
 }

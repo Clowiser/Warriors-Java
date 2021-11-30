@@ -38,20 +38,18 @@ public class Bouclier extends Case{
 
 	@Override
 	public void interaction(Personnage personnage) {
+		System.out.println("Vous trouvez un solide bouclier de " + getBouclier() + " ! ");
 		if (personnage instanceof Guerrier) {
 			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelé joueurGuerrier =
 			System.out.println("Vous êtes un Guerrier, prenez " + getBouclier() + " pour récupérer " + this.getDefense()
 					+ " de défense ! ");
-			// récupérer le nombre de point de défense de l'arme pour ajouter Ã  la défense du Guerrier
-			//joueurGuerrier.setForce(joueurGuerrier.getForce() + this.defense);
+			// récupérer le nombre de point de défense de l'arme pour ajouter à la défense du Guerrier
+			joueurGuerrier.setArmure(joueurGuerrier.getArmure() + this.defense);
+			System.out.println(joueurGuerrier.getArmure());
 		} else {
 			System.out.println("Vous n'êtes pas Guerrier, passez votre chemin !");
 		}
 		
 	}
-	
-	//public String toString() {
-		//return getBouclier();
-	//}
 
 }

@@ -37,6 +37,7 @@ public class Philtre extends Case{
 	}
 	
 	public void interaction(Personnage personnage) {
+		System.out.println("Vous trouvez un philtre magique : la " + getPhiltre() + " ! ");
 		if (personnage instanceof Magicien) {
 			Magicien joueurMagicien = (Magicien) personnage; // cast -> Magicien
 			System.out.println("Vous êtes un Magicien, prenez " + getPhiltre() + " pour récupérer " + this.getPointVie()
