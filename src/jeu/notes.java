@@ -126,5 +126,14 @@ EXPLICATIONS :
             Collections.swap(jeuPlateau, firstIndex, secondIndex);
         }
     } 
+    
+     //if ((this.getForce() > 0) && (this.getNiveau() > 0)) {
+	            //System.out.println(this.getNom() + ": Si tu le prends comme ça " + personnage.getNom() + ", je t'attaque avec " + this.getForce() + " point(s) de force!");
+	            //personnage.setNiveau(personnage.getNiveau() - this.getForce());
+	        //}
+	        //if (this.getNiveau() <=0 ){
+	           //plateau.setCase(personnage.getPosition(), new EmptyCase());
+	            //System.out.println("Case numéro " + personnage.getPosition() +"/64 --> " + board.getCase(personnage.getPosition()));
+	        //}
 	  
 	 */

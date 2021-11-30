@@ -15,15 +15,12 @@ public class Game {
 
 	// attributs
 	int scoreDes;
-	int positionJoueur = 0;
 	Des nbDe;
-
 	Plateau plateau;
 	Menu menu; // ! -> c'est le game qui appelle le menu, pas l'inverse => quand on lance un jeu, c'est le jeu qu'on lance dans lequel il nous affiche un menu qui sert d'interaction
 	ArrayList<Guerrier> guerrierListe;
 	ArrayList<Magicien> magicienListe;
 	Personnage selectPersonnage;
-	Combat combat;
 
 	// constructeurs -> fonction appelée lors de l'instanction d'objet
 	public Game() {
@@ -32,7 +29,6 @@ public class Game {
 		this.magicienListe = new ArrayList<>();
 		this.menu = new Menu();
 		this.nbDe = new Des();
-		this.combat = new Combat();
 	}
 
 	// Méthodes
@@ -80,7 +76,7 @@ public class Game {
 		switch (choix) {
 		case 1:
 			try {
-				lancerDes();
+				lancerDes(selectPersonnage);
 			} catch (PersonnageHorsPlateauException e) {
 				System.out.println(e.getMessage());// affiche le message
 				System.out.println("");
@@ -123,7 +119,7 @@ public class Game {
 			selectPersonnage = joueurG;
 			/*
 			 * l'utilisateur exécute la création de persos (Guerrier/magicien) puis ce
-			 * dernier s'ajoute dans la liste, puis je récupÃ¨re le personnage créé pour
+			 * dernier s'ajoute dans la liste, puis je récupère le personnage créé pour
 			 * jouer
 			 */
 			break;
@@ -243,14 +239,15 @@ public class Game {
 		return;
 	}
 
+	int position;
 	// lancer les dés
-	public void lancerDes() throws PersonnageHorsPlateauException {
-
+	public void lancerDes(Personnage personnage) throws PersonnageHorsPlateauException {
+		position = personnage.setPositionJoueur(position);
 		// avancer le joueur : résultat de l'avancée du joueur sur le plateau +
 		// placement sur plateau
-		if (positionJoueur <= plateau.size()) {
+		if (personnage.getPositionJoueur() <= plateau.size()) {
 			scoreDes = nbDe.lancerDe();
-			positionJoueur += scoreDes; // additionne les deux var et stocke le résultat dans var gauche ->
+			position += scoreDes; // additionne les deux var et stocke le résultat dans var gauche ->
 										// positionJoueur + resultatDe = positionJoueur
 			System.out.println("Le résultat de votre lancer de dés est : " + scoreDes + ".");
 			System.out.println("");
@@ -280,27 +277,56 @@ public class Game {
 		case 1:
 			// plateau.afficher();
 			System.out.println("Votre personnage a avancé de " + scoreDes + " cases et est maintenant en position : "
-					+ positionJoueur);
+					+ position);
 			System.out.println("");
 			
 			// INTERACTION DU JOUEUR SUR PLATEAU
 		
-			if (positionJoueur >= plateau.size()) {
+			if (position >= plateau.size()) {
 				// positionJoueur = plateau.size(); // -> n'est plus utile depuis le throw
 				System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
-				positionJoueur = 0; // remise Ã  0 de la position du joueur
+				position = 0; // remise Ã  0 de la position du joueur
 				System.out.println("");
 				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de déclencher une erreur
 			}
-			plateau.getTypeCase(positionJoueur); // par la position Joueur, je "récupÃ¨re" ce que la case contient = le type
+			plateau.getTypeCase(position); // par la position Joueur, je "récupère" ce que la case contient = le type
         
-			// System.out.println(plateau.getTypeCase(positionJoueur));
+			//System.out.println(plateau.getTypeCase(positionJoueur));
 
-			plateau.interaction(positionJoueur, selectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupÃ¨re" le type de case pour intérargir
-
+			plateau.interaction(position, selectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupère" le type de case pour intérargir
 
 		}
 
 	}
+	
+	public void resterFuir() {
+		System.out.println("Voulez-vous continuer ou fuir ? - 8 Rester - 9 Fuir");
+
+		int choix = menu.entreeClavier("");
+
+		switch (choix) {
+		case 8:
+			System.out.println("Vous avez choisi de rester ! A votre tour, Aventurier !");
+			System.out.println("");
+			// attaqueJoueur();
+			break;
+
+		case 9:
+			System.out.println("Vous prenez la fuite !"); 
+			fuite(position);
+			break;
+
+		default:
+			System.out.println("Erreur sélection");
+			break;
+		}
+	}
+	
+	public void fuite(int random) {
+        int nouvellePositionJoueur = position - random;
+        position = nouvellePositionJoueur;
+        System.out.println("Vous reculez de  " + random + " case(s).");
+        System.out.println("");
+    }
 
 }

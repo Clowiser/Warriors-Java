@@ -1,7 +1,5 @@
 package jeu;
 
-import java.util.Scanner;
-
 // COMBATS
 // Tour par tour
 // tour : attaque ou fuir
@@ -10,7 +8,9 @@ import java.util.Scanner;
 
 public class Combat {
 	
-	
+	public Combat() {
+		
+	}
 	
 	// test qu'avec le Guerrier
 		public void combat(Ennemi ennemi, Personnage personnage) { //je prend mn ennemi et mon personnage en paramètre pour l'interaction
@@ -21,9 +21,9 @@ public class Combat {
 			// prendre niveau de vie + niveau de force de l'ennemi -> Gobelins/sorcières/dragons
 			//  Q ? j'ai un Gobelin, enfant de Ennemi, lui-même enfant de Case, dois-je créer un gobelin pour le combat? = NON car créer deux instances !
 			
-			System.out.println("Votre Ennemi dispose de " + ennemi.getForce() + " de force d'attaque et de " + ennemi.getNiveau() + " points de vie.");
+			System.out.println("Votre Ennemi dispose de " + ennemi.getForce() + " de force d'attaque et de " + ennemi.getVie() + " points de vie.");
 			System.out.println("");
-			System.out.println("Votre Personnage dispose de " + personnage.getForce() + " de force d'attaque et de " + personnage.getNiveau() + " points de vie.");
+			System.out.println("Votre Personnage dispose de " + personnage.getForce() + " de force d'attaque et de " + personnage.getVie() + " points de vie.");
 			System.out.println("");
 			
 			 attaqueJoueur(ennemi, personnage);
@@ -31,40 +31,19 @@ public class Combat {
 
 		} 
 		
-		/*public void resterFuir() {
-			System.out.println("Voulez-vous continuer ou fuir ? - 8 Rester - 9 Fuir");
-
-			int choix = clavier.nextInt();
-
-			switch (choix) {
-			case 8:
-				System.out.println("Vous avez choisi de rester ! A votre tour, Aventurier !");
-				System.out.println("");
-				// attaqueJoueur();
-				break;
-
-			case 9:
-				System.out.println("Vous avez fui !"); 
-				// revenir au jeu + lancés de dés ramdom qui fait RECULER
-				break;
-
-			default:
-				System.out.println("Erreur sélection");
-				break;
-			}
-		}*/
+		
 		
 		// Joueur attaque toujours en premier
 		  
 		int totalAtkJoueur;
 		public void attaqueJoueur(Ennemi ennemi, Personnage personnage) {
 			System.out.println("A l'assaut !");
-			if (personnage.getForce() > ennemi.getNiveau()) {
+			if (personnage.getForce() > ennemi.getVie()) {
 				System.out.println("Ennemi est mort - Fin du combat");
 			}
 
-			if (personnage.getForce() < ennemi.getNiveau()) {
-				totalAtkJoueur = ennemi.getNiveau() - personnage.getForce();
+			if (personnage.getForce() < ennemi.getVie()) {
+				totalAtkJoueur = ennemi.getVie() - personnage.getForce();
 				System.out.println("Il reste " + totalAtkJoueur + " à l'ennemi");
 			}
 
@@ -77,17 +56,15 @@ public class Combat {
 		int totalAtkEnnemi;
 		public void attaqueEnnemi(Ennemi ennemi, Personnage personnage) {
 
-			if (ennemi.getForce() > personnage.getNiveau()) {
+			if (ennemi.getForce() > personnage.getVie()) {
 				System.out.println("Votre personnage est mort - Fin de partie");
 			}
 
-			if (personnage.getNiveau() > ennemi.getForce()) {
-				totalAtkEnnemi = personnage.getNiveau() - ennemi.getForce();
+			if (personnage.getVie() > ennemi.getForce()) {
+				totalAtkEnnemi = personnage.getVie() - ennemi.getForce();
 				System.out.println("Il vous reste " + totalAtkEnnemi);
 			}
 
 		}
 		
-		
-	
 }

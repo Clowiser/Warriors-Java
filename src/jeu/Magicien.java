@@ -46,7 +46,7 @@ public class Magicien extends Personnage {
 	// méthodes
 	public String toString() {
 
-		return "Votre Magicien s'apelle " + getNom() + ", son niveau de vie est de " + getNiveau()
+		return "Votre Magicien s'apelle " + getNom() + ", son niveau de vie est de " + getVie()
 				+ " et il dispose d'une force d'attaque de " + getForce();
 	}
 

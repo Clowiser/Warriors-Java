@@ -1,9 +1,6 @@
 package jeu;
 
 import java.util.*;
-import jeu.Case;
-import jeu.Masse;
-
 
 public class Plateau {
 
@@ -12,21 +9,21 @@ public class Plateau {
 
 	// constructeurs
 	public Plateau() {
-		initPlateau(); // appel du menu principal pour la crÃ©ation du game
+		initPlateau(); // appel du menu principal pour la création du game
 	}
 
 	// accesseurs
 	public ArrayList<Case> getListeCase() {
-		return plateau; // retourne l'entiÃ¨retÃ© de la liste de case
+		return plateau; // retourne l'entiÃ¨reté de la liste de case
 	}
 
 	// Lie la positionJoueur avec la case correspondante
-	public Case getTypeCase(int index) { // prendre une case avec en paramÃ¨tre son index -> fait en sorte que la mÃ©thode accepte des chiffres extÃ©rieurs
+	public Case getTypeCase(int index) { // prendre une case avec en paramÃ¨tre son index -> fait en sorte que la méthode accepte des chiffres extérieurs
 		return plateau.get(index); // retourne une case => index
 	}
-	/*cette mÃ©thode est la mÃªme que dessus, cela me renvoie l'index de la case avec ce qu'elle correspond public 
-	 * Case idCasePlateau(int idCase) { //mÃ©thode avec la classe Case nommÃ©e prenant en paramÃ¨tre int idCase donc l'index return
-	 * this.jeuPlateau.get(idCase); // retourne l'objet rÃ©fÃ©rence du jeuPlateau en prenant idCase }
+	/*cette méthode est la mÃªme que dessus, cela me renvoie l'index de la case avec ce qu'elle correspond public 
+	 * Case idCasePlateau(int idCase) { //méthode avec la classe Case nommée prenant en paramÃ¨tre int idCase donc l'index return
+	 * this.jeuPlateau.get(idCase); // retourne l'objet référence du jeuPlateau en prenant idCase }
 	 */
 
 	//retourne une interaction selon l'index du plateau avec le personnage
@@ -34,18 +31,18 @@ public class Plateau {
 		plateau.get(index).interaction(personnage);
 	}
 
-	// mÃ©thodes
+	// méthodes
 	public void initPlateau() { // initation du tableau avec des cases vides et une case Start
 
 		for (int i = 0; i < 20; i++) { // tableau de 64 cases + instance du plateau de jeu en dur.
-			plateau.add(new EmptyCase()); // ajoute case vide (de index 0 Ã  fin du plateau tant que celle-ci n'est pas modifiÃ©e)
+			plateau.add(new EmptyCase()); // ajoute case vide (de index 0 Ã  fin du plateau tant que celle-ci n'est pas modifiée)
 		}
 
 		plateau.set(0, new StartCase()); // renvoie la classe StartCase() qui est 'Start Case' = index 0
-		// La mÃ©thode set(int index, Element E) met Ã  jour l'Ã©lÃ©ment de l'index spÃ©cifiÃ© avec l'Ã©lÃ©ment E donnÃ© -> public E set(int index, Element E)
+		// La méthode set(int index, Element E) met Ã  jour l'élément de l'index spécifié avec l'élément E donné -> public E set(int index, Element E)
 
-		// trÃ©sor
-		//jeuPlateau.set(1, new Tresor()); // ici on dÃ©finie que TrÃ©sor est index 1
+		// trésor
+		//jeuPlateau.set(1, new Tresor()); // ici on définie que Trésor est index 1
 
 		// Magicien
 		//jeuPlateau.set(6, new Sort());
@@ -82,7 +79,7 @@ public class Plateau {
 		System.out.println(plateau);
 	}
 
-	public int size() { // mÃ©thode qui retourne la taille du tableau
+	public int size() { // méthode qui retourne la taille du tableau
 		return plateau.size();
 	}
 		

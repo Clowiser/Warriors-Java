@@ -6,10 +6,9 @@ public abstract class Personnage {
 
 	// Attributs
 	private String nom;
-	private int niveau;
+	private int vie;
 	private int force;
-	//private boolean fuite;
-	//private boolean combat;
+	private int positionJoueur;
 
 	// Constructeurs
 
@@ -17,8 +16,9 @@ public abstract class Personnage {
 	// constructeurs commun aux personnages + sont en protected pour que les classes enfants utilisent ce constructeur parent.
 	protected Personnage(String nom, int niveau, int force) {
 		this.nom = nom; // this fait référence à l'objet concerné (Guerrier si Guerrier/Magicien si Magicien)
-		this.niveau = niveau;
+		this.vie = niveau;
 		this.force = force;
+		this.positionJoueur = 0;
 	}
 
 	// Getters => prend/récupère l'information
@@ -26,8 +26,8 @@ public abstract class Personnage {
 		return nom;
 	}
 
-	public int getNiveau() {
-		return niveau;
+	public int getVie() {
+		return vie;
 	}
 
 	public int getForce() {
@@ -39,12 +39,21 @@ public abstract class Personnage {
 		this.nom = nom;
 	}
 
-	public void setNiveau(int niveau) {
-		this.niveau = niveau;
+	public void setVie(int vie) {
+		this.vie = vie;
 	}
 
 	public void setForce(int force) {
 		this.force = force;
 	}
 
+	public int getPositionJoueur() {
+		return positionJoueur;
+	}
+
+	public int setPositionJoueur(int positionJoueur) {
+		return this.positionJoueur = positionJoueur;
+	}
+
+	
 }
