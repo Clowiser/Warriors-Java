@@ -1,6 +1,6 @@
 package jeu;
 
-public class Sort extends Case {
+public class Sort implements Case {
 	private String sort;
 	private int attaque;
 

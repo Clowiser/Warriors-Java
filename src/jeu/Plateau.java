@@ -26,11 +26,6 @@ public class Plateau {
 	 * this.jeuPlateau.get(idCase); // retourne l'objet référence du jeuPlateau en prenant idCase }
 	 */
 
-	//retourne une interaction selon l'index du plateau avec le personnage
-	public void interaction(int index, Personnage personnage) {
-		plateau.get(index).interaction(personnage);
-	}
-
 	// méthodes
 	public void initPlateau() { // initation du tableau avec des cases vides et une case Start
 
@@ -82,5 +77,11 @@ public class Plateau {
 	public int size() { // méthode qui retourne la taille du tableau
 		return plateau.size();
 	}
+	
+	//retourne une interaction selon l'index du plateau avec le personnage
+	public void interaction(int index, Personnage personnage) {
+		plateau.get(index).interaction(personnage);
+	}
+
 		
 }

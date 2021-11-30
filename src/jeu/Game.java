@@ -17,7 +17,9 @@ public class Game {
 	int scoreDes;
 	Des nbDe;
 	Plateau plateau;
-	Menu menu; // ! -> c'est le game qui appelle le menu, pas l'inverse => quand on lance un jeu, c'est le jeu qu'on lance dans lequel il nous affiche un menu qui sert d'interaction
+	Menu menu; // ! -> c'est le game qui appelle le menu, pas l'inverse => quand on lance un
+				// jeu, c'est le jeu qu'on lance dans lequel il nous affiche un menu qui sert
+				// d'interaction
 	ArrayList<Guerrier> guerrierListe;
 	ArrayList<Magicien> magicienListe;
 	Personnage selectPersonnage;
@@ -37,7 +39,8 @@ public class Game {
 	public void initGame() {
 		boolean isRunning = false;
 
-		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = opposé de la déclaration (si isRunning = false alors !isRunning = true)
+		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = opposé de la
+								// déclaration (si isRunning = false alors !isRunning = true)
 
 			menu.afficherMenuPrincipal(); // appel de la méthode afficherMenuPrincipal()
 
@@ -82,7 +85,8 @@ public class Game {
 				System.out.println("");
 				menuJeu();
 				// e.printStackTrace(); // affiche l'erreur en "rouge" - erreur exception
-				// essaie lancerDes() + attrape l'erreur créé en classe, pour afficher le message noté dans la classe (via getMessage()) soit en exception directement
+				// essaie lancerDes() + attrape l'erreur créé en classe, pour afficher le
+				// message noté dans la classe (via getMessage()) soit en exception directement
 			}
 			break;
 
@@ -109,16 +113,18 @@ public class Game {
 		choix = menu.entreeClavier(
 				"Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
 
-		 switch (choix) {
+		switch (choix) {
 		case 1:
-			// Appel de la fonction createGuerrier() de l'instance menu de la classe Guerrier
-			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la méthode createGuerrier()
-			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
+			// Appel de la fonction createGuerrier() de l'instance menu de la classe
+			// Guerrier
+			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la
+														// méthode createGuerrier()
+			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste
+										// guerrierListe
 			selectPersonnage = joueurG;
 			/*
-			 * l'utilisateur exécute la création de persos (Guerrier/magicien) puis ce
-			 * dernier s'ajoute dans la liste, puis je récupère le personnage créé pour
-			 * jouer
+			 * 1 - l'utilisateur exécute la création de persos (Guerrier/magicien) 2 - ce
+			 * dernier s'ajoute dans la liste 3 - je récupère le personnage créé pour jouer
 			 */
 			break;
 
@@ -139,7 +145,6 @@ public class Game {
 		case 5:
 			System.out.println("Vous avez quitté la création de personnage - retour au menu principal");
 			menu.afficherMenuPrincipal();
-			
 			break;
 
 		default:
@@ -148,7 +153,7 @@ public class Game {
 		}
 
 	}
-	
+
 	// garder le même personnage ou recréer un nouveau personnage
 	public void clearPerso() {
 		System.out.println(
@@ -163,7 +168,7 @@ public class Game {
 
 		case 2:
 			if (guerrierListe.size() >= 1) {
-				guerrierListe.remove(0); // suppression guerrier Ã  l'index 0
+				guerrierListe.remove(0); // suppression guerrier à l'index 0
 			}
 			if (magicienListe.size() >= 1) {
 				magicienListe.remove(0);
@@ -200,7 +205,8 @@ public class Game {
 			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)");
 			System.out.println("");
 			for (int i = 0; i < guerrierListe.size(); i++) {
-				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, lÃ  je défini moi-même ma
+				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, lÃ  je défini moi-même
+															// ma
 															// méthode toString() dans Personnage pour annuler cet
 															// affichage par défaut (blabla@1d25g5qf2)
 			}
@@ -238,6 +244,7 @@ public class Game {
 	}
 
 	int position;
+
 	// lancer les dés
 	public void lancerDes(Personnage personnage) throws PersonnageHorsPlateauException {
 		position = personnage.setPositionJoueur(position);
@@ -246,7 +253,7 @@ public class Game {
 		if (personnage.getPositionJoueur() <= plateau.size()) {
 			scoreDes = nbDe.lancerDe();
 			position += scoreDes; // additionne les deux var et stocke le résultat dans var gauche ->
-										// positionJoueur + resultatDe = positionJoueur
+									// positionJoueur + resultatDe = positionJoueur
 			System.out.println("Le résultat de votre lancer de dés est : " + scoreDes + ".");
 			System.out.println("");
 			avancer();
@@ -268,18 +275,16 @@ public class Game {
 
 		int direction;
 
-		direction = menu.entreeClavier("1 - Faites avancer votre personnage de " + scoreDes + " cases."); // direction = menu.nomfonction();
-
+		direction = menu.entreeClavier("1 - Faites avancer votre personnage de " + scoreDes + " case(s)."); // direction = menu.nomfonction();
 		// faire choix
 		switch (direction) {
 		case 1:
-			// plateau.afficher();
-			System.out.println("Votre personnage a avancé de " + scoreDes + " cases et est maintenant en position : "
-					+ position);
+			System.out.println(
+					"Votre personnage a avancé de " + scoreDes + " case(s) et est maintenant en position : " + position);
 			System.out.println("");
-			
+
 			// INTERACTION DU JOUEUR SUR PLATEAU
-		
+
 			if (position >= plateau.size()) {
 				// positionJoueur = plateau.size(); // -> n'est plus utile depuis le throw
 				System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
@@ -288,43 +293,47 @@ public class Game {
 				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de déclencher une erreur
 			}
 			plateau.getTypeCase(position); // par la position Joueur, je "récupère" ce que la case contient = le type
-        
-			//System.out.println(plateau.getTypeCase(positionJoueur));
 
+			resterOuFuir(selectPersonnage);
+			//faire la méthode en fonction que le joueur soit sur une case Ennemi
+			
 			plateau.interaction(position, selectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupère" le type de case pour intérargir
 
 		}
 
 	}
-	
-	public void resterFuir() {
+
+	public void resterOuFuir(Personnage personnage) {
 		System.out.println("Voulez-vous continuer ou fuir ? - 8 Rester - 9 Fuir");
 
 		int choix = menu.entreeClavier("");
 
 		switch (choix) {
 		case 8:
-			System.out.println("Vous avez choisi de rester ! A votre tour, Aventurier !");
+			System.out.println("Vous avez choisi de rester !");
 			System.out.println("");
-			// attaqueJoueur();
 			break;
 
 		case 9:
-			System.out.println("Vous prenez la fuite !"); 
-			//fuite(position);
+			System.out.println("Vous prenez la fuite !");
+			fuite(personnage);
 			break;
 
 		default:
 			System.out.println("Erreur sélection");
 			break;
 		}
+		  }
+
+	public void fuite(Personnage personnage) {
+        if (personnage.getPositionJoueur() <= plateau.size()) {
+			scoreDes = nbDe.lancerDe();
+			position -= scoreDes; // soustraction les deux var et stocke le résultat dans var gauche -> positionJoueur - resultatDe = positionJoueur
+			System.out.println("Le résultat de votre lancer de dés est : " + scoreDes);
+			System.out.println("");
+			System.out.println("Votre personnage a reculé de  " + scoreDes + " case(s) et est maintenant en position :" + position);
+			System.out.println("");
+    }
 	}
-	
-	/*public void fuite(int random) {
-        int nouvellePositionJoueur = position - random;
-        position = nouvellePositionJoueur;
-        System.out.println("Vous reculez de  " + random + " case(s).");
-        System.out.println("");
-    }*/
 
 }

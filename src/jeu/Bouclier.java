@@ -1,6 +1,6 @@
 package jeu;
 
-public class Bouclier extends Case{
+public class Bouclier implements Case {
 	private String bouclier;
 	private int defense;
 
@@ -45,7 +45,7 @@ public class Bouclier extends Case{
 					+ " de défense ! ");
 			// récupérer le nombre de point de défense de l'arme pour ajouter à la défense du Guerrier
 			joueurGuerrier.setArmure(joueurGuerrier.getArmure() + this.defense);
-			System.out.println(joueurGuerrier.getArmure());
+			System.out.println("Votre niveau de défense est maintenant de " + joueurGuerrier.getArmure() + " points !");
 		} else {
 			System.out.println("Vous n'êtes pas Guerrier, passez votre chemin !");
 		}

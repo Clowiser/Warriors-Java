@@ -1,7 +1,7 @@
 package jeu;
 
 //héritage - classe fille de Case
-public class EmptyCase extends Case{
+public class EmptyCase implements Case {
 
 	@Override
 	public String toString() { //renvoie une chaîne de caractères servant à décrire l'objet concerné.

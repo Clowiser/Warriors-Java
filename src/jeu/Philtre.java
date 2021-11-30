@@ -1,6 +1,6 @@
 package jeu;
 
-public class Philtre extends Case{
+public class Philtre implements Case {
 	private String philtre;
 	private int pointVie;
 

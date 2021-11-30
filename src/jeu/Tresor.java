@@ -1,7 +1,7 @@
 package jeu;
 
 //héritage - classe fille de Case
-public class Tresor extends Case {
+public class Tresor implements Case {
 	
 	/*//attributs
 	private char nom;
