@@ -10,7 +10,7 @@ public class EmptyCase implements Case {
 	   //par défaut il y a toujours un constructeur vide
 
 	@Override
-	public void interaction(Personnage personnage) {
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous êtes sur une case vide !");
 		return;
 	}

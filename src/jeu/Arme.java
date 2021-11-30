@@ -35,7 +35,9 @@ public abstract class Arme implements Case {
 
 	@Override 
 	//Le mot-clé @override est utilisé pour définir une méthode qui est héritée de la classe parente.
-	public void interaction(Personnage personnage) {
+	//-> c'est écrire par-dessus ou supprimer/remplacer le corps de ces méthodes (de { à })
+	//chaque méthode de l'interface va implémenter son code avec un corps de méthode qui lui est propre
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous trouvez une arme puissante : la " + getArme() + " ! ");
 		if (personnage instanceof Guerrier) {
 			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelé joueurGuerrier =

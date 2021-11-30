@@ -1,15 +1,17 @@
 package jeu;
 
 //héritage - classe mère
-public abstract interface Case {
-	//Par le fait que case soit en abstract, "elle est déjà une interface"
-	//qu'est-ce qui est commun à toutes les clases enfants Ennemi, Arme, Trésor, etc. -> Type de case que ca va être
+interface Case {
+
+	//qu'est-ce qui est commun à toutes les clases enfants Ennemi, Arme, Trésor, etc. -> Type de case que ca va être ?
 	
 	//attributs
 	
-	//constructeurs
+	//constructeurs -> du coup, en interface, pas de constructeur
 	
 	//méthodes
-	abstract public void interaction(Personnage personnage);
+	public void interaction(Personnage personnage, Game game);
+	//cette méthode est utilisée dans tous les classes qui s'implémentent de Case
+	//c'est une méthode qui n'a pas de coprs (pas de code)
 
 }

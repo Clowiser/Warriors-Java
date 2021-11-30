@@ -79,8 +79,8 @@ public class Plateau {
 	}
 	
 	//retourne une interaction selon l'index du plateau avec le personnage
-	public void interaction(int index, Personnage personnage) {
-		plateau.get(index).interaction(personnage);
+	public void interaction(int index, Personnage personnage, Game game) {
+		plateau.get(index).interaction(personnage, game);
 	}
 
 		

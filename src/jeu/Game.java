@@ -1,6 +1,5 @@
 package jeu;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 //import jeu.Plateau;
 //import jeu.EmptyCase;
@@ -17,7 +16,7 @@ public class Game {
 	int scoreDes;
 	Des nbDe;
 	Plateau plateau;
-	Menu menu; // ! -> c'est le game qui appelle le menu, pas l'inverse => quand on lance un
+	public Menu menu; // ! -> c'est le game qui appelle le menu, pas l'inverse => quand on lance un
 				// jeu, c'est le jeu qu'on lance dans lequel il nous affiche un menu qui sert
 				// d'interaction
 	ArrayList<Guerrier> guerrierListe;
@@ -56,7 +55,7 @@ public class Game {
 				break;
 
 			case 3:
-				System.out.println("Vous avez quitté le jeu Warrios Game. A bientÃ´t pour de nouvelles aventures !");
+				System.out.println("Vous avez quitté le jeu Warrios Game. A bientôt pour de nouvelles aventures !");
 				isRunning = true;
 				break;
 
@@ -294,35 +293,40 @@ public class Game {
 			}
 			plateau.getTypeCase(position); // par la position Joueur, je "récupère" ce que la case contient = le type
 
-			resterOuFuir(selectPersonnage);
+		
 			//faire la méthode en fonction que le joueur soit sur une case Ennemi
 			
-			plateau.interaction(position, selectPersonnage); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupère" le type de case pour intérargir
+			plateau.interaction(position, selectPersonnage, this); // par la position Joueur et le type de joueur (Guerrier/magicien) je "récupère" le type de case pour intérargir
 
 		}
 
 	}
 
-	public void resterOuFuir(Personnage personnage) {
+	public boolean resterOuFuir(Personnage personnage) {
 		System.out.println("Voulez-vous continuer ou fuir ? - 8 Rester - 9 Fuir");
 
+		boolean isFuir = true;
+		
 		int choix = menu.entreeClavier("");
 
 		switch (choix) {
 		case 8:
 			System.out.println("Vous avez choisi de rester !");
 			System.out.println("");
+			isFuir = false;
 			break;
 
 		case 9:
 			System.out.println("Vous prenez la fuite !");
 			fuite(personnage);
+			isFuir = true;
 			break;
 
 		default:
 			System.out.println("Erreur sélection");
 			break;
 		}
+		return isFuir;
 		  }
 
 	public void fuite(Personnage personnage) {
@@ -331,7 +335,7 @@ public class Game {
 			position -= scoreDes; // soustraction les deux var et stocke le résultat dans var gauche -> positionJoueur - resultatDe = positionJoueur
 			System.out.println("Le résultat de votre lancer de dés est : " + scoreDes);
 			System.out.println("");
-			System.out.println("Votre personnage a reculé de  " + scoreDes + " case(s) et est maintenant en position :" + position);
+			System.out.println("Votre personnage a reculé de  " + scoreDes + " case(s) et est maintenant en position : " + position);
 			System.out.println("");
     }
 	}

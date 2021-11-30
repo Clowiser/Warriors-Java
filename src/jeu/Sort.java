@@ -33,7 +33,7 @@ public class Sort implements Case {
 	}
 	
 	@Override
-	public void interaction(Personnage personnage) {
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous trouvez un parchemin de sort : le " + getSort() + " ! ");
 		if (personnage instanceof Magicien) {
 			Magicien joueurMagicien = (Magicien) personnage; // cast -> Magicien

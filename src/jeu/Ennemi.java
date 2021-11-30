@@ -2,6 +2,8 @@ package jeu;
 
 //héritage - classe fille de Case
 //classe définit en abstract => elle ne peut pas être instancié car on a pas besoin de l'instancier
+//Interface => implements au lieu de extends : une classe implémente une interface si elle définit les méthodes de l'interface.
+//implements est l'équivalent de extends pour une interface
 public abstract class Ennemi implements Case {
 
 	private String nom;
@@ -52,31 +54,12 @@ public abstract class Ennemi implements Case {
 	}
 
 	// METHODES
-	public void interaction(Personnage personnage) {
-		System.out.println("Combat ! " + personnage.getNom() + " VS " + this.getNom() + " : ");
-		System.out.println("");
-		System.out.println(" - " + this.getNom() + " dispose de " + this.getForce() + " de force d'attaque et de "
-				+ this.getVie() + " points de vie.");
-		//le nom de l'ennemi via le this (car ref à l'objet en cours + le fait que via le code, quand le joueur tomber sur une case dragon, le nom s'affichera Dragon)
-		System.out.println("");
-		System.out.println(" - " + personnage.getNom() + " dispose de " + personnage.getForce() + " de force d'attaque et de "
-				+ personnage.getVie() + " points de vie.");
-		System.out.println("");
-		System.out.println("Vous attaquez avec une puissance de " + personnage.getForce() + " sur votre ennemi !");
-		System.out.println("------#@X$%#------");
-		this.setVie(this.getVie() - personnage.getForce());
-		// si vie = 0 -> affiche message ou ennemi est mort
-		
-		// si ennemi est toujours vivant après la première attaque du personnage, il contre-attaque et s'enfuit
-		if ((this.getForce() > 0) && (this.getVie() > 0)) {
-			System.out.println(this.getNom() + " est toujours en vie, il contre-attaque " + personnage.getNom()
-					+ " avec " + this.getForce() + " de force d'attaque !");
-			personnage.setVie(personnage.getVie() - this.getForce());
-			System.out.println("Il vos reste " + personnage.getVie() + " de points de vie.");
-			System.out.println(this.getNom() + " s'enfuit !");
-
+	@Override
+	public void interaction(Personnage personnage, Game game) {
+		boolean test = game.resterOuFuir(personnage);
+		if (!test) {
+			game.menu.afficheCombat(personnage, this);
 		}
-
 	}
 
 }

@@ -37,7 +37,7 @@ public class Bouclier implements Case {
 	}
 
 	@Override
-	public void interaction(Personnage personnage) {
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous trouvez un solide bouclier de " + getBouclier() + " ! ");
 		if (personnage instanceof Guerrier) {
 			Guerrier joueurGuerrier = (Guerrier) personnage; // cast -> Guerrier appelé joueurGuerrier =

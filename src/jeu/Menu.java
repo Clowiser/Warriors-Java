@@ -80,7 +80,8 @@ public class Menu {
 		} while (!isValide2);
 
 		// instance + stock des données
-		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les informations entrées par l'utilisateur !!!!
+		joueurG = new Guerrier(nom, niveau, force); // ... suite d'instance !!!!! c'est ici que je stockes les
+													// informations entrées par l'utilisateur !!!!
 		return joueurG;
 
 	}
@@ -132,4 +133,37 @@ public class Menu {
 		return joueurM;
 	}
 
+	public void afficheCombat(Personnage personnage, Ennemi ennemi) {
+		System.out.println("Combat ! " + personnage.getNom() + " VS " + ennemi.getNom() + " : ");
+		System.out.println("");
+
+		System.out.println(" - " + ennemi.getNom() + " dispose de " + ennemi.getForce() + " de force d'attaque et de "
+				+ ennemi.getVie() + " points de vie.");
+		// le nom de l'ennemi via le ennemi (car ref à l'objet en cours + le fait que
+		// via le code, quand le joueur tomber sur une case dragon, le nom s'affichera
+		// Dragon)
+		System.out.println("");
+		System.out.println(" - " + personnage.getNom() + " dispose de " + personnage.getForce()
+				+ " de force d'attaque et de " + personnage.getVie() + " points de vie.");
+		System.out.println("");
+		System.out.println("Vous attaquez avec une puissance de " + personnage.getForce() + " sur votre ennemi !");
+		System.out.println("");
+		System.out.println("----------------------------------- ! COMBAT ! -----------------------------------");
+
+		ennemi.setVie(ennemi.getVie() - personnage.getForce());
+		// sa nouvelle vie (à l'ennemi) est égale a sa vie actuelle - la force du
+		// personnage
+		// si vie = 0 -> affiche message ou ennemi est mort
+
+		// si ennemi est toujours vivant après la première attaque du personnage, il
+		// contre-attaque et s'enfuit
+		if ((ennemi.getForce() > 0) && (ennemi.getVie() > 0)) {
+			System.out.println(ennemi.getNom() + " est toujours en vie, il contre-attaque " + personnage.getNom()
+					+ " avec " + ennemi.getForce() + " de force d'attaque !");
+			personnage.setVie(personnage.getVie() - ennemi.getForce());
+			System.out.println("Il vos reste " + personnage.getVie() + " de points de vie.");
+			System.out.println(ennemi.getNom() + " s'enfuit !");
+		}
+
+	}
 }

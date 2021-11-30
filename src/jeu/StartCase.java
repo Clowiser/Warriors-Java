@@ -9,7 +9,7 @@ public class StartCase implements Case {
 	}
 
 	@Override
-	public void interaction(Personnage personnage) {
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous êtes sur la case Départ");
 		return;
 	}

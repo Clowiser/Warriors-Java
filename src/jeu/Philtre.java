@@ -36,7 +36,8 @@ public class Philtre implements Case {
 		this.pointVie = pointVie;
 	}
 	
-	public void interaction(Personnage personnage) {
+	@Override 
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous trouvez un philtre magique : la " + getPhiltre() + " ! ");
 		if (personnage instanceof Magicien) {
 			Magicien joueurMagicien = (Magicien) personnage; // cast -> Magicien

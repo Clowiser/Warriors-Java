@@ -22,7 +22,7 @@ public class Tresor implements Case {
 	}
 
 	@Override
-	public void interaction(Personnage personnage) {
+	public void interaction(Personnage personnage, Game game) {
 		System.out.println("Vous êtes sur une case Trésor");
 		return;
 	}
