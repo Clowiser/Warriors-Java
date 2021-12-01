@@ -1,5 +1,6 @@
 package jeu;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 //import jeu.Plateau;
 //import jeu.EmptyCase;
@@ -35,7 +36,7 @@ public class Game {
 	// Méthodes
 	// MENUS
 	// menu principal du jeu (affichage des directives dans le menu)
-	public void initGame() {
+	public void initGame() throws SQLException {
 		boolean isRunning = false;
 
 		while (!isRunning) { // while (isRunning = true) / rappel while (!isRunning) = opposé de la
@@ -47,6 +48,7 @@ public class Game {
 
 			switch (choixMenu) {
 			case 1:
+				test();
 				createPerso();
 				break;
 
@@ -68,7 +70,7 @@ public class Game {
 	}
 
 	// Menu du jeu : lancer les dés - avancer - passer joueur suivant
-	public void menuJeu() {
+	public void menuJeu() throws SQLException {
 
 		System.out.println("1 Lancer le dés - 2 Quitter la partie : retour au menu principal - 3 clearPerso - 4 Inventaire");
 
@@ -120,7 +122,7 @@ public class Game {
 	}
 
 	// Menu création personnages
-	public void createPerso() {
+	public void createPerso() throws SQLException {
 		int choix = 0;
 
 		choix = menu.entreeClavier(
@@ -132,6 +134,7 @@ public class Game {
 			// Guerrier
 			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la
 														// méthode createGuerrier()
+			
 			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste
 										// guerrierListe
 			selectPersonnage = joueurG;
@@ -168,7 +171,7 @@ public class Game {
 	}
 
 	// garder le même personnage ou recréer un nouveau personnage
-	public void clearPerso() {
+	public void clearPerso() throws SQLException {
 		System.out.println(
 				"Voulez vous recommencer la partie avec votre personnage actuel ? 1 oui - 2 non retour au menu principal ");
 
@@ -199,7 +202,7 @@ public class Game {
 	}
 
 	// afficher la liste des personnages créés
-	public void afficherListe() {
+	public void afficherListe() throws SQLException {
 
 		// liste des guerriers créés
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
@@ -243,7 +246,7 @@ public class Game {
 	// DEMARRAGE DE LA PARTIE
 	// démarrer
 
-	public void start() {
+	public void start() throws SQLException {
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
 			System.out.println("Veuillez créer votre personnage pour commencer l'Aventure !");
 			System.out.println("");
@@ -261,7 +264,7 @@ public class Game {
 	int position;
 
 	// lancer les dés
-	public void lancerDes(Personnage personnage) throws PersonnageHorsPlateauException {
+	public void lancerDes(Personnage personnage) throws PersonnageHorsPlateauException, SQLException {
 		position = personnage.setPositionJoueur(position);
 		// avancer le joueur : résultat de l'avancée du joueur sur le plateau +
 		// placement sur plateau
@@ -355,5 +358,16 @@ public class Game {
 			System.out.println("");
     }
 	}
+	
+	
+	public void test() throws SQLException {
+		PersonnageDao dao = new PersonnageDao();
+		dao.getConnect(); // effectuer la connexion
+		dao.getGuerrier(); // affichage des guerriers
+		dao.createHero(); //
+		
+	}
+
+	
 
 }
