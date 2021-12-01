@@ -10,7 +10,7 @@ public class Gobelin extends Ennemi {
 	} // méthode qui ne définit pas les infos par défaut - Gobelin gobelin1 = new Gobelin(6, 1); //je créé mon objet de Gobelin, gobelin1, pour l'utiliser
 
 	public Gobelin() {
-		super("Gobelin", 6, 1); // appel le constructeur du parent avec les attributs du parent + par défaut, c-a-d que tous les gobelins auront ses PA et PV
+		super("Gobelin", 6, 10); // appel le constructeur du parent avec les attributs du parent + par défaut, c-a-d que tous les gobelins auront ses PA et PV
 	}
 	
 	/*@Override

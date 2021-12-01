@@ -149,20 +149,35 @@ public class Menu {
 		System.out.println("Vous attaquez avec une puissance de " + personnage.getForce() + " sur votre ennemi !");
 		System.out.println("");
 		System.out.println("----------------------------------- ! COMBAT ! -----------------------------------");
+		System.out.println("");
 
 		ennemi.setVie(ennemi.getVie() - personnage.getForce());
 		// sa nouvelle vie (à l'ennemi) est égale a sa vie actuelle - la force du
 		// personnage
 		// si vie = 0 -> affiche message ou ennemi est mort
 
-		// si ennemi est toujours vivant après la première attaque du personnage, il
-		// contre-attaque et s'enfuit
-		if ((ennemi.getForce() > 0) && (ennemi.getVie() > 0)) {
+		// si ennemi est toujours vivant après la première attaque du personnage, il contre-attaque et s'enfuit
+		if ((ennemi.getVie() > 0)) {
 			System.out.println(ennemi.getNom() + " est toujours en vie, il contre-attaque " + personnage.getNom()
 					+ " avec " + ennemi.getForce() + " de force d'attaque !");
+			System.out.println("");
 			personnage.setVie(personnage.getVie() - ennemi.getForce());
-			System.out.println("Il vos reste " + personnage.getVie() + " de points de vie.");
-			System.out.println(ennemi.getNom() + " s'enfuit !");
+			if ((personnage.getVie() > 0)) {
+				System.out.println("Il vos reste " + personnage.getVie() + " de points de vie.");
+				System.out.println("");
+				System.out.println(ennemi.getNom() + " s'enfuit !");
+			}
+			if ((personnage.getVie() <= 0)) {
+				System.out.println("Il vous reste 0 points de vie.");
+				System.out.println("");
+				System.out.println(personnage.getNom() + " est mort.");
+				System.out.println("");
+				System.out.println("- Game Over - ");
+				System.out.println("");
+				
+				afficherMenuPrincipal();
+			}
+		
 		}
 
 	}

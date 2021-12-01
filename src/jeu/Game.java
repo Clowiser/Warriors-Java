@@ -70,7 +70,7 @@ public class Game {
 	// Menu du jeu : lancer les dés - avancer - passer joueur suivant
 	public void menuJeu() {
 
-		System.out.println("1 - Lancer le dés - 2 - Quitter la partie : retour au menu principal - 3 clearPerso");
+		System.out.println("1 Lancer le dés - 2 Quitter la partie : retour au menu principal - 3 clearPerso - 4 Inventaire");
 
 		int choix = menu.entreeClavier("");
 
@@ -98,11 +98,25 @@ public class Game {
 		case 3:
 			clearPerso();
 
+		case 4:
+			inventaire(selectPersonnage);
+			menuJeu();
+			break;
+			
 		default:
 			System.out.println("Erreur sélection - menuJeu()");
 			break;
 
 		}
+	}
+
+	//inventaire personnage durant partie - voir sa vie, sa force, s'il y a une arme, sa position
+	private void inventaire(Personnage personnage) {
+		System.out.println("- Inventaire - ");
+		System.out.println("");
+		System.out.println(selectPersonnage); // affiche dernier perso créé -> boucle
+		System.out.println("");
+		
 	}
 
 	// Menu création personnages
@@ -204,7 +218,7 @@ public class Game {
 			System.out.println("La liste de Guerrier contient " + guerrierListe.size() + " élément(s)");
 			System.out.println("");
 			for (int i = 0; i < guerrierListe.size(); i++) {
-				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, lÃ  je défini moi-même
+				System.out.println(guerrierListe.get(i)); // toString() est présent par défaut, là je défini moi-même
 															// ma
 															// méthode toString() dans Personnage pour annuler cet
 															// affichage par défaut (blabla@1d25g5qf2)
@@ -222,6 +236,8 @@ public class Game {
 			System.out.println("");
 
 		}
+		
+		menuJeu();
 
 	}
 	// DEMARRAGE DE LA PARTIE
@@ -269,7 +285,7 @@ public class Game {
 
 	// avancer
 	public void avancer() throws PersonnageHorsPlateauException {
-		// throws (avec S ) = permet de relayer le traitement de l'exception Ã  la
+		// throws (avec S ) = permet de relayer le traitement de l'exception à la
 		// méthode appelante
 
 		int direction;
@@ -287,7 +303,7 @@ public class Game {
 			if (position >= plateau.size()) {
 				// positionJoueur = plateau.size(); // -> n'est plus utile depuis le throw
 				System.out.println("Bravo Aventurier ! Vous avez atteint l'Aventure du Dungeons & Dragons !");
-				position = 0; // remise Ã  0 de la position du joueur
+				position = 0; // remise à 0 de la position du joueur
 				System.out.println("");
 				throw new PersonnageHorsPlateauException(); // throw (sans S) = permet de déclencher une erreur
 			}

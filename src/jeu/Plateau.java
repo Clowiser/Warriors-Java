@@ -50,8 +50,8 @@ public class Plateau {
 		// Guerrier
 		//jeuPlateau.set(15, new Arme());
 		plateau.set(4, new Masse());
-		plateau.set(6, new Masse());
-		plateau.set(3, new Fer());
+		//plateau.set(6, new Masse());
+		//plateau.set(3, new Fer());
 		plateau.set(7, new Fer());
 		
 		// ennemis
