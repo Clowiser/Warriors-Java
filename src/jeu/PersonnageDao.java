@@ -93,7 +93,7 @@ public class PersonnageDao {
 		return magicienListe;
 	}
 
-	/*public void createPersonnage() throws SQLException {
+	public void createPersonnage() throws SQLException {
 		String query = "INSERT INTO Hero(Type, nom, niveauVie, niveauForce, ArmeSort, BouclierPhiltre) VALUES (?, ?, ?, ?, ?, ?)";
 		PreparedStatement prepare = connect.prepareStatement(query); //PreparedStatement est une sous-interface de Statement. Il est utilisé pour exécuter une requête paramétrée.
 		System.out.println("Veuillez choisir entre un Guerrier ou un Magicien pour votre personnage :");
@@ -133,7 +133,7 @@ public class PersonnageDao {
 		prepare.setString(6, bouclierPhiltre);
 		prepare.executeUpdate(); // Exécute l'instruction SQL fournie, qui peut être une instruction INSERT, UPDATE ou DELET
 	
-	}*/
+	}
 
 	// supprimer personnage selon id
 	public void supprimerPersonnage(int id) throws SQLException {
