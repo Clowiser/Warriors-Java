@@ -1,10 +1,13 @@
 package jeu;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 //import jeu.Plateau;
 //import jeu.EmptyCase;
 //import jeu.CreationPersonnage;
+import java.util.Scanner;
 
 /**
  * Description de la classe Game : C'est dans cette classe que se lance
@@ -49,7 +52,7 @@ public class Game {
 			switch (choixMenu) {
 			case 1:
 				test();
-				createPerso();
+				//createPerso();
 				break;
 
 			case 2:
@@ -121,27 +124,75 @@ public class Game {
 		
 	}
 
+	private Connection connect;
+	private final Scanner sc = new Scanner(System.in);
+	
 	// Menu création personnages
 	public void createPerso() throws SQLException {
+		
+		//public void createPersonnage() throws SQLException {
+			String query = "INSERT INTO Hero(Type, nom, niveauVie, niveauForce, ArmeSort, BouclierPhiltre) VALUES (?, ?, ?, ?, ?, ?)";
+			PreparedStatement prepare = connect.prepareStatement(query); //PreparedStatement est une sous-interface de Statement. Il est utilisé pour exécuter une requête paramétrée.
+			System.out.println("Veuillez choisir entre un Guerrier ou un Magicien pour votre personnage :");
+			String type = sc.nextLine().toLowerCase(); //toLowerCase() = met en minuscule pour que si l'utilisateur entre le type en majuscule, ça ne provoque pas de problème lors du choix ArmeSort et BouclierPhiltre
+			System.out.println("Nommez votre personnage :");
+			String nom = sc.nextLine();
+			System.out.println("Choisissez le niveau de vie de votre personnage - entre 5 et 10 :");
+			int vie = sc.nextInt();
+			System.out.println("Choisissez la force d'attaque de votre personnage - entre 5 et 10 :");
+			int force = sc.nextInt();
+			
+			if (type.equals("magicien")) { // méthode equals() disponible dans la classe String utilisée pour comparer deux chaînes et déterminer si elles sont égales.
+				// -> Cette méthode renvoie une valeur booléenne à la suite de la comparaison. Si les deux chaînes contiennent les mêmes caractères dans le même ordre, la méthode equals () renvoie true. Sinon, il retourne une valeur fausse.
+				System.out.println("Choisissez le sort de votre Magicien - entre Boule de Feu et Eclair de Glace:");
+			} else {
+				System.out.println("Choisissez l'arme de votre Guerrier - entre Masse et Epée");
+			}
+			String armeSort = sc.next();
+			
+			sc.nextLine();
+			if (type.equals("magicien")) { //compare deux chaines et détermine si elles sont égales : si type = magicien (ou guerrier) en minuscule, car écrit ici en minuscule alors ce sera la première phrase
+				System.out.println("Choisisser le philtre de votre Magicien - entre Philtre de Soin et Philtre de Force");
+			} else {
+				System.out.println("Choisissez le bouclier de votre Guerrier - entre Bois et Fer");
+			}
+			String bouclierPhiltre = sc.nextLine();
+			//String entree = sc.nextLine(); // dernière entrée pour valider la création de personnage
+			
+			prepare.setString(1, type);
+			prepare.setString(2, nom);
+			prepare.setInt(3, vie);
+			prepare.setInt(4, force);
+			prepare.setString(5, armeSort);
+			prepare.setString(6, bouclierPhiltre);
+			prepare.executeUpdate(); // Exécute l'instruction SQL fournie, qui peut être une instruction INSERT, UPDATE ou DELET
+		
+			
+			
+		}
+			
+			public void selectPerso() {
+	
 		int choix = 0;
 
-		choix = menu.entreeClavier(
-				"Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
+		//choix = menu.entreeClavier(
+				//"Créer son personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
 
+		choix = menu.entreeClavier(
+				"Sélectionner votre personnage : 1 pour Guerrier - 2 pour Magicien - 3 Démarrer la partie - 4 Récapitulatif des personnages - 5 Quitter la création de personnage : retour au menu principal ");
+
+		
 		switch (choix) {
 		case 1:
-			// Appel de la fonction createGuerrier() de l'instance menu de la classe
-			// Guerrier
+			// Appel de la fonction createGuerrier() de l'instance menu de la classe Guerrier
 			Guerrier joueurG = menu.createGuerrier(); // instance de Guerrier qui est récupérer dans le menu via la
 														// méthode createGuerrier()
 			
-			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste
-										// guerrierListe
+			guerrierListe.add(joueurG); // pour ajouter un objet (joueurG ici en l'occurrence) dans la liste guerrierListe
 			selectPersonnage = joueurG;
-			/*
-			 * 1 - l'utilisateur exécute la création de persos (Guerrier/magicien) 2 - ce
-			 * dernier s'ajoute dans la liste 3 - je récupère le personnage créé pour jouer
-			 */
+			
+			 //1 - l'utilisateur exécute la création de persos (Guerrier/magicien) 2 - ce dernier s'ajoute dans la liste 3 - je récupère le personnage créé pour jouer
+			
 			break;
 
 		case 2:
@@ -208,7 +259,7 @@ public class Game {
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
 			System.out.println("Aucun personnage - Veuillez créer votre personnage pour commencer l'Aventure !");
 			System.out.println("");
-			createPerso();
+			//createPerso();
 		}
 
 		// PROBLEME : affiche cette partie quand le perso n'est pas clear quand je
@@ -250,7 +301,7 @@ public class Game {
 		if (guerrierListe.size() == 0 && magicienListe.size() == 0) {
 			System.out.println("Veuillez créer votre personnage pour commencer l'Aventure !");
 			System.out.println("");
-			createPerso();
+			//createPerso();
 		}
 		plateau.afficherCases();
 
@@ -359,12 +410,14 @@ public class Game {
     }
 	}
 	
-	
+	//test pour les méthodes de la BDD
 	public void test() throws SQLException {
 		PersonnageDao dao = new PersonnageDao();
-		dao.getConnect(); // effectuer la connexion
-		dao.getGuerrier(); // affichage des guerriers
-		dao.createHero(); //
+		dao.getConnect(); // effectue la connexion pour se connecter à la BDD // obligatoire 
+		//dao.getGuerrier(); // dans sa méthode, a une connexion et affiche la liste des guerriers de la BDD
+		//dao.getMagicien();
+		createPerso(); // l'utilisateur créer son personnage qui est entré dans la BDD
+		dao. supprimerPersonnage(10); //suppression du personnage avec l'id 10 - OK 
 		
 	}
 
